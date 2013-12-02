@@ -10,8 +10,8 @@ public class AlienNumbers {
         BufferedReader in = null;
         BufferedWriter out = null;
         try {
-            in = new BufferedReader(new FileReader("input/A-small-practice.in"));
-            out = new BufferedWriter(new FileWriter("output/A-small-practice.out"));
+            in = new BufferedReader(new FileReader("input/A-large-practice.in"));
+            out = new BufferedWriter(new FileWriter("output/A-large-practice.out"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -31,15 +31,28 @@ public class AlienNumbers {
 //            String outputLine = i + ": " + alienNumber + " " + sourceLanguage + "  " + targetLanguage + "\n";
 //            System.out.println(outputLine);
 
-            out.write("Case #" + (i+1) + ": " + targetString + "\n");
+            out.write("Case #" + (i + 1) + ": " + targetString + "\n");
         }
         in.close();
         out.close();
     }
 
     private static String translate(String alienNumber, String sourceLanguage, String targetLanguage) {
-
-
-        return null;
+        String njin = "";
+        for (int i = 0; i < alienNumber.length(); i++) {
+            char a = alienNumber.charAt(i);
+            int n = sourceLanguage.indexOf(a);
+            njin += n;
+        }
+        System.out.println(njin + ": " + Integer.parseInt(njin, sourceLanguage.length()));
+        int decimalNumber = Integer.parseInt(njin, sourceLanguage.length());
+        String targetNumber = Integer.toString(decimalNumber, targetLanguage.length());
+        njin = "";
+        for (int i = 0; i < targetNumber.length(); i++) {
+            char a = targetNumber.charAt(i);
+            int n = Integer.parseInt(String.valueOf(a));
+            njin += targetLanguage.charAt(n);
+        }
+        return njin;
     }
 }
