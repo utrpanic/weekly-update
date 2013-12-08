@@ -4,14 +4,12 @@ import java.io.*;
 
 public class AlienNumbers {
     public static void main(String[] args) throws IOException {
-        System.out.println("out");
-
         // file input
         BufferedReader in = null;
         BufferedWriter out = null;
         try {
-            in = new BufferedReader(new FileReader("input/A-large-practice.in"));
-            out = new BufferedWriter(new FileWriter("output/A-large-practice.out"));
+            in = new BufferedReader(new FileReader("AlienNumbers/A-small-practice.in"));
+            out = new BufferedWriter(new FileWriter("AlienNumbers/A-small-practice.out"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
