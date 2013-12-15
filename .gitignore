@@ -2,9 +2,12 @@
 *.iml
 
 .idea/*
+*/.gradle/*
 
 # Package Files #
 *.jar
 *.war
 *.ear
 *.out
+*.bin
+gradle*
