@@ -2,9 +2,8 @@ package com.weeklyupdate.alwaysturnleft;
 
 import java.io.*;
 import java.util.HashMap;
-import java.util.HashSet;
 
-public class TurnLeft {
+public class AlwaysTurnLeft {
 
     private static final int LEFT_DIRECTION = 0;
     private static final int UP_DIRECTION = 1;
@@ -223,10 +222,10 @@ public class TurnLeft {
     }
 
     public static void main(String[] args) {
-        TurnLeft turnLeft = new TurnLeft();
+        AlwaysTurnLeft alwaysTurnLeft = new AlwaysTurnLeft();
         try {
-            turnLeft.process("AlwaysTurnLeft/B-small-practice.in", "AlwaysTurnLeft/B-small_practice.out");
-            turnLeft.process("AlwaysTurnLeft/B-large-practice.in", "AlwaysTurnLeft/B-large_practice.out");
+            alwaysTurnLeft.process("AlwaysTurnLeft/B-small-practice.in", "AlwaysTurnLeft/B-small_practice.out");
+            alwaysTurnLeft.process("AlwaysTurnLeft/B-large-practice.in", "AlwaysTurnLeft/B-large_practice.out");
         } catch (IOException e) {
             e.printStackTrace();
         }
