@@ -1,0 +1,3 @@
+project(':AlienNumbers').projectDir = new File('AlienNumbers')
+project(':AlwaysTurnLeft').projectDir = new File('AlwaysTurnLeft')
+project(':EggDrop').projectDir = new File('EggDrop')
