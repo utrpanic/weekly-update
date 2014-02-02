@@ -55,10 +55,8 @@ public class Solvable {
             max = (long) (Math.pow(2, eggs) - 1);
         } else if (breaks >= MAX) {
             max = -1;
-//        } else if (((long) (eggs + 1) * (long) (eggs / 2)) > 4294967296L) {
-//            max = -1;
         } else {
-            for (int i = 1; i <= breaks; i++) {
+            for (int i = breaks; i > 0; i--) {
                 long innerMax = getMaxFloorByMatrix(eggs - breaks + 1, i);
                 if (innerMax == -1) {
                     return -1;
@@ -80,7 +78,7 @@ public class Solvable {
         for (int i = 1; i <= eggs; i++) {
             long maxFloor = getMaxFloorByMatrix(i, breaks);
             //System.out.println("getMinEggsByRecursion() eggs: " + i + ", breaks: " + breaks);
-            if (maxFloor < 0 || floor <= maxFloor) {
+            if (maxFloor < 0 || maxFloor >= floor) {
                 return i;
             }
         }
@@ -88,13 +86,15 @@ public class Solvable {
     }
 
     public static int getMinBreaksByRecursion(long floor, int eggs, int breaks) {
-        for (int i = breaks; i > 0; i--) {
+        if (eggs >= floor) {
+            return 1;
+        }
+        for (int i = 1; i <= breaks; i++) {
             long maxFloor = getMaxFloorByMatrix(eggs, i);
             //System.out.println("getMinBreaksByRecursion() eggs: " + eggs + ", breaks: " + i);
-            if (maxFloor > 0 && floor > maxFloor) {
-                return i + 1;
+            if (maxFloor < 0 || maxFloor >= floor) {
+                return i;
             }
-
         }
         return -1;
     }

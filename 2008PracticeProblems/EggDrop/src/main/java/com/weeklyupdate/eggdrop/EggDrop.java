@@ -36,7 +36,7 @@ public class EggDrop {
         EggDrop eggDrop = new EggDrop();
 
         eggDrop.process("EggDrop/C-small-practice.in", "EggDrop/C-small-practice.out");
-        eggDrop.process("EggDrop/C-large-practice.in", "EggDrop/C-large-practice.out");
+//        eggDrop.process("EggDrop/C-large-practice.in", "EggDrop/C-large-practice.out");
     }
 
 }
