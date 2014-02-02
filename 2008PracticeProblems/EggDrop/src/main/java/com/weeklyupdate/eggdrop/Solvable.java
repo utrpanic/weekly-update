@@ -24,7 +24,7 @@ public class Solvable {
         return floor + " " + eggs + " " + breaks;
     }
 
-    public static void initializeMaxFloorMap() {
+    public void initializeMaxFloorMap() {
         if (maxFloors == null) {
             maxFloors = new long[MAX][MAX];
             StringBuilder sb;
@@ -47,7 +47,7 @@ public class Solvable {
         }
     }
 
-    public static long getMaxFloorByMatrix(int eggs, int breaks) {
+    public long getMaxFloorByMatrix(int eggs, int breaks) {
         long max = 0;
         if (breaks == 1) {
             max = eggs;
@@ -74,7 +74,7 @@ public class Solvable {
         return max;
     }
 
-    public static int getMinEggsByRecursion(long floor, int eggs, int breaks) {
+    public int getMinEggsByRecursion(long floor, int eggs, int breaks) {
         for (int i = 1; i <= eggs; i++) {
             long maxFloor = getMaxFloorByMatrix(i, breaks);
             //System.out.println("getMinEggsByRecursion() eggs: " + i + ", breaks: " + breaks);
@@ -85,7 +85,7 @@ public class Solvable {
         return -1;
     }
 
-    public static int getMinBreaksByRecursion(long floor, int eggs, int breaks) {
+    public int getMinBreaksByRecursion(long floor, int eggs, int breaks) {
         if (eggs >= floor) {
             return 1;
         }
