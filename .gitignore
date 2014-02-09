@@ -4,6 +4,7 @@
 .idea/*
 */.idea/*
 */.gradle/*
+*/*/.gradle/*
 
 # Package Files #
 *.jar
