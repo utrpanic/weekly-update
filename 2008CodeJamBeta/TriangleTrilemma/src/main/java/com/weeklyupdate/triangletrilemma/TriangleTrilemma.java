@@ -6,7 +6,8 @@ import java.util.Arrays;
 public class TriangleTrilemma {
 
     private int x1, y1, x2, y2, x3, y3;
-    private double[] lines;
+    private long[] squareOfLines;
+    private double perpendicularLine;
 
     public static void main(String[] args) throws IOException {
         TriangleTrilemma.process("TriangleTrilemma/A-small-practice.in", "TriangleTrilemma/A-small-practice.out");
@@ -14,7 +15,6 @@ public class TriangleTrilemma {
     }
 
     private static void process(String inputFileName, String outputFileName) throws IOException {
-
         BufferedReader in = new BufferedReader(new FileReader(inputFileName));
         BufferedWriter out = new BufferedWriter(new FileWriter(outputFileName));
 
@@ -23,7 +23,9 @@ public class TriangleTrilemma {
         for (int i = 0; i < numberOfCase; i++) {
             String params = in.readLine();
             triangleTrilemma.init(params);
-            out.write("Case #" + (i + 1) + ": " + triangleTrilemma.getOutput() + "\n");
+            String output = "Case #" + (i + 1) + ": " + triangleTrilemma.getOutput() + "\n";
+            out.write(output);
+            System.out.print(output);
         }
 
         in.close();
@@ -31,6 +33,7 @@ public class TriangleTrilemma {
     }
 
     void init(String params) {
+        System.out.println(params);
         String[] param = params.split(" ");
         x1 = Integer.parseInt(param[0]);
         y1 = Integer.parseInt(param[1]);
@@ -43,7 +46,7 @@ public class TriangleTrilemma {
     String getOutput() {
         calculateLines();
 
-        if (lines[0] + lines[1] == lines[2]) {
+        if (onSameLine()) {
             return "not a triangle";
         }
 
@@ -55,15 +58,31 @@ public class TriangleTrilemma {
     }
 
     private void calculateLines() {
-        lines = new double[3];
-        lines[0] = Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
-        lines[1] = Math.sqrt(Math.pow(x2 - x3, 2) + Math.pow(y2 - y3, 2));
-        lines[2] = Math.sqrt(Math.pow(x3 - x1, 2) + Math.pow(y3 - y1, 2));
-        Arrays.sort(lines); // Ascent order
+        squareOfLines = new long[3];
+        squareOfLines[0] = (long) (Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+        squareOfLines[1] = (long) (Math.pow(x2 - x3, 2) + Math.pow(y2 - y3, 2));
+        squareOfLines[2] = (long) (Math.pow(x3 - x1, 2) + Math.pow(y3 - y1, 2));
+        Arrays.sort(squareOfLines); // Ascent order
+        perpendicularLine = Math.sqrt(((squareOfLines[0] * squareOfLines[1]) / (double) squareOfLines[2]));
+
+        System.out.println("line1: " + squareOfLines[0] + ", line2: " + squareOfLines[1] + ", line3: " + squareOfLines[2] + ", perpendicular: " + perpendicularLine);
+    }
+
+    private boolean onSameLine() {
+        if (x1 == x2 && x2 == x3 || y1 == y2 && y2 == y3 || (squareOfLines[0] == 0 || squareOfLines[1] == 0 || squareOfLines[2] == 0)) {
+            return true;
+        }
+        if (squareOfLines[2] == squareOfLines[0] + squareOfLines[1]) {
+            return false;
+        }
+        long gradient12 = (y1 - y2) * (x1 - x3);
+        long gradient13 = (y1 - y3) * (x1 - x2);
+        System.out.println("gradient12: " + gradient12 + ", gradient13: " + gradient13);
+        return gradient12 == gradient13;
     }
 
     private String getClassOfRelativeLength() {
-        if (lines[0] == lines[1] || lines[1] == lines[2]) {
+        if (squareOfLines[0] == squareOfLines[1] || squareOfLines[1] == squareOfLines[2]) {
             return "isosceles";
         } else {
             return "scalene";
@@ -71,15 +90,15 @@ public class TriangleTrilemma {
     }
 
     private String getClassOfAngle() {
-        double cosA = (lines[2] * (Math.pow(lines[0], 2) / (Math.pow(lines[0], 2) + Math.pow(lines[1], 2)))) / lines[0];
-        double cosB = (lines[2] * (Math.pow(lines[1], 2) / (Math.pow(lines[0], 2) + Math.pow(lines[1], 2)))) / lines[1];
-        double angA = Math.toDegrees(Math.acos(cosA));
-        double angB = Math.toDegrees(Math.acos(cosB));
-        int sumOfTwoSmallDegree = (int) (angA + angB + 0.000001);
-//        System.out.println("line1: " + lines[0] + ", line2: " + lines[1] + ", line3: " + lines[2]);
-//        System.out.println("CosA: " + cosA + ", cosB: " + cosB);
-//        System.out.println("AngA: " + angA + ", AngB: " + angB);
-        if (sumOfTwoSmallDegree == 90) {
+        double sinA = perpendicularLine / Math.sqrt(squareOfLines[0]);
+        double sinB = perpendicularLine / Math.sqrt(squareOfLines[1]);
+        double angAInDegree = Math.toDegrees(Math.asin(sinA));
+        double angBInDegree = Math.toDegrees(Math.asin(sinB));
+
+        double sumOfTwoSmallDegree = (angAInDegree + angBInDegree);
+        System.out.println("SinA: " + sinA + ", SinB: " + sinB);
+        System.out.println("AngA: " + angAInDegree + ", AngB: " + angBInDegree + ", Sum: " + sumOfTwoSmallDegree);
+        if (squareOfLines[0] + squareOfLines[1] == squareOfLines[2]) {
             return "right";
         } else if (sumOfTwoSmallDegree < 90) {
             return "obtuse";
