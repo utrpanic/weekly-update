@@ -9,7 +9,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class ThePriceIsWrongTest {
 
     @Test
-    @Ignore
+//    @Ignore
     public void testCase1() throws Exception {
         ThePriceIsWrong thePriceIsWrong = new ThePriceIsWrong();
         thePriceIsWrong.initOrder("code jam foo bar google");
@@ -18,7 +18,7 @@ public class ThePriceIsWrongTest {
     }
 
     @Test
-    @Ignore
+//    @Ignore
     public void testCase3() throws Exception {
         ThePriceIsWrong thePriceIsWrong = new ThePriceIsWrong();
         thePriceIsWrong.initOrder("code jam foo bar google");
@@ -33,6 +33,15 @@ public class ThePriceIsWrongTest {
         thePriceIsWrong.initOrder("code jam foo bar google");
         thePriceIsWrong.initGuess("60 30 40 15 20");
         assertThat(thePriceIsWrong.getOutput(), is("bar code google"));
+    }
+
+    @Test
+//    @Ignore
+    public void testCase57() throws Exception {
+        ThePriceIsWrong thePriceIsWrong = new ThePriceIsWrong();
+        thePriceIsWrong.initOrder("wing band ball rail plough farm shelf tongue");
+        thePriceIsWrong.initGuess("85 100 79 74 34 65 20 38");
+        assertThat(thePriceIsWrong.getOutput(), is("ball band farm plough rail wing"));
     }
 
 }

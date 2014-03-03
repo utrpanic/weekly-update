@@ -6,6 +6,8 @@ import java.util.Arrays;
 
 public class ThePriceIsWrong {
 
+    static double UNIT_OF_CHANGE = 0.01;
+
     String[] products;
     double[] guesses;
 
@@ -74,60 +76,47 @@ public class ThePriceIsWrong {
     }
 
     private void rearrangeGuesses(int start) {
-        changedGuesses = new ArrayList<String>();
-        for (int i = start; i < products.length - 1; i++) {
-            if (guesses[i] > guesses[i + 1]) {
-                if (i == start && i != 0) {
-                    ThePriceIsWrong changeNext = new ThePriceIsWrong(this);
-                    changeNext.guesses[i + 1] = changeNext.guesses[i] + 0.01;
-                    changeNext.rearrangeGuesses(i + 1);
-                    changedGuesses = changeNext.changedGuesses;
-                    changedGuesses.add(products[i + 1]);
-                } else {
-                    ThePriceIsWrong changeCurrent = new ThePriceIsWrong(this);
-                    changeCurrent.guesses[i] = changeCurrent.guesses[i + 1] - 0.01;
-                    changeCurrent.rearrangeGuesses(i + 1);
-                    ThePriceIsWrong changeNext = new ThePriceIsWrong(this);
-                    changeNext.guesses[i + 1] = changeNext.guesses[i] + 0.01;
-                    changeNext.rearrangeGuesses(i + 1);
-
-                    if (changeCurrent.changedGuesses.size() < changeNext.changedGuesses.size()) {
-                        changedGuesses = changeCurrent.changedGuesses;
-                        changedGuesses.add(products[i]);
-                    } else if (changeCurrent.changedGuesses.size() > changeNext.changedGuesses.size()) {
-                        changedGuesses = changeNext.changedGuesses;
-                        changedGuesses.add(products[i + 1]);
-                    } else {
-                        if (changeCurrent.changedGuesses.size() == 0) {
-                            String changedProduct = products[i].compareTo(products[i + 1]) < 0 ? products[i] : products[i + 1];
-                            changedGuesses.add(changedProduct);
-                        } else {
-                            String current = changeCurrent.getChangedGuessesString();
-                            String next = changeNext.getChangedGuessesString();
-                            if (current.compareTo(next) < 0) {
-                                changedGuesses = changeCurrent.changedGuesses;
-                                changedGuesses.add(products[i]);
-                            } else if (current.compareTo(next) > 0) {
-                                changedGuesses = changeNext.changedGuesses;
-                                changedGuesses.add(products[i + 1]);
-                            } else {
-                                changedGuesses = changeCurrent.changedGuesses;
-                                String changedProduct = products[i].compareTo(products[i + 1]) < 0 ? products[i] : products[i + 1];
-                                changedGuesses.add(changedProduct);
-                            }
-                        }
-                    }
-                }
-                break;
+        for (int i = 1; i < start; i++) {
+            if (guesses[i - 1] > guesses[i]) {
+                changedGuesses = null;
+                return;
             }
+        }
+        changedGuesses = new ArrayList<String>();
+        for (int i = start; i < products.length; i++) {
+            ThePriceIsWrong changeCurrent = new ThePriceIsWrong(this);
+            if (i == 0) {
+                changeCurrent.guesses[i] = UNIT_OF_CHANGE;
+            } else {
+                changeCurrent.guesses[i] = changeCurrent.guesses[i - 1] + UNIT_OF_CHANGE;
+            }
+
+            changeCurrent.rearrangeGuesses(i + 1);
+            changeCurrent.changedGuesses.add(products[i]);
+            rearrangeGuesses(i + 1);
+
+            if (changeCurrent.compare(this) < 0) {
+                changedGuesses = changeCurrent.changedGuesses;
+            } else if (changeCurrent.compare(this) == 0) {
+                String current = changeCurrent.getChangedGuessesString();
+                if (current.compareTo(getChangedGuessesString()) < 0) {
+                    changedGuesses = changeCurrent.changedGuesses;
+                }
+            }
+
+            break;
         }
 
     }
 
-    private boolean isCheckedGuess(double guess) {
-        int temp = (int) (guess * 100);
-        return temp % 100 != 0;
+    private int compare(ThePriceIsWrong thePriceIsWrong) {
+        if (changedGuesses == null) {
+            return 1;
+        } else if (thePriceIsWrong.changedGuesses == null) {
+            return -1;
+        } else {
+            return changedGuesses.size() - thePriceIsWrong.changedGuesses.size();
+        }
     }
-
 
 }
