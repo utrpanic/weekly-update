@@ -12,7 +12,7 @@ public class RandomRoute {
     String getOutput() {
         // 각 city로의 shortest path들을 구함.
 
-        // 확률을 나눠줌.
+        // 확률을 나눠줌. city별로 나눠갖고. 각 city들의 shortest path에서 road들이 또 나눠갖고. 그런거지?
 
         // 아 정말. 매일 해야겠다. 1주일에 한두번으론 안되겠어.
 
@@ -23,11 +23,13 @@ public class RandomRoute {
 
         String start, end;
         int distance;
+        double probablity;
 
         public Road(String start, String end, String distance) {
             this.start = start;
             this.end = end;
             this.distance = Integer.parseInt(distance);
+            this.probablity = 0;
         }
     }
 
