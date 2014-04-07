@@ -2,3 +2,5 @@ rootProject.name = '2008PracticeContest'
 
 include 'OldMagician'
 
+include 'SquareFields'
+
