@@ -14,12 +14,10 @@ public class OldMagician {
     }
 
     String getOutput() {
-        if (numberOfBlack == 1) {
-            return "BLACK";
-        } else if (numberOfBlack == 6) {
+        if (numberOfBlack % 2 == 0) {
             return "WHITE";
         } else {
-            return "UNKNOWN";
+            return "BLACK";
         }
     }
 
@@ -35,8 +33,7 @@ public class OldMagician {
         int numberOfCase = Integer.valueOf(in.readLine());
         OldMagician oldMagician = new OldMagician();
         for (int i = 0; i < numberOfCase; i++) {
-
-
+            oldMagician.init(in.readLine());
             String output = "Case #" + (i + 1) + ": " + oldMagician.getOutput() + "\n";
             out.write(output);
             System.out.print(output + "\n");
