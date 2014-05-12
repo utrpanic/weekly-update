@@ -1,11 +1,13 @@
 package com.weeklyupdate.savingtheuniverse;
 
 import java.io.*;
+import java.util.*;
 
 public class SavingTheUniverse {
 
     String[] searchEngines;
     String[] queries;
+    String currentSearchEngine;
 
     void initSearchEngines(BufferedReader in) throws IOException {
         int numberOfSearchEngines = Integer.valueOf(in.readLine());
@@ -21,10 +23,44 @@ public class SavingTheUniverse {
         for (int i = 0; i < numberOfQueries; i++) {
             queries[i] = in.readLine();
         }
+        currentSearchEngine = null;
     }
 
     String getOutput() {
-        return "1";
+        return getOutputByLongestJourney();
+    }
+
+    String getOutputByLongestJourney() {
+        if (searchEngines.length == 0 || queries.length == 0) {
+            return "0";
+        }
+        int numberOfSwitch = 0;
+        chooseSearchEngineByLongestJourney(0);
+        for (int i = 0; i < queries.length; i++) {
+            if (shouldSwitchSearchEngine(i)) {
+                chooseSearchEngineByLongestJourney(i);
+                numberOfSwitch++;
+            }
+        }
+        return String.valueOf(numberOfSwitch);
+    }
+
+    void chooseSearchEngineByLongestJourney(int startIndex) {
+        List<String> notInQueries = new ArrayList<String>(Arrays.asList(searchEngines));
+        for (int i = startIndex; i < queries.length; i++) {
+            notInQueries.remove(queries[i]);
+            if (notInQueries.size() == 0) {
+                currentSearchEngine = queries[i];
+                break;
+            }
+        }
+        if (notInQueries.size() != 0) {
+            currentSearchEngine = notInQueries.get(0);
+        }
+    }
+
+    boolean shouldSwitchSearchEngine(int i) {
+        return queries[i].equals(currentSearchEngine);
     }
 
     public static void main(String[] args) throws IOException {
