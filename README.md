@@ -7,7 +7,8 @@ WeeklyUpdate
 - Deceitful War.
 
 2008 Code Jam Qualification Round
-- Saving The Universe. -
+- Saving The Universe. v
+- Train Timetable. v
 
 2008 Practice Contest
 - Old Magician. v

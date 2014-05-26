@@ -2,3 +2,5 @@ rootProject.name = '2008CodeJamQualificationRound'
 
 include 'SavingTheUniverse'
 
+include 'TrainTimetable'
+
