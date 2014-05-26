@@ -9,7 +9,6 @@ WeeklyUpdate
 2008 Code Jam Qualification Round
 - Saving The Universe. v
 - Train Timetable. v
-- Fly Swatter. -
 
 2008 Practice Contest
 - Old Magician. v
