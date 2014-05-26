@@ -1,57 +1,85 @@
 package com.weeklyupdate.traintimetable;
 
 import java.io.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
 
 public class TrainTimetable {
 
-    class TrainSchedule {
-        final static int STATION_A = 100;
-        final static int STATION_B = 101;
+    ArrayList<DepartureOrArrival> mTimetable;
 
-        int departureStation;
-        String[] schedule;
-
-        TrainSchedule(int departureStation, String input) {
-            this.departureStation = departureStation;
-            schedule = input.split(" ");
-        }
-
-        String getDepartureTime() {
-            return schedule[0];
-        }
-
-        String getArrivalTime() {
-            return schedule[1];
-        }
-    }
-
-    TrainSchedule[] trainSchedules;
-
-    void initTrainTimetable(BufferedReader in) throws IOException {
-        int totalNumberOfDeparture = Integer.parseInt(in.readLine());
-        int numberOfDepartureFromA;
+    void initTrainTimetable(BufferedReader in) throws IOException, ParseException {
+        int turnAroundTime = Integer.parseInt(in.readLine());
+        int numberOfDepartureFromA, numberOfDepartureFromB;
         String[] numberOfDepartures = in.readLine().split(" ");
         numberOfDepartureFromA = Integer.parseInt(numberOfDepartures[0]);
-        trainSchedules = new TrainSchedule[totalNumberOfDeparture];
-        for (int i = 0; i < totalNumberOfDeparture; i++) {
-            if (i < numberOfDepartureFromA) {
-                trainSchedules[i] = new TrainSchedule(TrainSchedule.STATION_A, in.readLine());
-            } else {
-                trainSchedules[i] = new TrainSchedule(TrainSchedule.STATION_B, in.readLine());
-            }
+        numberOfDepartureFromB = Integer.parseInt(numberOfDepartures[1]);
+        mTimetable = new ArrayList<DepartureOrArrival>();
+        for (int i = 0; i < numberOfDepartureFromA; i++) {
+            String[] times = in.readLine().split(" ");
+            mTimetable.add(new Departure(Station.STATION_A, times[0]));
+            mTimetable.add(new Arrival(Station.STATION_B, times[1], turnAroundTime));
         }
+        for (int i = 0; i < numberOfDepartureFromB; i++) {
+            String[] times = in.readLine().split(" ");
+            mTimetable.add(new Departure(Station.STATION_B, times[0]));
+            mTimetable.add(new Arrival(Station.STATION_A, times[1], turnAroundTime));
+        }
+
+        Collections.sort(mTimetable, new Comparator<DepartureOrArrival>() {
+            @Override
+            public int compare(DepartureOrArrival departureOrArrival1, DepartureOrArrival departureOrArrival2) {
+                int diff = (int) (departureOrArrival1.mTime.getTime() - departureOrArrival2.mTime.getTime());
+                if (diff != 0) {
+                    return diff;
+                } else {
+                    return departureOrArrival2.mState.ordinal() - departureOrArrival1.mState.ordinal();
+                }
+            }
+        });
     }
 
     String getOutput() {
-        return "2 2";
+        int trainAtStationA = 0;
+        int trainAtStationB = 0;
+        int newTrainNeededA = 0;
+        int newTrainNeededB = 0;
+        for (DepartureOrArrival time: mTimetable) {
+            if (time.mState == State.DEPARTURE) {
+                if (time.mStation == Station.STATION_A) {
+                    if (trainAtStationA == 0) {
+                        newTrainNeededA++;
+                    } else {
+                        trainAtStationA--;
+                    }
+                } else if (time.mStation == Station.STATION_B) {
+                    if (trainAtStationB == 0) {
+                        newTrainNeededB++;
+                    } else {
+                        trainAtStationB--;
+                    }
+                }
+            } else if (time.mState == State.ARRIVAL) {
+                if (time.mStation == Station.STATION_A) {
+                    trainAtStationA++;
+                } else if (time.mStation == Station.STATION_B) {
+                    trainAtStationB++;
+                }
+            }
+        }
+        return newTrainNeededA + " " + newTrainNeededB;
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, ParseException {
         TrainTimetable.process("TrainTimetable/B-small-practice.in", "TrainTimetable/B-small-practice.out");
         TrainTimetable.process("TrainTimetable/B-large-practice.in", "TrainTimetable/B-large-practice.out");
     }
 
-    private static void process(String inputFileName, String outputFileName) throws IOException {
+    private static void process(String inputFileName, String outputFileName) throws IOException, ParseException {
         BufferedReader in = new BufferedReader(new FileReader(inputFileName));
         BufferedWriter out = new BufferedWriter(new FileWriter(outputFileName));
 
@@ -66,5 +94,42 @@ public class TrainTimetable {
 
         in.close();
         out.close();
+    }
+}
+
+enum State {
+    DEPARTURE,
+    ARRIVAL,
+}
+
+enum Station {
+    STATION_A,
+    STATION_B,
+}
+
+class DepartureOrArrival {
+    State mState;
+    Station mStation;
+    Date mTime;
+    static SimpleDateFormat sDateFormat = new SimpleDateFormat("HH:mm");
+
+    public DepartureOrArrival(Station station, String time) throws ParseException {
+        mStation = station;
+        mTime = sDateFormat.parse(time);
+    }
+}
+
+class Departure extends DepartureOrArrival {
+    public Departure(Station station, String time) throws ParseException {
+        super(station, time);
+        mState = State.DEPARTURE;
+    }
+}
+
+class Arrival extends DepartureOrArrival {
+    public Arrival(Station station, String time, int turnArroundTime) throws ParseException {
+        super(station, time);
+        mState = State.ARRIVAL;
+        mTime = new Date(mTime.getTime() + (turnArroundTime * 60000));
     }
 }
