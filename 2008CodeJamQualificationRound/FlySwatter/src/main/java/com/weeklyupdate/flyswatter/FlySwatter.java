@@ -4,9 +4,11 @@ import java.io.*;
 
 public class FlySwatter {
 
-
-
-
+    double fly;
+    double radiusOfRacquet;
+    double thickness;
+    double radiusOfString;
+    double gap;
 
     public static void main(String[] args) throws IOException {
         FlySwatter.process("FlySwatter/C-small-practice.in", "FlySwatter/C-small-practice.out");
@@ -30,11 +32,16 @@ public class FlySwatter {
         out.close();
     }
 
-    private void init(BufferedReader in) {
-
+    void init(BufferedReader in) throws IOException {
+        String[] inputs = in.readLine().split(" ");
+        fly = Double.parseDouble(inputs[0]);
+        radiusOfRacquet = Double.parseDouble(inputs[1]);
+        thickness = Double.parseDouble(inputs[2]);
+        radiusOfString = Double.parseDouble(inputs[3]);
+        gap = Double.parseDouble(inputs[4]);
     }
 
-    private String getOutput() {
-        return "";
+    String getOutput() {
+        return "1.000000";
     }
 }
