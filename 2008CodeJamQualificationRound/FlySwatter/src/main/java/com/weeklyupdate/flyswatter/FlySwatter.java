@@ -42,6 +42,25 @@ public class FlySwatter {
     }
 
     String getOutput() {
-        return "1.000000";
+        double areaOfRacquet = Math.PI * radiusOfRacquet * radiusOfRacquet;
+        radiusOfRacquet -= thickness + fly;
+        radiusOfString += fly;
+        gap -= fly * 2;
+
+        double bottomLeftOfGapX = radiusOfString;
+        double bottomLeftOfGapY = radiusOfString;
+        double totalAreaOfGap = 0;
+        while (bottomLeftOfGapY <= radiusOfRacquet) {
+            while (bottomLeftOfGapX <= radiusOfRacquet) {
+                totalAreaOfGap += new Gap(bottomLeftOfGapX, bottomLeftOfGapY, gap, radiusOfRacquet).getArea();
+                bottomLeftOfGapX += gap + radiusOfString * 2;
+            }
+            bottomLeftOfGapY += gap + radiusOfString * 2;
+            bottomLeftOfGapX = radiusOfString;
+        }
+
+        double output = (areaOfRacquet - totalAreaOfGap * 4) / areaOfRacquet;
+
+        return String.format("%.6f", output);
     }
 }
