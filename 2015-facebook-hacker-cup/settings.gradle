@@ -1,0 +1,10 @@
+rootProject.name = '2015-facebook-hacker-cup'
+
+include 'q-cooking-the-books'
+
+include 'q-new-years-resolution'
+
+include 'q-laser-maze'
+
+include 'qualification-round'
+

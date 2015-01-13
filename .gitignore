@@ -12,4 +12,6 @@
 *.ear
 *.out
 *.bin
-gradle*
+
+# Output Files #
+*_output.txt
