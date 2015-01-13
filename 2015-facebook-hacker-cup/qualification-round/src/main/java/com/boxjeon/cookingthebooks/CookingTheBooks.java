@@ -44,7 +44,7 @@ public class CookingTheBooks {
             }
         }
 
-        if (smallestDigitIndex == 0) {
+        if (smallestDigitIndex == 0 || smallestDigit == Integer.parseInt(number.charAt(0) + "")) {
             return number.charAt(0) + getSmallestNumber(number.substring(1), true);
         } else {
             char[] charArray = number.toCharArray();
@@ -64,13 +64,13 @@ public class CookingTheBooks {
         int largestDigit = Integer.parseInt(number.charAt(0) + "");
         for (int i = 1; i < number.length(); i++) {
             int digit = Integer.parseInt(number.charAt(i) + "");
-            if (digit > largestDigit) {
+            if (digit >= largestDigit) {
                 largestDigitIndex = i;
                 largestDigit = digit;
             }
         }
 
-        if (largestDigitIndex == 0) {
+        if (largestDigitIndex == 0 || largestDigit == Integer.parseInt(number.charAt(0) + "")) {
             return number.charAt(0) + getLargestNumber(number.substring(1));
         } else {
             char[] charArray = number.toCharArray();
