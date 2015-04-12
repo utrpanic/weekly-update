@@ -1,6 +1,6 @@
 WeeklyUpdate
 ============
-2015 Code Jam Qualification Round
+[2015 Code Jam Qualification Round](https://code.google.com/codejam/contest/6224486/dashboard)
 - Standing Ovation. v
 - Infinite House of Pancakes. -
 - Dijkstra.
