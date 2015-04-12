@@ -1,0 +1,6 @@
+rootProject.name = '2015-code-jam'
+
+include 'qualification-round'
+
+include 'qualification-round'
+
