@@ -1,5 +1,16 @@
 WeeklyUpdate
 ============
+2015 Code Jam Qualification Round
+- Standing Ovation. v
+- Infinite House of Pancakes. -
+- Dijkstra.
+- Ominous Omino.
+
+2015 Facebook Hack Cup Qualification Round (https://www.facebook.com/hackercup/problems.php?round=742632349177460)
+- Cooking the Books.
+- New Year's Resolution.
+- Laser Maze.
+
 2014 Code Jam Qualification Round
 - Magic Trick. v
 - Cookie Clicker Alpha. v
