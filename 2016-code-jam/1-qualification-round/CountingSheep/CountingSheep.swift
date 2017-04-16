@@ -6,32 +6,21 @@
 //  Copyright © 2017년 boxjeon. All rights reserved.
 //
 
-enum Finally {
-    case sleep(lastNumber: Int)
-    case insomnia
-    var text: String {
-        switch self {
-        case .sleep(let lastNumber):
-            return String(lastNumber)
-        case .insomnia:
-            return "INSOMNIA"
-        }
-    }
-}
-
 class CountingSheep {
+    
+    class var insomnia: String { return "INSOMNIA" }
     
     private var firstNumber: String
     private var checkBoxes: Array<Bool>
     
-    init(firstNumber: Int) {
-        self.firstNumber = String(firstNumber)
+    init(input: String) {
+        self.firstNumber = input
         self.checkBoxes = Array<Bool>(repeating: false, count: 10)
     }
     
-    func startToSleep() -> Finally {
+    func output() -> String {
         guard Int(self.firstNumber) ?? 0 > 0 else {
-            return .insomnia
+            return CountingSheep.insomnia
         }
         
         var currentNumber = self.firstNumber
@@ -39,12 +28,12 @@ class CountingSheep {
         repeat {
             self.checkNewNumber(currentNumber)
             if self.checkInSleep() {
-                return .sleep(lastNumber: Int(currentNumber)!)
+                return currentNumber
             }
             currentNumber = String(Int(currentNumber)! + Int(self.firstNumber)!)
         } while currentNumber.characters.count < self.firstNumber.characters.count + 2
         
-        return .insomnia
+        return CountingSheep.insomnia
     }
     
     private func checkNewNumber(_ number: String) {

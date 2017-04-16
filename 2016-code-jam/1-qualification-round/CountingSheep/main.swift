@@ -8,44 +8,35 @@
 
 import Foundation
 
-let text0 = CountingSheep(firstNumber: 0).startToSleep()
-if case .insomnia = text0 {
-    print("[success] \(text0.text)")
-} else {
-    print("[FAILURE] expected: \(Finally.insomnia.text), actually: \(text0.text)")
+struct Test {
+    var input: String
+    var expected: String
 }
-let text1 = CountingSheep(firstNumber: 1).startToSleep()
-if case .sleep(10) = text1 {
-    print("[success] \(text1.text)")
-} else {
-    print("[FAILURE] expected: \(Finally.sleep(lastNumber: 10).text), actually: \(text1.text)")
-}
-let text2 = CountingSheep(firstNumber: 2).startToSleep()
-if case .sleep(90) = text2 {
-    print("[success] \(text2.text)")
-} else {
-    print("[FAILURE] expected: \(Finally.sleep(lastNumber: 90).text), actually: \(text2.text)")
-}
-let text3 = CountingSheep(firstNumber: 11).startToSleep()
-if case .sleep(110) = text3 {
-    print("[success] \(text3.text)")
-} else {
-    print("[FAILURE] expected: \(Finally.sleep(lastNumber: 110).text), actually: \(text3.text)")
-}
-let text4 = CountingSheep(firstNumber: 1692).startToSleep()
-if case .sleep(5076) = text4 {
-    print("[success] \(text4.text)")
-} else {
-    print("[FAILURE] expected: \(Finally.sleep(lastNumber: 5076).text), actually: \(text4.text)")
-}
+
+let tests: Array<Test> = [
+    Test(input: "0", expected: CountingSheep.insomnia),
+    Test(input: "1", expected: "10"),
+    Test(input: "2", expected: "90"),
+    Test(input: "11", expected: "110"),
+    Test(input: "1692", expected: "5076"),
+]
+
+tests.forEach({
+    let output = CountingSheep(input: $0.input).output()
+    if $0.expected == output {
+        print("[success] \(output)")
+    } else {
+        print("[FAILURE] expected: \($0.expected), actually: \(output)")
+    }
+})
 
 func generateOutput(practiceName: String) {
     let path = Bundle.main.path(forResource: practiceName, ofType: "in")!
-    let inputs = (try! String(contentsOfFile: path)).components(separatedBy: "\n").flatMap({ Int($0) })
+    let inputs = (try! String(contentsOfFile: path)).components(separatedBy: "\n")
     var outputs = Array<String>()
     for index in 1 ..< inputs.count {
-        let result = CountingSheep(firstNumber: inputs[index]).startToSleep()
-        outputs.append("Case #\(index): \(result.text)")
+        let result = CountingSheep(input: inputs[index]).output()
+        outputs.append("Case #\(index): \(result)")
     }
     var outputUrl = FileManager.default.urls(for: .desktopDirectory, in: .userDomainMask).first!
     outputUrl.appendPathComponent(practiceName)
