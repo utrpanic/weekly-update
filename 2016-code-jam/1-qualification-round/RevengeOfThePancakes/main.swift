@@ -10,3 +10,5 @@ import Foundation
 
 print("Hello, World!")
 
+let filePath = Bundle.main.path(forResource: "RevengeOfThePancakes/B-small-practice", ofType: "in")
+print("file path: \(filePath ?? "")")

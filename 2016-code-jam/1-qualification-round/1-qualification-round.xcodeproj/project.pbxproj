@@ -8,27 +8,40 @@
 
 /* Begin PBXBuildFile section */
 		8D90811D1EA2597E00A28EA6 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D90811C1EA2597E00A28EA6 /* main.swift */; };
-		8D9081281EA259AC00A28EA6 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9081271EA259AC00A28EA6 /* main.swift */; };
+		8D9081301EA277E300A28EA6 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9081111EA2585700A28EA6 /* main.swift */; };
+		8D9081381EA27C2F00A28EA6 /* A-small-practice.in in Resources */ = {isa = PBXBuildFile; fileRef = 8D9081331EA279FB00A28EA6 /* A-small-practice.in */; };
+		8D9081391EA27C2F00A28EA6 /* A-large-practice.in in Resources */ = {isa = PBXBuildFile; fileRef = 8D9081341EA27A0400A28EA6 /* A-large-practice.in */; };
+		8D90813B1EA27D1300A28EA6 /* B-small-practice.in in Resources */ = {isa = PBXBuildFile; fileRef = 8D9081311EA279DC00A28EA6 /* B-small-practice.in */; };
+		8D90813C1EA27D1300A28EA6 /* B-large-practice.in in Resources */ = {isa = PBXBuildFile; fileRef = 8D9081321EA279E800A28EA6 /* B-large-practice.in */; };
+		8D9081581EA2F30B00A28EA6 /* A-small-practice.in in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8D9081331EA279FB00A28EA6 /* A-small-practice.in */; };
+		8D9081591EA2F3D800A28EA6 /* A-large-practice.in in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8D9081341EA27A0400A28EA6 /* A-large-practice.in */; };
+		8D90815A1EA2F3E500A28EA6 /* B-small-practice.in in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8D9081311EA279DC00A28EA6 /* B-small-practice.in */; };
+		8D90815B1EA2F3E500A28EA6 /* B-large-practice.in in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8D9081321EA279E800A28EA6 /* B-large-practice.in */; };
+		8D90815D1EA2F47A00A28EA6 /* CountingSheep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D90815C1EA2F47A00A28EA6 /* CountingSheep.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		8D9081181EA2597E00A28EA6 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 16;
 			files = (
+				8D90815A1EA2F3E500A28EA6 /* B-small-practice.in in CopyFiles */,
+				8D90815B1EA2F3E500A28EA6 /* B-large-practice.in in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 		8D9081231EA259AC00A28EA6 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 16;
 			files = (
+				8D9081591EA2F3D800A28EA6 /* A-large-practice.in in CopyFiles */,
+				8D9081581EA2F30B00A28EA6 /* A-small-practice.in in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -37,7 +50,11 @@
 		8D90811A1EA2597E00A28EA6 /* RevengeOfThePancakes */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RevengeOfThePancakes; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D90811C1EA2597E00A28EA6 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		8D9081251EA259AC00A28EA6 /* CountingSheep */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CountingSheep; sourceTree = BUILT_PRODUCTS_DIR; };
-		8D9081271EA259AC00A28EA6 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		8D9081311EA279DC00A28EA6 /* B-small-practice.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "B-small-practice.in"; sourceTree = "<group>"; };
+		8D9081321EA279E800A28EA6 /* B-large-practice.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "B-large-practice.in"; sourceTree = "<group>"; };
+		8D9081331EA279FB00A28EA6 /* A-small-practice.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "A-small-practice.in"; sourceTree = "<group>"; };
+		8D9081341EA27A0400A28EA6 /* A-large-practice.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "A-large-practice.in"; sourceTree = "<group>"; };
+		8D90815C1EA2F47A00A28EA6 /* CountingSheep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountingSheep.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,7 +80,6 @@
 			children = (
 				8D9081101EA2585700A28EA6 /* CountingSheep */,
 				8D90811B1EA2597E00A28EA6 /* RevengeOfThePancakes */,
-				8D9081261EA259AC00A28EA6 /* CountingSheep */,
 				8D9081021EA2583000A28EA6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -80,7 +96,10 @@
 		8D9081101EA2585700A28EA6 /* CountingSheep */ = {
 			isa = PBXGroup;
 			children = (
+				8D90815C1EA2F47A00A28EA6 /* CountingSheep.swift */,
 				8D9081111EA2585700A28EA6 /* main.swift */,
+				8D9081331EA279FB00A28EA6 /* A-small-practice.in */,
+				8D9081341EA27A0400A28EA6 /* A-large-practice.in */,
 			);
 			path = CountingSheep;
 			sourceTree = "<group>";
@@ -89,16 +108,10 @@
 			isa = PBXGroup;
 			children = (
 				8D90811C1EA2597E00A28EA6 /* main.swift */,
+				8D9081311EA279DC00A28EA6 /* B-small-practice.in */,
+				8D9081321EA279E800A28EA6 /* B-large-practice.in */,
 			);
 			path = RevengeOfThePancakes;
-			sourceTree = "<group>";
-		};
-		8D9081261EA259AC00A28EA6 /* CountingSheep */ = {
-			isa = PBXGroup;
-			children = (
-				8D9081271EA259AC00A28EA6 /* main.swift */,
-			);
-			path = CountingSheep;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -110,6 +123,7 @@
 			buildPhases = (
 				8D9081161EA2597E00A28EA6 /* Sources */,
 				8D9081171EA2597E00A28EA6 /* Frameworks */,
+				8D90813A1EA27D0B00A28EA6 /* Resources */,
 				8D9081181EA2597E00A28EA6 /* CopyFiles */,
 			);
 			buildRules = (
@@ -127,6 +141,7 @@
 			buildPhases = (
 				8D9081211EA259AC00A28EA6 /* Sources */,
 				8D9081221EA259AC00A28EA6 /* Frameworks */,
+				8D9081371EA27C0F00A28EA6 /* Resources */,
 				8D9081231EA259AC00A28EA6 /* CopyFiles */,
 			);
 			buildRules = (
@@ -176,6 +191,27 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		8D9081371EA27C0F00A28EA6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D9081381EA27C2F00A28EA6 /* A-small-practice.in in Resources */,
+				8D9081391EA27C2F00A28EA6 /* A-large-practice.in in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8D90813A1EA27D0B00A28EA6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D90813B1EA27D1300A28EA6 /* B-small-practice.in in Resources */,
+				8D90813C1EA27D1300A28EA6 /* B-large-practice.in in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8D9081161EA2597E00A28EA6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -189,7 +225,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D9081281EA259AC00A28EA6 /* main.swift in Sources */,
+				8D90815D1EA2F47A00A28EA6 /* CountingSheep.swift in Sources */,
+				8D9081301EA277E300A28EA6 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

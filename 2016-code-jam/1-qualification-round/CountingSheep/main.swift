@@ -6,7 +6,5 @@
 //  Copyright © 2017년 boxjeon. All rights reserved.
 //
 
-import Foundation
-
-print("Hello, World!")
-
+let result = CountingSheep(firstNumber: 1692).startToSleep()
+print("result: \(result)")
