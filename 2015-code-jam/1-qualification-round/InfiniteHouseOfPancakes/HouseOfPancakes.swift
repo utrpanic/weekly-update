@@ -19,19 +19,26 @@ class HouseOfPancakes {
     }
     
     func output() -> String {
-        self.pancakes.sort()
-        let max = self.pancakes.last!
-        let countOfMax = pancakes.reduce(0, {
-            return $0 + ($1 == max ? 1 : 0)
-        })
+        var max: Int = 0
+        var maxIndex: Int = 0
+        var countOfMax: Int = 0
+        for index in 0 ..< self.pancakes.count {
+            if self.pancakes[index] > max {
+                max = self.pancakes[index]
+                maxIndex = index
+                countOfMax = 1
+            } else if self.pancakes[index] == max {
+                countOfMax += 1
+            }
+        }
+        let currentSolution = self.time + max
         if countOfMax <= max / 2 {
             self.time += 1
-            self.pancakes.removeLast()
-            self.pancakes.append(max / 2)
+            self.pancakes[maxIndex] = max / 2
             self.pancakes.append(max - (max / 2))
-            return self.output()
+            return String(min(currentSolution, Int(self.output())!))
         } else {
-            return String(self.time + max)
+            return String(currentSolution)
         }
     }
     
