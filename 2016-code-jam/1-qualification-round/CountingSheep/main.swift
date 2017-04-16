@@ -6,6 +6,8 @@
 //  Copyright © 2017년 boxjeon. All rights reserved.
 //
 
+import Foundation
+
 let text0 = CountingSheep(firstNumber: 0).startToSleep()
 if case .insomnia = text0 {
     print("[success] \(text0.text)")
@@ -37,3 +39,20 @@ if case .sleep(5076) = text4 {
     print("[FAILURE] expected: \(Finally.sleep(lastNumber: 5076).text), actually: \(text4.text)")
 }
 
+func generateOutput(practiceName: String) {
+    let path = Bundle.main.path(forResource: practiceName, ofType: "in")!
+    let inputs = (try! String(contentsOfFile: path)).components(separatedBy: "\n").flatMap({ Int($0) })
+    var outputs = Array<String>()
+    for index in 1 ..< inputs.count {
+        let result = CountingSheep(firstNumber: inputs[index]).startToSleep()
+        outputs.append("Case #\(index): \(result.text)")
+    }
+    var outputUrl = FileManager.default.urls(for: .desktopDirectory, in: .userDomainMask).first!
+    outputUrl.appendPathComponent(practiceName)
+    outputUrl.appendPathExtension("out")
+    try! outputs.joined(separator: "\n").write(to: outputUrl, atomically: true, encoding: .utf8)
+}
+
+generateOutput(practiceName: "A-small-practice")
+
+generateOutput(practiceName: "A-large-practice")
