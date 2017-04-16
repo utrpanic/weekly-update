@@ -1,8 +1,8 @@
 //
 //  main.swift
-//  Revenge
+//  InfiniteHouseOfPancakes
 //
-//  Created by gurren-l on 2017. 4. 15..
+//  Created by gurren-l on 2017. 4. 16..
 //  Copyright © 2017년 boxjeon. All rights reserved.
 //
 
@@ -14,15 +14,13 @@ struct Test {
 }
 
 let tests: Array<Test> = [
-    Test(input: "-", expected: "1"),
-    Test(input: "-+", expected: "1"),
-    Test(input: "+-", expected: "2"),
-    Test(input: "+++", expected: "0"),
-    Test(input: "--+-", expected: "3"),
+    Test(input: "1 3", expected: "3"),
+    Test(input: "4 1 2 1 2", expected: "2"),
+    Test(input: "1 4", expected: "3"),
 ]
 
 tests.forEach({
-    let output = Revenge(input: $0.input).output()
+    let output = HouseOfPancakes(input: $0.input).output()
     if $0.expected == output {
         print("[success] \(output)")
     } else {
@@ -34,10 +32,10 @@ func generateOutput(practiceName: String) {
     let path = Bundle.main.path(forResource: practiceName, ofType: "in")!
     let inputs = (try! String(contentsOfFile: path)).components(separatedBy: "\n").filter({ !$0.isEmpty })
     var outputs = Array<String>()
-    for index in stride(from: 1, to: inputs.count, by: 1) {
-        let input = inputs[index]
-        let result = Revenge(input: input).output()
-        outputs.append("Case #\(index): \(result)")
+    for index in stride(from: 1, to: inputs.count, by: 2) {
+        let input = inputs[index].appending(" ").appending(inputs[index + 1])
+        let result = HouseOfPancakes(input: input).output()
+        outputs.append("Case #\(index / 2 + 1): \(result)")
     }
     var outputUrl = FileManager.default.urls(for: .desktopDirectory, in: .userDomainMask).first!
     outputUrl.appendPathComponent(practiceName)
