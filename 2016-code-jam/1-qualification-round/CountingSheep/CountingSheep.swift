@@ -12,7 +12,7 @@ enum Finally {
     var text: String {
         switch self {
         case .sleep(let lastNumber):
-            return "\(lastNumber)"
+            return String(lastNumber)
         case .insomnia:
             return "INSOMNIA"
         }
@@ -21,32 +21,38 @@ enum Finally {
 
 class CountingSheep {
     
-    private var firstNumber: Int
+    private var firstNumber: String
     private var checkBoxes: Array<Bool>
     
     init(firstNumber: Int) {
-        self.firstNumber = firstNumber
+        self.firstNumber = String(firstNumber)
         self.checkBoxes = Array<Bool>(repeating: false, count: 10)
     }
     
     func startToSleep() -> Finally {
+        guard Int(self.firstNumber) ?? 0 > 0 else {
+            return .insomnia
+        }
+        
         var currentNumber = self.firstNumber
-        while true {
+        
+        repeat {
             self.checkNewNumber(currentNumber)
             if self.checkInSleep() {
-                return .sleep(lastNumber: currentNumber)
-            } else {
-                currentNumber += self.firstNumber
+                return .sleep(lastNumber: Int(currentNumber)!)
             }
-        }
+            currentNumber = String(Int(currentNumber)! + Int(self.firstNumber)!)
+        } while currentNumber.characters.count < self.firstNumber.characters.count + 2
+        
+        return .insomnia
     }
     
-    private func checkNewNumber(_ number: Int) {
-        var newNumber = number
-        while newNumber > 0 {
-            self.checkBoxes[newNumber % 10] = true
-            newNumber /= 10
-        }
+    private func checkNewNumber(_ number: String) {
+        number.characters.forEach( {
+            if let digit = Int(String($0)) {
+                self.checkBoxes[digit] = true
+            }
+        })
     }
     
     private func checkInSleep() -> Bool {
