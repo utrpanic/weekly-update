@@ -17,9 +17,23 @@ let tests: Array<Test> = [
     Test(input: "1 3", expected: "3"),
     Test(input: "4 1 2 1 2", expected: "2"),
     Test(input: "1 4", expected: "3"),
+    Test(input: "1 5", expected: "4"),
+    Test(input: "1 6", expected: "4"),
+    Test(input: "1 7", expected: "5"),
+    Test(input: "1 8", expected: "5"),
+    Test(input: "1 9", expected: "5"),
+    Test(input: "1 10", expected: "6"),
+    Test(input: "1 11", expected: "6"),
+    Test(input: "1 12", expected: "6"),
+    Test(input: "1 13", expected: "7"),
+    Test(input: "1 25", expected: "9"),
+    Test(input: "1 50", expected: "14"),
+    Test(input: "2 50 40", expected: "17"),
+    Test(input: "2 27 30", expected: "14"),
 ]
 
 tests.forEach({
+    print("input: \($0.input)")
     let output = HouseOfPancakes(input: $0.input).output()
     if $0.expected == output {
         print("[success] \(output)")

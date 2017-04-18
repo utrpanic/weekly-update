@@ -19,27 +19,53 @@ class HouseOfPancakes {
     }
     
     func output() -> String {
-        var max: Int = 0
-        var maxIndex: Int = 0
-        var countOfMax: Int = 0
-        for index in 0 ..< self.pancakes.count {
-            if self.pancakes[index] > max {
-                max = self.pancakes[index]
-                maxIndex = index
-                countOfMax = 1
-            } else if self.pancakes[index] == max {
-                countOfMax += 1
+        let max = self.pancakes.reduce(-1, { $0 < $1 ? $1 : $0 })
+        var minimumElapsedTime: Int = max
+        for maxPancakesPerPlate in 1 ..< max {
+            var specialTime = 0
+            for index in 0 ..< self.pancakes.count {
+                if self.pancakes[index] > maxPancakesPerPlate {
+                    specialTime += (self.pancakes[index] + (maxPancakesPerPlate - 1)) / maxPancakesPerPlate
+                    specialTime -= 1
+                }
+            }
+            minimumElapsedTime = min(specialTime + maxPancakesPerPlate, minimumElapsedTime)
+        }
+        return String(minimumElapsedTime)
+    }
+    
+    private func optimalNumberOfCakePerPlate(numberOfPancake: Int) -> Int {
+        var minimumTime = numberOfPancake
+        for numberOfCakePerPlate in 1 ..< numberOfPancake {
+            let neededSpecialTime = ((numberOfPancake + (numberOfCakePerPlate - 1)) / numberOfCakePerPlate) - 1
+            let neededDiningTime = numberOfCakePerPlate
+            if minimumTime >= neededSpecialTime + neededDiningTime {
+                minimumTime = neededSpecialTime + neededDiningTime
+            } else {
+                return numberOfCakePerPlate - 1
             }
         }
-        let currentSolution = self.time + max
-        if countOfMax <= max / 2 {
-            self.time += 1
-            self.pancakes[maxIndex] = max / 2
-            self.pancakes.append(max - (max / 2))
-            return String(min(currentSolution, Int(self.output())!))
-        } else {
-            return String(currentSolution)
+        return numberOfPancake
+    }
+    
+    private func dining(pancakes: Array<Int>, elapsedTime: Int) -> Int {
+        let optimalSet = Set(pancakes.map({ self.optimalNumberOfCakePerPlate(numberOfPancake: $0) }))
+        let minimum = optimalSet.reduce(1000) { (minimum, maxPancakesPerPlate) -> Int in
+            var specialTime = 0
+            for index in (0 ..< pancakes.count).reversed() {
+                let divider = pancakes[index] / maxPancakesPerPlate
+                let remainder = pancakes[index] % maxPancakesPerPlate
+                if divider > 0 {
+                    specialTime += divider - 1
+                    if remainder > 0 {
+                        specialTime += 1
+                    }
+                }
+            }
+            print("max cakes per plate: \(maxPancakesPerPlate), elapsed time: \(specialTime + maxPancakesPerPlate)")
+            return min(minimum, specialTime + maxPancakesPerPlate)
         }
+        return minimum
     }
     
 }
