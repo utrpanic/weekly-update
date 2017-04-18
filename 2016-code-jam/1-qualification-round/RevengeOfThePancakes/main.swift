@@ -22,6 +22,7 @@ let tests: Array<Test> = [
 ]
 
 tests.forEach({
+    print("input: \($0.input)")
     let output = Revenge(input: $0.input).output()
     if $0.expected == output {
         print("[success] \(output)")
@@ -46,5 +47,4 @@ func generateOutput(practiceName: String) {
 }
 
 generateOutput(practiceName: "B-small-practice")
-
 generateOutput(practiceName: "B-large-practice")
