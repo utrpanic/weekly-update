@@ -1,4 +1,4 @@
-# WeeklyUpdate
+# Weekly Update
 
 고고!
 
