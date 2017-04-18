@@ -32,10 +32,11 @@ tests.forEach({
 
 func generateOutput(practiceName: String) {
     let path = Bundle.main.path(forResource: practiceName, ofType: "in")!
-    let inputs = (try! String(contentsOfFile: path)).components(separatedBy: "\n")
+    let inputs = (try! String(contentsOfFile: path)).components(separatedBy: "\n").filter({ !$0.isEmpty })
     var outputs = Array<String>()
-    for index in 1 ..< inputs.count {
-        let result = Revenge(input: inputs[index]).output()
+    for index in stride(from: 1, to: inputs.count, by: 1) {
+        let input = inputs[index]
+        let result = Revenge(input: input).output()
         outputs.append("Case #\(index): \(result)")
     }
     var outputUrl = FileManager.default.urls(for: .desktopDirectory, in: .userDomainMask).first!
