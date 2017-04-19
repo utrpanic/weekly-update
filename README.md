@@ -1,8 +1,8 @@
-WeeklyUpdate
-============
+# Weekly Update
 
 고고!
 
+## in java
 2014 Code Jam Qualification Round
 - Magic Trick. v
 - Cookie Clicker Alpha. v
@@ -30,3 +30,6 @@ WeeklyUpdate
 - Always Turn Left. v
 - Egg Drop. v
 - Shopping Plan.
+
+## in swift
+* 2016-code-jam

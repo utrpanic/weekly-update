@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		07B591F51EA81A400074EF56 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B591F41EA81A400074EF56 /* main.swift */; };
+		07B591FC1EA81A830074EF56 /* CoinJam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B591FB1EA81A830074EF56 /* CoinJam.swift */; };
+		07B591FD1EA81A9E0074EF56 /* C-large-practice.in in CopyFiles */ = {isa = PBXBuildFile; fileRef = 07B591F91EA81A740074EF56 /* C-large-practice.in */; };
+		07B591FE1EA81A9E0074EF56 /* C-small-practice.in in CopyFiles */ = {isa = PBXBuildFile; fileRef = 07B591FA1EA81A740074EF56 /* C-small-practice.in */; };
 		8D90811D1EA2597E00A28EA6 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D90811C1EA2597E00A28EA6 /* main.swift */; };
 		8D9081301EA277E300A28EA6 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9081111EA2585700A28EA6 /* main.swift */; };
-		8D9081381EA27C2F00A28EA6 /* A-small-practice.in in Resources */ = {isa = PBXBuildFile; fileRef = 8D9081331EA279FB00A28EA6 /* A-small-practice.in */; };
-		8D9081391EA27C2F00A28EA6 /* A-large-practice.in in Resources */ = {isa = PBXBuildFile; fileRef = 8D9081341EA27A0400A28EA6 /* A-large-practice.in */; };
-		8D90813B1EA27D1300A28EA6 /* B-small-practice.in in Resources */ = {isa = PBXBuildFile; fileRef = 8D9081311EA279DC00A28EA6 /* B-small-practice.in */; };
-		8D90813C1EA27D1300A28EA6 /* B-large-practice.in in Resources */ = {isa = PBXBuildFile; fileRef = 8D9081321EA279E800A28EA6 /* B-large-practice.in */; };
 		8D9081581EA2F30B00A28EA6 /* A-small-practice.in in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8D9081331EA279FB00A28EA6 /* A-small-practice.in */; };
 		8D9081591EA2F3D800A28EA6 /* A-large-practice.in in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8D9081341EA27A0400A28EA6 /* A-large-practice.in */; };
 		8D90815A1EA2F3E500A28EA6 /* B-small-practice.in in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8D9081311EA279DC00A28EA6 /* B-small-practice.in */; };
@@ -22,6 +22,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		07B591F01EA81A400074EF56 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				07B591FD1EA81A9E0074EF56 /* C-large-practice.in in CopyFiles */,
+				07B591FE1EA81A9E0074EF56 /* C-small-practice.in in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8D9081181EA2597E00A28EA6 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 12;
@@ -47,6 +58,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		07B591F21EA81A400074EF56 /* CoinJam */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CoinJam; sourceTree = BUILT_PRODUCTS_DIR; };
+		07B591F41EA81A400074EF56 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		07B591F91EA81A740074EF56 /* C-large-practice.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "C-large-practice.in"; sourceTree = "<group>"; };
+		07B591FA1EA81A740074EF56 /* C-small-practice.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "C-small-practice.in"; sourceTree = "<group>"; };
+		07B591FB1EA81A830074EF56 /* CoinJam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoinJam.swift; sourceTree = "<group>"; };
 		8D9081111EA2585700A28EA6 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		8D90811A1EA2597E00A28EA6 /* RevengeOfThePancakes */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RevengeOfThePancakes; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D90811C1EA2597E00A28EA6 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -60,6 +76,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		07B591EF1EA81A400074EF56 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8D9081171EA2597E00A28EA6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -77,11 +100,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		07B591F31EA81A400074EF56 /* CoinJam */ = {
+			isa = PBXGroup;
+			children = (
+				07B591FB1EA81A830074EF56 /* CoinJam.swift */,
+				07B591F41EA81A400074EF56 /* main.swift */,
+				07B591FA1EA81A740074EF56 /* C-small-practice.in */,
+				07B591F91EA81A740074EF56 /* C-large-practice.in */,
+			);
+			path = CoinJam;
+			sourceTree = "<group>";
+		};
 		8D9080F81EA2582F00A28EA6 = {
 			isa = PBXGroup;
 			children = (
 				8D9081101EA2585700A28EA6 /* CountingSheep */,
 				8D90811B1EA2597E00A28EA6 /* RevengeOfThePancakes */,
+				07B591F31EA81A400074EF56 /* CoinJam */,
 				8D9081021EA2583000A28EA6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -91,6 +126,7 @@
 			children = (
 				8D90811A1EA2597E00A28EA6 /* RevengeOfThePancakes */,
 				8D9081251EA259AC00A28EA6 /* CountingSheep */,
+				07B591F21EA81A400074EF56 /* CoinJam */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -120,13 +156,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		07B591F11EA81A400074EF56 /* CoinJam */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 07B591F81EA81A400074EF56 /* Build configuration list for PBXNativeTarget "CoinJam" */;
+			buildPhases = (
+				07B591EE1EA81A400074EF56 /* Sources */,
+				07B591EF1EA81A400074EF56 /* Frameworks */,
+				07B591F01EA81A400074EF56 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CoinJam;
+			productName = CoinJam;
+			productReference = 07B591F21EA81A400074EF56 /* CoinJam */;
+			productType = "com.apple.product-type.tool";
+		};
 		8D9081191EA2597E00A28EA6 /* RevengeOfThePancakes */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8D9081201EA2597E00A28EA6 /* Build configuration list for PBXNativeTarget "RevengeOfThePancakes" */;
 			buildPhases = (
 				8D9081161EA2597E00A28EA6 /* Sources */,
 				8D9081171EA2597E00A28EA6 /* Frameworks */,
-				8D90813A1EA27D0B00A28EA6 /* Resources */,
 				8D9081181EA2597E00A28EA6 /* CopyFiles */,
 			);
 			buildRules = (
@@ -144,7 +196,6 @@
 			buildPhases = (
 				8D9081211EA259AC00A28EA6 /* Sources */,
 				8D9081221EA259AC00A28EA6 /* Frameworks */,
-				8D9081371EA27C0F00A28EA6 /* Resources */,
 				8D9081231EA259AC00A28EA6 /* CopyFiles */,
 			);
 			buildRules = (
@@ -166,6 +217,10 @@
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = boxjeon;
 				TargetAttributes = {
+					07B591F11EA81A400074EF56 = {
+						CreatedOnToolsVersion = 8.3.1;
+						ProvisioningStyle = Automatic;
+					};
 					8D9081191EA2597E00A28EA6 = {
 						CreatedOnToolsVersion = 8.3.1;
 						ProvisioningStyle = Automatic;
@@ -190,32 +245,21 @@
 			targets = (
 				8D9081241EA259AC00A28EA6 /* CountingSheep */,
 				8D9081191EA2597E00A28EA6 /* RevengeOfThePancakes */,
+				07B591F11EA81A400074EF56 /* CoinJam */,
 			);
 		};
 /* End PBXProject section */
 
-/* Begin PBXResourcesBuildPhase section */
-		8D9081371EA27C0F00A28EA6 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8D9081381EA27C2F00A28EA6 /* A-small-practice.in in Resources */,
-				8D9081391EA27C2F00A28EA6 /* A-large-practice.in in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8D90813A1EA27D0B00A28EA6 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8D90813B1EA27D1300A28EA6 /* B-small-practice.in in Resources */,
-				8D90813C1EA27D1300A28EA6 /* B-large-practice.in in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
+		07B591EE1EA81A400074EF56 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				07B591F51EA81A400074EF56 /* main.swift in Sources */,
+				07B591FC1EA81A830074EF56 /* CoinJam.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8D9081161EA2597E00A28EA6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -237,6 +281,22 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		07B591F61EA81A400074EF56 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		07B591F71EA81A400074EF56 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 		8D9081061EA2583000A28EA6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -362,6 +422,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		07B591F81EA81A400074EF56 /* Build configuration list for PBXNativeTarget "CoinJam" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				07B591F61EA81A400074EF56 /* Debug */,
+				07B591F71EA81A400074EF56 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		8D9080FC1EA2582F00A28EA6 /* Build configuration list for PBXProject "1-qualification-round" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

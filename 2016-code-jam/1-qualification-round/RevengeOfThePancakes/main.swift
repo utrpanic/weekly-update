@@ -2,7 +2,7 @@
 //  main.swift
 //  Revenge
 //
-//  Created by gurren-l on 2017. 4. 15..
+//  Created by boxjeon on 2017. 4. 15..
 //  Copyright © 2017년 boxjeon. All rights reserved.
 //
 
@@ -19,9 +19,11 @@ let tests: Array<Test> = [
     Test(input: "+-", expected: "2"),
     Test(input: "+++", expected: "0"),
     Test(input: "--+-", expected: "3"),
+    Test(input: "++++--", expected: "2"),
 ]
 
 tests.forEach({
+    print("input: \($0.input)")
     let output = Revenge(input: $0.input).output()
     if $0.expected == output {
         print("[success] \(output)")
@@ -46,5 +48,4 @@ func generateOutput(practiceName: String) {
 }
 
 generateOutput(practiceName: "B-small-practice")
-
 generateOutput(practiceName: "B-large-practice")
