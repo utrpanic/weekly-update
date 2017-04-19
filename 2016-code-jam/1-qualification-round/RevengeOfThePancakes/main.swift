@@ -19,6 +19,7 @@ let tests: Array<Test> = [
     Test(input: "+-", expected: "2"),
     Test(input: "+++", expected: "0"),
     Test(input: "--+-", expected: "3"),
+    Test(input: "++++--", expected: "2"),
 ]
 
 tests.forEach({
