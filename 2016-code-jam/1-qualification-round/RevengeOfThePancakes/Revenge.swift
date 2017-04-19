@@ -30,8 +30,15 @@ class Revenge {
     func output() -> String {
         var flipCount = 0
         while !self.pancakes.reduce(true, { $0 && ($1 == .happy) }) {
+            for index in (0 ..< self.pancakes.count).reversed() {
+                if case .happy = self.pancakes[index] {
+                    self.pancakes.remove(at: index)
+                } else {
+                    break
+                }
+            }
             if case .happy = self.pancakes.first! {
-                for index in 0 ..< self.pancakes.count {
+                for index in (0 ..< self.pancakes.count).reversed() {
                     if case .happy = self.pancakes[index] {
                         self.pancakes = self.flipPancakes(to: index)
                         flipCount += 1
