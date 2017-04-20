@@ -45,5 +45,5 @@ func generateOutput(practiceName: String) {
     try! outputs.joined(separator: "\n").write(to: outputUrl, atomically: true, encoding: .utf8)
 }
 
-generateOutput(practiceName: "C-small-practice")
+//generateOutput(practiceName: "C-small-practice")
 generateOutput(practiceName: "C-large-practice")

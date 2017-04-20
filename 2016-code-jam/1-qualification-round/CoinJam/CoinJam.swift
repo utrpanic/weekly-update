@@ -27,11 +27,10 @@ class CoinJam {
         var results = Array<String>()
         for coin in stride(from: self.startCoin, to: self.maxCoin, by: 2) {
             let binaryText = String(coin, radix: 2)
+            let binaryArray = binaryText.characters.flatMap({ Int(String($0)) })
             var result = binaryText
             for base in 2 ... 10 {
-                let number = Int(binaryText, radix: base)!
-                print("Number in base \(base): \(number)")
-                if let nontrivialDivisor = self.getNontrivialDivisor(of: number) {
+                if let nontrivialDivisor = self.getNontrivialDivisor(binaryArray: binaryArray, base: base) {
                     result.append(" \(nontrivialDivisor)")
                 } else {
                     result = ""
@@ -51,17 +50,27 @@ class CoinJam {
         return results.joined(separator: "\n")
     }
     
-    func getNontrivialDivisor(of number: Int) -> Int? {
-        if number % 2 == 0 {
-            return 2
-        } else {
-            for divisor in stride(from: 3, to: Int(sqrt(Double(number))), by: 2) {
-                if number % divisor == 0 {
-                    return divisor
+    func getNontrivialDivisor(binaryArray: Array<Int>, base: Int) -> Int? {
+        let maxDivisor = Int(pow(Double(base), Double((binaryArray.count + 1) / 2)))
+        for divisor in stride(from: 3, to: maxDivisor, by: 2) {
+            var remainders = Array<Int>(repeating: 0, count: binaryArray.count)
+            for index in 0 ..< binaryArray.count {
+                if index == 0 {
+                    remainders[index] = Int(pow(Double(base), Double(0))) % divisor
+                } else {
+                    remainders[index] = (remainders[index - 1] * base) % divisor
                 }
             }
-            return nil
+            var remainder = 0
+            for index in 0 ..< binaryArray.count {
+                if binaryArray[binaryArray.count - 1 - index] == 1 {
+                    remainder += remainders[index]
+                }
+            }
+            if remainder % divisor == 0 {
+                return divisor
+            }
         }
+        return nil
     }
-    
 }
