@@ -37,7 +37,6 @@ func generateOutput(practiceName: String) {
         let input = inputs[index]
         let result = CoinJam(input: input).output()
         outputs.append("Case #\(index):\n\(result)")
-        verify(output: result)
     }
     var outputUrl = FileManager.default.urls(for: .desktopDirectory, in: .userDomainMask).first!
     outputUrl.appendPathComponent(practiceName)
@@ -46,4 +45,4 @@ func generateOutput(practiceName: String) {
 }
 
 generateOutput(practiceName: "C-small-practice")
-//generateOutput(practiceName: "C-large-practice")
+generateOutput(practiceName: "C-large-practice")
