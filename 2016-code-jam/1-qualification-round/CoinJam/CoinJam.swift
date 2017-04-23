@@ -27,14 +27,13 @@ class CoinJam {
         let maxDivisor = Int(pow(Double(10), Double((self.digitCount + 1) / 2)))
         var results = Array<String>()
         for rangeIndex in stride(from: 2, to: maxDivisor, by: 100) {
-            let startDivisor = rangeIndex
-            let endDivisor = startDivisor + 100
+            let endDivisor = rangeIndex + 100
             for coin in stride(from: startCoin, to: endCoin, by: 2) {
                 let binaryText = String(coin, radix: 2)
                 let binaryArray = binaryText.characters.flatMap({ Int(String($0)) })
                 var result = binaryText
                 for base in 2 ... 10 {
-                    if let nontrivialDivisor = self.getNontrivialDivisor(binaryArray: binaryArray, base: base, start: startDivisor, end: endDivisor) {
+                    if let nontrivialDivisor = self.getNontrivialDivisor(binaryArray: binaryArray, base: base, end: endDivisor) {
                         result.append(" \(nontrivialDivisor)")
                     } else {
                         result = ""
@@ -50,13 +49,18 @@ class CoinJam {
             }
             if results.count == self.resultCount {
                 break
+            } else {
+                results.removeAll()
             }
         }
         return results.joined(separator: "\n")
     }
     
-    private func getNontrivialDivisor(binaryArray: Array<Int>, base: Int, start: Int, end: Int) -> Int? {
-        for divisor in start ..< end {
+    private func getNontrivialDivisor(binaryArray: Array<Int>, base: Int, end: Int) -> Int? {
+        if isNontrivialDivisor(binaryArray: binaryArray, divisor: 2, base: base) {
+            return 2
+        }
+        for divisor in stride(from: 3, to: end, by: 2) {
             if self.isNontrivialDivisor(binaryArray: binaryArray, divisor: divisor, base: base) {
                 return divisor
             }
