@@ -11,20 +11,21 @@ import Foundation
 enum Tile: Character {
     case gold = "0"
     case lead = "1"
+    var text: Character {
+        switch self {
+        case .gold: return "G"
+        case .lead: return "L"
+        }
+    }
 }
 
 class Artwork {
     
     let base: Array<Tile>
-    let tiles: Array<Tile>
+    var tiles: Array<Tile>
     
-    convenience init(number: Int, tileCount: Int) {
-        let binaryText = String(number, radix: 2)
-        var zeroPadding = ""
-        for _ in 0 ..< tileCount - binaryText.characters.count {
-            zeroPadding.append("0")
-        }
-        let tiles = "\(zeroPadding)\(binaryText)".characters.flatMap({ Tile(rawValue: $0) })
+    convenience init(tileCount: Int) {
+        let tiles = Array<Tile>(repeating: .gold, count: tileCount)
         self.init(base: tiles, tiles: tiles)
     }
     
@@ -46,16 +47,20 @@ class Artwork {
         return Artwork(base: self.base, tiles: complexifiedTiles)
     }
     
-    func printTiles() {
-        let characters: Array<Character> = self.tiles.map({
-            switch $0 {
-            case .gold:
-                return "G"
-            case .lead:
-                return "L"
+    func increment() -> Bool {
+        for index in (0 ..< self.tiles.count).reversed() {
+            if case .gold = self.tiles[index] {
+                self.tiles[index] = .lead
+                return true
+            } else if case .lead = self.tiles[index] {
+                self.tiles[index] = .gold
             }
-        })
-        print("\(String(characters))")
+        }
+        return false
+    }
+    
+    func printTiles() {
+        print("\(String(self.tiles.map({ $0.text })))")
     }
     
 }
@@ -65,7 +70,6 @@ class Fractiles {
     let tileCount: Int
     let complexity: Int
     
-    
     init(input: String) {
         let inputs = input.components(separatedBy: " ").flatMap({ Int($0) })
         self.tileCount = inputs[0]
@@ -73,15 +77,17 @@ class Fractiles {
     }
     
     func output() -> String {
+        let base = Artwork(tileCount: self.tileCount)
         var possibleArtworks = Array<Artwork>()
-        for number in 0 ..< Int(pow(Double(2), Double(self.tileCount))) {
-            var artwork = Artwork(number: number, tileCount: self.tileCount)
+        repeat {
+            var artwork = Artwork(base: base.tiles, tiles: base.tiles)
             for _ in 1 ..< self.complexity {
                 artwork = artwork.complexify()
             }
             possibleArtworks.append(artwork)
-        }
+        } while base.increment()
         possibleArtworks.forEach({ $0.printTiles() })
         return "2"
     }
+    
 }
