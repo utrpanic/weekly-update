@@ -7,22 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		078E5E5920541C3E00BD5E1B /* OversizedPancakeFlipper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078E5E5820541C3E00BD5E1B /* OversizedPancakeFlipper.swift */; };
+		078E5E5A2054246200BD5E1B /* A-small-practice.in in CopyFiles */ = {isa = PBXBuildFile; fileRef = 079CAD671FD707AB00221A53 /* A-small-practice.in */; };
+		078E5E5B2054246200BD5E1B /* A-large-practice.in in CopyFiles */ = {isa = PBXBuildFile; fileRef = 079CAD681FD707B400221A53 /* A-large-practice.in */; };
 		079CAD611FD7074D00221A53 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079CAD601FD7074D00221A53 /* main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		079CAD5C1FD7074D00221A53 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 16;
 			files = (
+				078E5E5A2054246200BD5E1B /* A-small-practice.in in CopyFiles */,
+				078E5E5B2054246200BD5E1B /* A-large-practice.in in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		078E5E5820541C3E00BD5E1B /* OversizedPancakeFlipper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OversizedPancakeFlipper.swift; sourceTree = "<group>"; };
 		079CAD5E1FD7074D00221A53 /* OversizedPancakeFlipper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = OversizedPancakeFlipper; sourceTree = BUILT_PRODUCTS_DIR; };
 		079CAD601FD7074D00221A53 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		079CAD671FD707AB00221A53 /* A-small-practice.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "A-small-practice.in"; sourceTree = "<group>"; };
@@ -59,6 +65,7 @@
 		079CAD5F1FD7074D00221A53 /* OversizedPancakeFlipper */ = {
 			isa = PBXGroup;
 			children = (
+				078E5E5820541C3E00BD5E1B /* OversizedPancakeFlipper.swift */,
 				079CAD601FD7074D00221A53 /* main.swift */,
 				079CAD671FD707AB00221A53 /* A-small-practice.in */,
 				079CAD681FD707B400221A53 /* A-large-practice.in */,
@@ -124,6 +131,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				078E5E5920541C3E00BD5E1B /* OversizedPancakeFlipper.swift in Sources */,
 				079CAD611FD7074D00221A53 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
