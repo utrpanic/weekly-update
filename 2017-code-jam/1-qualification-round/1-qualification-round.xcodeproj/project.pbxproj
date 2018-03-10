@@ -10,10 +10,25 @@
 		078E5E5920541C3E00BD5E1B /* OversizedPancakeFlipper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078E5E5820541C3E00BD5E1B /* OversizedPancakeFlipper.swift */; };
 		078E5E5A2054246200BD5E1B /* A-small-practice.in in CopyFiles */ = {isa = PBXBuildFile; fileRef = 079CAD671FD707AB00221A53 /* A-small-practice.in */; };
 		078E5E5B2054246200BD5E1B /* A-large-practice.in in CopyFiles */ = {isa = PBXBuildFile; fileRef = 079CAD681FD707B400221A53 /* A-large-practice.in */; };
+		078E5E632054268300BD5E1B /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078E5E622054268300BD5E1B /* main.swift */; };
+		078E5E69205426AF00BD5E1B /* B-small-practice.in in CopyFiles */ = {isa = PBXBuildFile; fileRef = 078E5E68205426A100BD5E1B /* B-small-practice.in */; };
+		078E5E6A205426AF00BD5E1B /* B-large-practice.in in CopyFiles */ = {isa = PBXBuildFile; fileRef = 078E5E67205426A100BD5E1B /* B-large-practice.in */; };
+		078E5E6C205426E000BD5E1B /* TidyNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078E5E6B205426E000BD5E1B /* TidyNumbers.swift */; };
 		079CAD611FD7074D00221A53 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079CAD601FD7074D00221A53 /* main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		078E5E5E2054268300BD5E1B /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				078E5E69205426AF00BD5E1B /* B-small-practice.in in CopyFiles */,
+				078E5E6A205426AF00BD5E1B /* B-large-practice.in in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		079CAD5C1FD7074D00221A53 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 12;
@@ -29,6 +44,11 @@
 
 /* Begin PBXFileReference section */
 		078E5E5820541C3E00BD5E1B /* OversizedPancakeFlipper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OversizedPancakeFlipper.swift; sourceTree = "<group>"; };
+		078E5E602054268300BD5E1B /* TidyNumbers */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TidyNumbers; sourceTree = BUILT_PRODUCTS_DIR; };
+		078E5E622054268300BD5E1B /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		078E5E67205426A100BD5E1B /* B-large-practice.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "B-large-practice.in"; sourceTree = "<group>"; };
+		078E5E68205426A100BD5E1B /* B-small-practice.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "B-small-practice.in"; sourceTree = "<group>"; };
+		078E5E6B205426E000BD5E1B /* TidyNumbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TidyNumbers.swift; sourceTree = "<group>"; };
 		079CAD5E1FD7074D00221A53 /* OversizedPancakeFlipper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = OversizedPancakeFlipper; sourceTree = BUILT_PRODUCTS_DIR; };
 		079CAD601FD7074D00221A53 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		079CAD671FD707AB00221A53 /* A-small-practice.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "A-small-practice.in"; sourceTree = "<group>"; };
@@ -36,6 +56,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		078E5E5D2054268300BD5E1B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		079CAD5B1FD7074D00221A53 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -46,10 +73,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		078E5E612054268300BD5E1B /* TidyNumbers */ = {
+			isa = PBXGroup;
+			children = (
+				078E5E6B205426E000BD5E1B /* TidyNumbers.swift */,
+				078E5E622054268300BD5E1B /* main.swift */,
+				078E5E68205426A100BD5E1B /* B-small-practice.in */,
+				078E5E67205426A100BD5E1B /* B-large-practice.in */,
+			);
+			path = TidyNumbers;
+			sourceTree = "<group>";
+		};
 		079CAD471FD7071F00221A53 = {
 			isa = PBXGroup;
 			children = (
 				079CAD5F1FD7074D00221A53 /* OversizedPancakeFlipper */,
+				078E5E612054268300BD5E1B /* TidyNumbers */,
 				079CAD511FD7071F00221A53 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -58,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				079CAD5E1FD7074D00221A53 /* OversizedPancakeFlipper */,
+				078E5E602054268300BD5E1B /* TidyNumbers */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -76,6 +116,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		078E5E5F2054268300BD5E1B /* TidyNumbers */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 078E5E662054268300BD5E1B /* Build configuration list for PBXNativeTarget "TidyNumbers" */;
+			buildPhases = (
+				078E5E5C2054268300BD5E1B /* Sources */,
+				078E5E5D2054268300BD5E1B /* Frameworks */,
+				078E5E5E2054268300BD5E1B /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TidyNumbers;
+			productName = TidyNumbers;
+			productReference = 078E5E602054268300BD5E1B /* TidyNumbers */;
+			productType = "com.apple.product-type.tool";
+		};
 		079CAD5D1FD7074D00221A53 /* OversizedPancakeFlipper */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 079CAD621FD7074D00221A53 /* Build configuration list for PBXNativeTarget "OversizedPancakeFlipper" */;
@@ -99,10 +156,14 @@
 		079CAD481FD7071F00221A53 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0910;
+				LastSwiftUpdateCheck = 0920;
 				LastUpgradeCheck = 0910;
 				ORGANIZATIONNAME = boxjeon;
 				TargetAttributes = {
+					078E5E5F2054268300BD5E1B = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
 					079CAD5D1FD7074D00221A53 = {
 						CreatedOnToolsVersion = 9.1;
 						ProvisioningStyle = Automatic;
@@ -122,11 +183,21 @@
 			projectRoot = "";
 			targets = (
 				079CAD5D1FD7074D00221A53 /* OversizedPancakeFlipper */,
+				078E5E5F2054268300BD5E1B /* TidyNumbers */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		078E5E5C2054268300BD5E1B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				078E5E6C205426E000BD5E1B /* TidyNumbers.swift in Sources */,
+				078E5E632054268300BD5E1B /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		079CAD5A1FD7074D00221A53 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -139,6 +210,26 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		078E5E642054268300BD5E1B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L94QTT73WH;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		078E5E652054268300BD5E1B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L94QTT73WH;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
 		079CAD551FD7071F00221A53 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -268,6 +359,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		078E5E662054268300BD5E1B /* Build configuration list for PBXNativeTarget "TidyNumbers" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				078E5E642054268300BD5E1B /* Debug */,
+				078E5E652054268300BD5E1B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		079CAD4B1FD7071F00221A53 /* Build configuration list for PBXProject "1-qualification-round" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
