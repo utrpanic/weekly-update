@@ -6,6 +6,8 @@
 //  Copyright © 2018년 boxjeon. All rights reserved.
 //
 
+// https://code.google.com/codejam/contest/3264486/dashboard#s=p1
+
 import Foundation
 
 struct Test {
@@ -44,7 +46,7 @@ func generateOutput(practiceName: String) {
     try! outputs.joined(separator: "\n").write(to: outputUrl, atomically: true, encoding: .utf8)
 }
 
-//generateOutput(practiceName: "B-small-practice")
+generateOutput(practiceName: "B-small-practice")
 
-//generateOutput(practiceName: "B-large-practice")
+generateOutput(practiceName: "B-large-practice")
 
