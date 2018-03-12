@@ -19,6 +19,10 @@
 		078E5E7C205433F800BD5E1B /* C-small-practice-1.in in CopyFiles */ = {isa = PBXBuildFile; fileRef = 078E5E79205433EE00BD5E1B /* C-small-practice-1.in */; };
 		078E5E7D205433F800BD5E1B /* C-small-practice-2.in in CopyFiles */ = {isa = PBXBuildFile; fileRef = 078E5E7A205433EE00BD5E1B /* C-small-practice-2.in */; };
 		078E5E7F2054340600BD5E1B /* BathroomStalls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078E5E7E2054340600BD5E1B /* BathroomStalls.swift */; };
+		078E5E872057131100BD5E1B /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078E5E862057131100BD5E1B /* main.swift */; };
+		078E5E8E2057134B00BD5E1B /* FashionShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078E5E8D2057134B00BD5E1B /* FashionShow.swift */; };
+		078E5E8F2057140400BD5E1B /* D-large-practice.in in CopyFiles */ = {isa = PBXBuildFile; fileRef = 078E5E8C2057133500BD5E1B /* D-large-practice.in */; };
+		078E5E902057140400BD5E1B /* D-small-practice.in in CopyFiles */ = {isa = PBXBuildFile; fileRef = 078E5E8B2057133500BD5E1B /* D-small-practice.in */; };
 		079CAD611FD7074D00221A53 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079CAD601FD7074D00221A53 /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +47,17 @@
 				078E5E7B205433F800BD5E1B /* C-large-practice.in in CopyFiles */,
 				078E5E7C205433F800BD5E1B /* C-small-practice-1.in in CopyFiles */,
 				078E5E7D205433F800BD5E1B /* C-small-practice-2.in in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		078E5E822057131100BD5E1B /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				078E5E8F2057140400BD5E1B /* D-large-practice.in in CopyFiles */,
+				078E5E902057140400BD5E1B /* D-small-practice.in in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +87,11 @@
 		078E5E79205433EE00BD5E1B /* C-small-practice-1.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "C-small-practice-1.in"; sourceTree = "<group>"; };
 		078E5E7A205433EE00BD5E1B /* C-small-practice-2.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "C-small-practice-2.in"; sourceTree = "<group>"; };
 		078E5E7E2054340600BD5E1B /* BathroomStalls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathroomStalls.swift; sourceTree = "<group>"; };
+		078E5E842057131100BD5E1B /* FashionShow */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = FashionShow; sourceTree = BUILT_PRODUCTS_DIR; };
+		078E5E862057131100BD5E1B /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		078E5E8B2057133500BD5E1B /* D-small-practice.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "D-small-practice.in"; sourceTree = "<group>"; };
+		078E5E8C2057133500BD5E1B /* D-large-practice.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "D-large-practice.in"; sourceTree = "<group>"; };
+		078E5E8D2057134B00BD5E1B /* FashionShow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FashionShow.swift; sourceTree = "<group>"; };
 		079CAD5E1FD7074D00221A53 /* OversizedPancakeFlipper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = OversizedPancakeFlipper; sourceTree = BUILT_PRODUCTS_DIR; };
 		079CAD601FD7074D00221A53 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		079CAD671FD707AB00221A53 /* A-small-practice.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "A-small-practice.in"; sourceTree = "<group>"; };
@@ -87,6 +107,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		078E5E6E205433D000BD5E1B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		078E5E812057131100BD5E1B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -126,12 +153,24 @@
 			path = BathroomStalls;
 			sourceTree = "<group>";
 		};
+		078E5E852057131100BD5E1B /* FashionShow */ = {
+			isa = PBXGroup;
+			children = (
+				078E5E8D2057134B00BD5E1B /* FashionShow.swift */,
+				078E5E862057131100BD5E1B /* main.swift */,
+				078E5E8C2057133500BD5E1B /* D-large-practice.in */,
+				078E5E8B2057133500BD5E1B /* D-small-practice.in */,
+			);
+			path = FashionShow;
+			sourceTree = "<group>";
+		};
 		079CAD471FD7071F00221A53 = {
 			isa = PBXGroup;
 			children = (
 				079CAD5F1FD7074D00221A53 /* OversizedPancakeFlipper */,
 				078E5E612054268300BD5E1B /* TidyNumbers */,
 				078E5E72205433D000BD5E1B /* BathroomStalls */,
+				078E5E852057131100BD5E1B /* FashionShow */,
 				079CAD511FD7071F00221A53 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -142,6 +181,7 @@
 				079CAD5E1FD7074D00221A53 /* OversizedPancakeFlipper */,
 				078E5E602054268300BD5E1B /* TidyNumbers */,
 				078E5E71205433D000BD5E1B /* BathroomStalls */,
+				078E5E842057131100BD5E1B /* FashionShow */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -194,6 +234,23 @@
 			productReference = 078E5E71205433D000BD5E1B /* BathroomStalls */;
 			productType = "com.apple.product-type.tool";
 		};
+		078E5E832057131100BD5E1B /* FashionShow */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 078E5E8A2057131100BD5E1B /* Build configuration list for PBXNativeTarget "FashionShow" */;
+			buildPhases = (
+				078E5E802057131100BD5E1B /* Sources */,
+				078E5E812057131100BD5E1B /* Frameworks */,
+				078E5E822057131100BD5E1B /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FashionShow;
+			productName = FashionShow;
+			productReference = 078E5E842057131100BD5E1B /* FashionShow */;
+			productType = "com.apple.product-type.tool";
+		};
 		079CAD5D1FD7074D00221A53 /* OversizedPancakeFlipper */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 079CAD621FD7074D00221A53 /* Build configuration list for PBXNativeTarget "OversizedPancakeFlipper" */;
@@ -229,6 +286,10 @@
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
 					};
+					078E5E832057131100BD5E1B = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
 					079CAD5D1FD7074D00221A53 = {
 						CreatedOnToolsVersion = 9.1;
 						ProvisioningStyle = Automatic;
@@ -250,6 +311,7 @@
 				079CAD5D1FD7074D00221A53 /* OversizedPancakeFlipper */,
 				078E5E5F2054268300BD5E1B /* TidyNumbers */,
 				078E5E70205433D000BD5E1B /* BathroomStalls */,
+				078E5E832057131100BD5E1B /* FashionShow */,
 			);
 		};
 /* End PBXProject section */
@@ -270,6 +332,15 @@
 			files = (
 				078E5E7F2054340600BD5E1B /* BathroomStalls.swift in Sources */,
 				078E5E74205433D000BD5E1B /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		078E5E802057131100BD5E1B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				078E5E872057131100BD5E1B /* main.swift in Sources */,
+				078E5E8E2057134B00BD5E1B /* FashionShow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,6 +387,26 @@
 			name = Debug;
 		};
 		078E5E76205433D000BD5E1B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L94QTT73WH;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+		078E5E882057131100BD5E1B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L94QTT73WH;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		078E5E892057131100BD5E1B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -468,6 +559,15 @@
 			buildConfigurations = (
 				078E5E75205433D000BD5E1B /* Debug */,
 				078E5E76205433D000BD5E1B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		078E5E8A2057131100BD5E1B /* Build configuration list for PBXNativeTarget "FashionShow" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				078E5E882057131100BD5E1B /* Debug */,
+				078E5E892057131100BD5E1B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
