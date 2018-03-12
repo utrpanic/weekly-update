@@ -18,9 +18,11 @@ struct Test {
 let tests: Array<Test> = [
     Test(input: "4 2", expected: "1 0"),
     Test(input: "5 2", expected: "1 0"),
-    Test(input: "5 2", expected: "1 1"),
+    Test(input: "6 2", expected: "1 1"),
     Test(input: "1000 1000", expected: "0 0"),
     Test(input: "1000 1", expected: "500 499"),
+    Test(input: "999 499", expected: "1 0"),
+    Test(input: "1000 489", expected: "1 0"),
 ]
 
 tests.forEach({

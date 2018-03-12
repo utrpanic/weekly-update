@@ -7,45 +7,46 @@
 //
 
 class BathroomStalls {
-    
-    var emptyStalls: [Int]
+    var emptyStalls: [(Int, Int)]
     let numberOfPeople: Int
     
     init(input: String) {
         let inputs = input.split(separator: " ")
-        self.emptyStalls = [Int(inputs[0])!]
+        self.emptyStalls = [(Int(inputs[0])!, 1)]
         self.numberOfPeople = Int(inputs[1])!
     }
     
     func output() -> String {
-        var leftStalls: Int = 0
-        var rightStalls: Int = 0
-        for _ in 0 ..< self.numberOfPeople {
-            let stalls = self.retrieveMaxEmptyStalls()
-            if stalls % 2 == 0 {
-                leftStalls = stalls % 2 - 1
-                rightStalls = stalls % 2
-                self.emptyStalls.append(leftStalls)
-                self.emptyStalls.append(rightStalls)
-            } else {
-                leftStalls = stalls % 2
-                rightStalls = stalls % 2
-                self.emptyStalls.append(leftStalls)
-                self.emptyStalls.append(rightStalls)
-            }
+        var waitingPeople = self.numberOfPeople
+        while waitingPeople > self.emptyStalls[0].1 {
+            let stalls = self.emptyStalls.removeFirst()
+            let (large, small) = self.retrieveLargeSmallStalls(stalls.0)
+            self.insertEmptyStalls(large, count: stalls.1)
+            self.insertEmptyStalls(small, count: stalls.1)
+            waitingPeople -= stalls.1
         }
-        return "\(leftStalls) \(rightStalls)"
+        let stalls = self.emptyStalls.removeFirst().0
+        let (large, small) = self.retrieveLargeSmallStalls(stalls)
+        return "\(large) \(small)"
     }
     
-    func retrieveMaxEmptyStalls() -> Int {
-        var maxEmptyStalls: Int = 0
-        var maxEmptyStallsIndex: Int = 0
-        for index in 0 ..< self.emptyStalls.count {
-            if maxEmptyStalls <= self.emptyStalls[index] {
-                maxEmptyStalls = self.emptyStalls[index]
-                maxEmptyStallsIndex = index
+    func insertEmptyStalls(_ emptyStalls: Int, count: Int) {
+        guard emptyStalls > 0 else { return }
+        if self.emptyStalls.contains(where: { $0.0 == emptyStalls }) {
+            for index in 0 ..< self.emptyStalls.count {
+                if self.emptyStalls[index].0 == emptyStalls {
+                    self.emptyStalls[index].1 += count
+                    break
+                }
             }
+        } else {
+            self.emptyStalls.append((emptyStalls, count))
         }
-        return self.emptyStalls.remove(at: maxEmptyStallsIndex)
+    }
+    
+    func retrieveLargeSmallStalls(_ emptyStalls: Int) -> (large: Int, small: Int) {
+        let largeStalls: Int = emptyStalls / 2
+        let smallStalls: Int = emptyStalls % 2 == 0 ? max(0, largeStalls - 1) : largeStalls
+        return (large: largeStalls, small: smallStalls)
     }
 }
