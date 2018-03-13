@@ -16,7 +16,7 @@ struct Test {
 }
 
 func == (lhs: (Int, [String]), rhs: (Int, [String])) -> Bool {
-    return lhs.0 == rhs.0 && lhs.1 == rhs.1
+    return lhs.0 == rhs.0
 }
 
 let tests: Array<Test> = [
@@ -28,9 +28,9 @@ let tests: Array<Test> = [
 tests.forEach({
     let output = FashionShow(input: $0.input).output()
     if $0.expected == output {
-        print("[success] input: \($0.input), output: \(output)")
+        print("[success] input: \($0.input),\nexpected: \($0.expected),\nactually: \(output)\n")
     } else {
-        print("[FAILURE] input: \($0.input), expected: \($0.expected), actually: \(output)")
+        print("[FAILURE] input: \($0.input),\nexpected: \($0.expected),\nactually: \(output)\n")
     }
 })
 
