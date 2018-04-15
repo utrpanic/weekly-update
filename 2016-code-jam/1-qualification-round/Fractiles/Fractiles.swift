@@ -9,14 +9,8 @@
 import Foundation
 
 enum Tile: Character {
-    case gold = "0"
-    case lead = "1"
-    var text: Character {
-        switch self {
-        case .gold: return "G"
-        case .lead: return "L"
-        }
-    }
+    case gold = "G"
+    case lead = "L"
 }
 
 class Artwork {
@@ -60,7 +54,7 @@ class Artwork {
     }
     
     func printTiles() {
-        print("\(String(self.tiles.map({ $0.text })))")
+        print("\(String(self.tiles.map({ $0.rawValue })))")
     }
     
 }
