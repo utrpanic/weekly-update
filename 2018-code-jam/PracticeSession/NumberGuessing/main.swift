@@ -42,3 +42,7 @@ func main() {
 }
 
 main()
+
+// 테스트 방법은
+// python ../../interactive_runner.py python3 local_testing_tool.py 0 -- swift NumberGuessing.swift
+// 하지만 readline에서 읽어오질 못하는 듯.
