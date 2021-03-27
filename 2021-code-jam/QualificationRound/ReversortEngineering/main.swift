@@ -1,8 +1,8 @@
 
 final class ReversortEngineering {
     
-    var length: Int
-    var cost: Int
+    let length: Int
+    let cost: Int
     
     convenience init() {
         self.init(input: readLine()!)
@@ -36,6 +36,13 @@ let testCases: [(String, String)] = [
 ]
 
 testCases.forEach { (input, expected) in
-    let result = ReversortEngineering(input: input).output()
-    print(result == expected ? "OK" : result)
+    let reversortEngineering = ReversortEngineering(input: input)
+    let result = reversortEngineering.output()
+    if result == "IMPOSSIBLE" {
+        print(result == expected ? "OK" : result)
+    } else {
+        let givenCost = String(reversortEngineering.cost)
+        let resultCost = Reversort(input: result).output()
+        print(givenCost == resultCost ? "OK" : result)
+    }
 }

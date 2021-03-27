@@ -10,6 +10,8 @@
 		8D2E02AC260E1807003E0A5F /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2E02AB260E1807003E0A5F /* main.swift */; };
 		8D2E02BA260E256D003E0A5F /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2E02B9260E256D003E0A5F /* main.swift */; };
 		8DA6A5FF260EBC0A00041A26 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA6A5FE260EBC0A00041A26 /* main.swift */; };
+		8DA6A60B260EC4D200041A26 /* Reversort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA6A60A260EC4D200041A26 /* Reversort.swift */; };
+		8DA6A612260EC50600041A26 /* Reversort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA6A60A260EC4D200041A26 /* Reversort.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -49,6 +51,7 @@
 		8D2E02B9260E256D003E0A5F /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		8DA6A5FC260EBC0A00041A26 /* ReversortEngineering */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ReversortEngineering; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DA6A5FE260EBC0A00041A26 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		8DA6A60A260EC4D200041A26 /* Reversort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reversort.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				8D2E02AB260E1807003E0A5F /* main.swift */,
+				8DA6A60A260EC4D200041A26 /* Reversort.swift */,
 			);
 			path = Reversort;
 			sourceTree = "<group>";
@@ -219,6 +223,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DA6A60B260EC4D200041A26 /* Reversort.swift in Sources */,
 				8D2E02AC260E1807003E0A5F /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -235,6 +240,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DA6A612260EC50600041A26 /* Reversort.swift in Sources */,
 				8DA6A5FF260EBC0A00041A26 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
