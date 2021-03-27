@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8D2E02AC260E1807003E0A5F /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2E02AB260E1807003E0A5F /* main.swift */; };
 		8D2E02BA260E256D003E0A5F /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2E02B9260E256D003E0A5F /* main.swift */; };
+		8DA6A5FF260EBC0A00041A26 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA6A5FE260EBC0A00041A26 /* main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -30,6 +31,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
+		8DA6A5FA260EBC0A00041A26 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +47,8 @@
 		8D2E02AB260E1807003E0A5F /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		8D2E02B7260E256D003E0A5F /* MoonsAndUmbrellas */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MoonsAndUmbrellas; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D2E02B9260E256D003E0A5F /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		8DA6A5FC260EBC0A00041A26 /* ReversortEngineering */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ReversortEngineering; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DA6A5FE260EBC0A00041A26 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +66,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8DA6A5F9260EBC0A00041A26 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -62,6 +81,7 @@
 			children = (
 				8D2E02AA260E1807003E0A5F /* Reversort */,
 				8D2E02B8260E256D003E0A5F /* MoonsAndUmbrellas */,
+				8DA6A5FD260EBC0A00041A26 /* ReversortEngineering */,
 				8D2E029B260E17E9003E0A5F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -71,6 +91,7 @@
 			children = (
 				8D2E02A9260E1807003E0A5F /* Reversort */,
 				8D2E02B7260E256D003E0A5F /* MoonsAndUmbrellas */,
+				8DA6A5FC260EBC0A00041A26 /* ReversortEngineering */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -89,6 +110,14 @@
 				8D2E02B9260E256D003E0A5F /* main.swift */,
 			);
 			path = MoonsAndUmbrellas;
+			sourceTree = "<group>";
+		};
+		8DA6A5FD260EBC0A00041A26 /* ReversortEngineering */ = {
+			isa = PBXGroup;
+			children = (
+				8DA6A5FE260EBC0A00041A26 /* main.swift */,
+			);
+			path = ReversortEngineering;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,6 +157,23 @@
 			productReference = 8D2E02B7260E256D003E0A5F /* MoonsAndUmbrellas */;
 			productType = "com.apple.product-type.tool";
 		};
+		8DA6A5FB260EBC0A00041A26 /* ReversortEngineering */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8DA6A602260EBC0A00041A26 /* Build configuration list for PBXNativeTarget "ReversortEngineering" */;
+			buildPhases = (
+				8DA6A5F8260EBC0A00041A26 /* Sources */,
+				8DA6A5F9260EBC0A00041A26 /* Frameworks */,
+				8DA6A5FA260EBC0A00041A26 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ReversortEngineering;
+			productName = ReversortEngineering;
+			productReference = 8DA6A5FC260EBC0A00041A26 /* ReversortEngineering */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -141,6 +187,9 @@
 						CreatedOnToolsVersion = 12.4;
 					};
 					8D2E02B6260E256D003E0A5F = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					8DA6A5FB260EBC0A00041A26 = {
 						CreatedOnToolsVersion = 12.4;
 					};
 				};
@@ -160,6 +209,7 @@
 			targets = (
 				8D2E02A8260E1807003E0A5F /* Reversort */,
 				8D2E02B6260E256D003E0A5F /* MoonsAndUmbrellas */,
+				8DA6A5FB260EBC0A00041A26 /* ReversortEngineering */,
 			);
 		};
 /* End PBXProject section */
@@ -178,6 +228,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D2E02BA260E256D003E0A5F /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8DA6A5F8260EBC0A00041A26 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DA6A5FF260EBC0A00041A26 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,6 +393,24 @@
 			};
 			name = Release;
 		};
+		8DA6A600260EBC0A00041A26 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		8DA6A601260EBC0A00041A26 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -361,6 +437,15 @@
 			buildConfigurations = (
 				8D2E02BC260E256D003E0A5F /* Debug */,
 				8D2E02BD260E256D003E0A5F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8DA6A602260EBC0A00041A26 /* Build configuration list for PBXNativeTarget "ReversortEngineering" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8DA6A600260EBC0A00041A26 /* Debug */,
+				8DA6A601260EBC0A00041A26 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
