@@ -1,3 +1,7 @@
+// Test Set 2. Time Limit Exceeded.
+// - 직접 작성한 greatestCommonDivisor의 성능 문제.
+// - Swift.Double로는 10^100 - 4 연산도 안되는 듯.
+
 class Solution {
     
     func start() {
