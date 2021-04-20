@@ -8,10 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		60788DBB262F0017002A51BD /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60788DBA262F0017002A51BD /* main.swift */; };
+		60788DCC262F04C6002A51BD /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60788DCB262F04C6002A51BD /* main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		60788DB6262F0017002A51BD /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		60788DC7262F04C6002A51BD /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -25,10 +35,19 @@
 /* Begin PBXFileReference section */
 		60788DB8262F0017002A51BD /* OversizedPancakeFlipper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = OversizedPancakeFlipper; sourceTree = BUILT_PRODUCTS_DIR; };
 		60788DBA262F0017002A51BD /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		60788DC9262F04C6002A51BD /* TidyNumbers */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TidyNumbers; sourceTree = BUILT_PRODUCTS_DIR; };
+		60788DCB262F04C6002A51BD /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		60788DB5262F0017002A51BD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60788DC6262F04C6002A51BD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -42,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				60788DB9262F0017002A51BD /* OversizedPancakeFlipper */,
+				60788DCA262F04C6002A51BD /* TidyNumbers */,
 				60788DAA262EFEE8002A51BD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -50,6 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				60788DB8262F0017002A51BD /* OversizedPancakeFlipper */,
+				60788DC9262F04C6002A51BD /* TidyNumbers */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -60,6 +81,14 @@
 				60788DBA262F0017002A51BD /* main.swift */,
 			);
 			path = OversizedPancakeFlipper;
+			sourceTree = "<group>";
+		};
+		60788DCA262F04C6002A51BD /* TidyNumbers */ = {
+			isa = PBXGroup;
+			children = (
+				60788DCB262F04C6002A51BD /* main.swift */,
+			);
+			path = TidyNumbers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -82,6 +111,23 @@
 			productReference = 60788DB8262F0017002A51BD /* OversizedPancakeFlipper */;
 			productType = "com.apple.product-type.tool";
 		};
+		60788DC8262F04C6002A51BD /* TidyNumbers */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 60788DCD262F04C6002A51BD /* Build configuration list for PBXNativeTarget "TidyNumbers" */;
+			buildPhases = (
+				60788DC5262F04C6002A51BD /* Sources */,
+				60788DC6262F04C6002A51BD /* Frameworks */,
+				60788DC7262F04C6002A51BD /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TidyNumbers;
+			productName = TidyNumbers;
+			productReference = 60788DC9262F04C6002A51BD /* TidyNumbers */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -92,6 +138,9 @@
 				LastUpgradeCheck = 1240;
 				TargetAttributes = {
 					60788DB7262F0017002A51BD = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					60788DC8262F04C6002A51BD = {
 						CreatedOnToolsVersion = 12.4;
 					};
 				};
@@ -110,6 +159,7 @@
 			projectRoot = "";
 			targets = (
 				60788DB7262F0017002A51BD /* OversizedPancakeFlipper */,
+				60788DC8262F04C6002A51BD /* TidyNumbers */,
 			);
 		};
 /* End PBXProject section */
@@ -120,6 +170,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				60788DBB262F0017002A51BD /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60788DC5262F04C6002A51BD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60788DCC262F04C6002A51BD /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,6 +317,24 @@
 			};
 			name = Release;
 		};
+		60788DCE262F04C6002A51BD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		60788DCF262F04C6002A51BD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -276,6 +352,15 @@
 			buildConfigurations = (
 				60788DBD262F0017002A51BD /* Debug */,
 				60788DBE262F0017002A51BD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		60788DCD262F04C6002A51BD /* Build configuration list for PBXNativeTarget "TidyNumbers" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				60788DCE262F04C6002A51BD /* Debug */,
+				60788DCF262F04C6002A51BD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
