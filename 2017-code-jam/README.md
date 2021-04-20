@@ -1,5 +1,7 @@
-[Qualification Round](https://code.google.com/codejam/contest/3264486/dashboard)
-- Oversized Pancake Flipper. v
-- Tidy Numbers. v
-- Bathroom Stalls. v
-- Fashion Show.
+# CodeJam 2017
+
+## [Qualification Round](https://codingcompetitions.withgoogle.com/codejam/round/00000000002017f7)
+- Oversized Pancake Flipper (Swift)
+- Tidy Numbers (Swift)
+- Bathroom Stalls (Swift)
+- Fashion Show
