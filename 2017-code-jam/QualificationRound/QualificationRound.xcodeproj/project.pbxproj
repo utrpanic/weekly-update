@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		60788DBB262F0017002A51BD /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60788DBA262F0017002A51BD /* main.swift */; };
 		60788DCC262F04C6002A51BD /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60788DCB262F04C6002A51BD /* main.swift */; };
+		60788DD9262F166D002A51BD /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60788DD8262F166D002A51BD /* main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -30,6 +31,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
+		60788DD4262F166D002A51BD /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +47,8 @@
 		60788DBA262F0017002A51BD /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		60788DC9262F04C6002A51BD /* TidyNumbers */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TidyNumbers; sourceTree = BUILT_PRODUCTS_DIR; };
 		60788DCB262F04C6002A51BD /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		60788DD6262F166D002A51BD /* BathroomStalls */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = BathroomStalls; sourceTree = BUILT_PRODUCTS_DIR; };
+		60788DD8262F166D002A51BD /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +66,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		60788DD3262F166D002A51BD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -62,6 +81,7 @@
 			children = (
 				60788DB9262F0017002A51BD /* OversizedPancakeFlipper */,
 				60788DCA262F04C6002A51BD /* TidyNumbers */,
+				60788DD7262F166D002A51BD /* BathroomStalls */,
 				60788DAA262EFEE8002A51BD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -71,6 +91,7 @@
 			children = (
 				60788DB8262F0017002A51BD /* OversizedPancakeFlipper */,
 				60788DC9262F04C6002A51BD /* TidyNumbers */,
+				60788DD6262F166D002A51BD /* BathroomStalls */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -89,6 +110,14 @@
 				60788DCB262F04C6002A51BD /* main.swift */,
 			);
 			path = TidyNumbers;
+			sourceTree = "<group>";
+		};
+		60788DD7262F166D002A51BD /* BathroomStalls */ = {
+			isa = PBXGroup;
+			children = (
+				60788DD8262F166D002A51BD /* main.swift */,
+			);
+			path = BathroomStalls;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,6 +157,23 @@
 			productReference = 60788DC9262F04C6002A51BD /* TidyNumbers */;
 			productType = "com.apple.product-type.tool";
 		};
+		60788DD5262F166D002A51BD /* BathroomStalls */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 60788DDA262F166D002A51BD /* Build configuration list for PBXNativeTarget "BathroomStalls" */;
+			buildPhases = (
+				60788DD2262F166D002A51BD /* Sources */,
+				60788DD3262F166D002A51BD /* Frameworks */,
+				60788DD4262F166D002A51BD /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BathroomStalls;
+			productName = BathroomStalls;
+			productReference = 60788DD6262F166D002A51BD /* BathroomStalls */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -141,6 +187,9 @@
 						CreatedOnToolsVersion = 12.4;
 					};
 					60788DC8262F04C6002A51BD = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					60788DD5262F166D002A51BD = {
 						CreatedOnToolsVersion = 12.4;
 					};
 				};
@@ -160,6 +209,7 @@
 			targets = (
 				60788DB7262F0017002A51BD /* OversizedPancakeFlipper */,
 				60788DC8262F04C6002A51BD /* TidyNumbers */,
+				60788DD5262F166D002A51BD /* BathroomStalls */,
 			);
 		};
 /* End PBXProject section */
@@ -178,6 +228,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				60788DCC262F04C6002A51BD /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60788DD2262F166D002A51BD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60788DD9262F166D002A51BD /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,6 +393,24 @@
 			};
 			name = Release;
 		};
+		60788DDB262F166D002A51BD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		60788DDC262F166D002A51BD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -361,6 +437,15 @@
 			buildConfigurations = (
 				60788DCE262F04C6002A51BD /* Debug */,
 				60788DCF262F04C6002A51BD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		60788DDA262F166D002A51BD /* Build configuration list for PBXNativeTarget "BathroomStalls" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				60788DDB262F166D002A51BD /* Debug */,
+				60788DDC262F166D002A51BD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
