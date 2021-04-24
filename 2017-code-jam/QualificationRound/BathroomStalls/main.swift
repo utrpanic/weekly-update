@@ -1,46 +1,83 @@
 
 class BathroomStalls {
-    var emptyStalls: [(Int, Int)]
-    let numberOfPeople: Int
+    
+    var stalls: [Bool]
+    let peopleCount: Int
     
     init(input: String) {
         let inputs = input.split(separator: " ")
-        self.emptyStalls = [(Int(inputs[0])!, 1)]
-        self.numberOfPeople = Int(inputs[1])!
+        let stallCount = Int(inputs[0])! + 2
+        var stalls = Array(repeating: false, count: stallCount)
+        stalls[0] = true
+        stalls[stalls.count - 1] = true
+        self.stalls = stalls
+        self.peopleCount = Int(inputs[1])!
     }
     
     func output() -> String {
-        var waitingPeople = self.numberOfPeople
-        while waitingPeople > self.emptyStalls[0].1 {
-            let stalls = self.emptyStalls.removeFirst()
-            let (large, small) = self.retrieveLargeSmallStalls(stalls.0)
-            self.insertEmptyStalls(large, count: stalls.1)
-            self.insertEmptyStalls(small, count: stalls.1)
-            waitingPeople -= stalls.1
-        }
-        let stalls = self.emptyStalls.removeFirst().0
-        let (large, small) = self.retrieveLargeSmallStalls(stalls)
-        return "\(large) \(small)"
+        let lastIndex = self.lastOccupiedStallIndex(start: 0, emptyStallCount: self.stalls.count - 2, peopleCount: self.peopleCount)
+        let result = self.leftRightEmptyStalls(index: lastIndex)
+        let max = Swift.max(result.left, result.right)
+        let min = Swift.min(result.left, result.right)
+        return "\(max) \(min)"
     }
     
-    func insertEmptyStalls(_ emptyStalls: Int, count: Int) {
-        guard emptyStalls > 0 else { return }
-        if self.emptyStalls.contains(where: { $0.0 == emptyStalls }) {
-            for index in 0 ..< self.emptyStalls.count {
-                if self.emptyStalls[index].0 == emptyStalls {
-                    self.emptyStalls[index].1 += count
-                    break
+    func lastOccupiedStallIndex(start: Int, emptyStallCount: Int, peopleCount: Int) -> Int {
+        let pivot = start + (emptyStallCount + 1) / 2
+        self.stalls[pivot] = true
+        let newEmptyStallCount = emptyStallCount - 1
+        let newPeopleCount = peopleCount - 1
+        if newPeopleCount == 0 {
+            return pivot
+        } else {
+            let leftStart = start
+            let leftEmptyStallCount = pivot - start - 1
+            let leftPeopleCount: Int
+            let rightStart = pivot
+            let rightEmptyStallCount = newEmptyStallCount - leftEmptyStallCount
+            let rightPeopleCount: Int
+            if leftEmptyStallCount == rightEmptyStallCount {
+                leftPeopleCount = (newPeopleCount + 1) / 2
+                rightPeopleCount = newPeopleCount - leftPeopleCount
+                if rightPeopleCount == 0 {
+                    return self.lastOccupiedStallIndex(start: leftStart, emptyStallCount: leftEmptyStallCount, peopleCount: leftPeopleCount)
+                } else {
+                    let leftIndex = self.lastOccupiedStallIndex(start: leftStart, emptyStallCount: leftEmptyStallCount, peopleCount: leftPeopleCount)
+                    let rightIndex = self.lastOccupiedStallIndex(start: rightStart, emptyStallCount: rightEmptyStallCount, peopleCount: rightPeopleCount)
+                    return leftPeopleCount == rightPeopleCount ? rightIndex : leftIndex
+                }
+            } else {
+                leftPeopleCount = (newPeopleCount) / 2
+                rightPeopleCount = newPeopleCount - leftPeopleCount
+                if leftPeopleCount == 0 {
+                    return self.lastOccupiedStallIndex(start: rightStart, emptyStallCount: rightEmptyStallCount, peopleCount: rightPeopleCount)
+                } else {
+                    let leftIndex = self.lastOccupiedStallIndex(start: leftStart, emptyStallCount: leftEmptyStallCount, peopleCount: leftPeopleCount)
+                    let rightIndex = self.lastOccupiedStallIndex(start: rightStart, emptyStallCount: rightEmptyStallCount, peopleCount: rightPeopleCount)
+                    return leftPeopleCount == rightPeopleCount ? leftIndex : rightIndex
                 }
             }
-        } else {
-            self.emptyStalls.append((emptyStalls, count))
         }
     }
     
-    func retrieveLargeSmallStalls(_ emptyStalls: Int) -> (large: Int, small: Int) {
-        let largeStalls: Int = emptyStalls / 2
-        let smallStalls: Int = emptyStalls % 2 == 0 ? max(0, largeStalls - 1) : largeStalls
-        return (large: largeStalls, small: smallStalls)
+    func leftRightEmptyStalls(index: Int) -> (left: Int, right: Int) {
+        var left: Int = 0
+        for index in (0 ..< index).reversed() {
+            if self.stalls[index] {
+                break
+            } else {
+                left += 1
+            }
+        }
+        var right: Int = 0
+        for index in (index + 1 ..< self.stalls.count) {
+            if self.stalls[index] {
+                break
+            } else {
+                right += 1
+            }
+        }
+        return (left, right)
     }
 }
 
