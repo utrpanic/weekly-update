@@ -92,7 +92,7 @@ struct FashionShow {
                 if self.rooks[row][column] == .x {
                     continue
                 } else {
-                    if !self.onHorizontal(model: .x, cells: self.rooks, row: row) && !self.onVertical(model: .x, cells: self.rooks, column: column) {
+                    if !self.rowContainsX(cells: self.rooks, row: row) && !self.columnContainsX(cells: self.rooks, column: column) {
                         self.rooks[row][column] = .x
                     }
                 }
@@ -100,18 +100,13 @@ struct FashionShow {
         }
     }
     
-    private func onHorizontal(model: Model, cells: [[Model]], row: Int) -> Bool {
-        for index in 0 ..< cells[row].count {
-            if model == cells[row][index] {
-                return true
-            }
-        }
-        return false
+    private func rowContainsX(cells: [[Model]], row: Int) -> Bool {
+        return cells[row].contains(.x)
     }
     
-    private func onVertical(model: Model, cells: [[Model]], column: Int) -> Bool {
+    private func columnContainsX(cells: [[Model]], column: Int) -> Bool {
         for index in 0 ..< cells.count {
-            if model == cells[index][column] {
+            if cells[index][column] == .x {
                 return true
             }
         }
@@ -124,7 +119,7 @@ struct FashionShow {
                 if self.bishops[row][column] == .plus {
                     continue
                 } else {
-                    if !self.onLeftDiagonal(model: .plus, cells: self.bishops, row: row, column: column) && !self.onRightDiagonal(model: .plus, cells: self.bishops, row: row, column: column) {
+                    if !self.diagonalContainsPlus(cells: self.bishops, row: row, column: column) {
                         self.bishops[row][column] = .plus
                     }
                 }
@@ -132,37 +127,28 @@ struct FashionShow {
         }
     }
     
-    private func onLeftDiagonal(model: Model, cells: [[Model]], row: Int, column: Int) -> Bool {
+    private func diagonalContainsPlus(cells: [[Model]], row: Int, column: Int) -> Bool {
         for index in 0 ..< cells.count {
             if index == 0 {
                 continue
             }
             if row - index >= 0 && column - index >= 0 {
-                if model == cells[row-index][column-index] {
+                if cells[row-index][column-index] == .plus {
                     return true
                 }
             }
             if row + index < cells.count && column + index < cells[row].count {
-                if model == cells[row+index][column+index] {
+                if cells[row+index][column+index] == .plus {
                     return true
                 }
             }
-        }
-        return false
-    }
-    
-    private func onRightDiagonal(model: Model, cells: [[Model]], row: Int, column: Int) -> Bool {
-        for index in 0 ..< cells.count {
-            if index == 0 {
-                continue
-            }
             if row - index >= 0 && column + index < cells[row].count {
-                if model == cells[row-index][column+index] {
+                if cells[row-index][column+index] == .plus {
                     return true
                 }
             }
             if row + index < cells.count && column - index >= 0 {
-                if model == cells[row+index][column-index] {
+                if cells[row+index][column-index] == .plus {
                     return true
                 }
             }
