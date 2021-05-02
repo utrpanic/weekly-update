@@ -15,24 +15,11 @@ enum Model: String {
     }
 }
 
-struct Cell {
-    var model: Model = .none
-    var point: Int { self.model.point }
-}
-
 struct FashionShow {
     
-    var cells: [[Cell]] = []
-    
-    var point: Int {
-        var totalPoint = 0
-        self.cells.forEach {
-            $0.forEach { cell in
-                totalPoint += cell.point
-            }
-        }
-        return totalPoint
-    }
+    var originalCells: [[Model]] = []
+    var rooks: [[Model]] = []
+    var bishops: [[Model]] = []
     
     init() {
         let input = readLine()!.split(separator: " ").map { Int($0)! }
@@ -47,10 +34,29 @@ struct FashionShow {
     
     init(input: (gridSize: Int, models: [String])) {
         for _ in 0 ..< input.gridSize {
-            self.cells.append(Array<Cell>(repeating: Cell(), count: input.gridSize))
+            self.originalCells.append(Array<Model>(repeating: .none, count: input.gridSize))
+            self.rooks.append(Array<Model>(repeating: .none, count: input.gridSize))
+            self.bishops.append(Array<Model>(repeating: .none, count: input.gridSize))
         }
         input.models.forEach {
             self.applyModel(input: $0)
+        }
+        for row in 0 ..< self.originalCells.count {
+            for column in 0 ..< self.originalCells[row].count {
+                switch self.originalCells[row][column] {
+                case .o:
+                    self.rooks[row][column] = .x
+                    self.bishops[row][column] = .plus
+                case .x:
+                    self.rooks[row][column] = .x
+                    self.bishops[row][column] = .none
+                case .plus:
+                    self.rooks[row][column] = .none
+                    self.bishops[row][column] = .plus
+                case .none:
+                    break
+                }
+            }
         }
     }
     
@@ -59,15 +65,128 @@ struct FashionShow {
         let model = Model(rawValue: String(inputs[0]))!
         let row = Int(inputs[1])! - 1
         let col = Int(inputs[2])! - 1
-        self.cells[row][col].model = model
+        self.originalCells[row][col] = model
     }
     
     mutating func output() -> (point: Int, models: [String]) {
-        // 점수를 최대화할 방법을 알아야하고.
-        // violation을 확인할 수 있어야되고.
-        // Cell array를 써야하는지 Model array를 써야하는지 판단 필요.
-        
-        return (4, ["o 2 2", "+ 2 1", "x 1 1"])
+        self.solveRooksProblem()
+        self.solveBishopsProblem()
+        let results = self.mergeRooksAndBishops()
+        var point = 0
+        var models: [String] = []
+        for row in 0 ..< results.count {
+            for column in 0 ..< results[row].count {
+                let result = results[row][column]
+                if self.originalCells[row][column] != result {
+                    models.append("\(result.rawValue) \(row + 1) \(column + 1)")
+                }
+                point += result.point
+            }
+        }
+        return (point, models)
+    }
+    
+    private mutating func solveRooksProblem() {
+        for row in 0 ..< self.rooks.count {
+            for column in 0 ..< self.rooks[row].count {
+                if self.rooks[row][column] == .x {
+                    continue
+                } else {
+                    if !self.onHorizontal(model: .x, cells: self.rooks, row: row) && !self.onVertical(model: .x, cells: self.rooks, column: column) {
+                        self.rooks[row][column] = .x
+                    }
+                }
+            }
+        }
+    }
+    
+    private func onHorizontal(model: Model, cells: [[Model]], row: Int) -> Bool {
+        for index in 0 ..< cells[row].count {
+            if model == cells[row][index] {
+                return true
+            }
+        }
+        return false
+    }
+    
+    private func onVertical(model: Model, cells: [[Model]], column: Int) -> Bool {
+        for index in 0 ..< cells.count {
+            if model == cells[index][column] {
+                return true
+            }
+        }
+        return false
+    }
+    
+    private mutating func solveBishopsProblem() {
+        for row in 0 ..< self.bishops.count {
+            for column in 0 ..< self.bishops[row].count {
+                if self.bishops[row][column] == .plus {
+                    continue
+                } else {
+                    if !self.onLeftDiagonal(model: .plus, cells: self.bishops, row: row, column: column) && !self.onRightDiagonal(model: .plus, cells: self.bishops, row: row, column: column) {
+                        self.bishops[row][column] = .plus
+                    }
+                }
+            }
+        }
+    }
+    
+    private func onLeftDiagonal(model: Model, cells: [[Model]], row: Int, column: Int) -> Bool {
+        for index in 0 ..< cells.count {
+            if index == 0 {
+                continue
+            }
+            if row - index >= 0 && column - index >= 0 {
+                if model == cells[row-index][column-index] {
+                    return true
+                }
+            }
+            if row + index < cells.count && column + index < cells[row].count {
+                if model == cells[row+index][column+index] {
+                    return true
+                }
+            }
+        }
+        return false
+    }
+    
+    private func onRightDiagonal(model: Model, cells: [[Model]], row: Int, column: Int) -> Bool {
+        for index in 0 ..< cells.count {
+            if index == 0 {
+                continue
+            }
+            if row - index >= 0 && column + index < cells[row].count {
+                if model == cells[row-index][column+index] {
+                    return true
+                }
+            }
+            if row + index < cells.count && column - index >= 0 {
+                if model == cells[row+index][column-index] {
+                    return true
+                }
+            }
+        }
+        return false
+    }
+    
+    private func mergeRooksAndBishops() -> [[Model]] {
+        var results = self.originalCells
+        for row in 0 ..< results.count {
+            for column in 0 ..< results[row].count {
+                switch (self.rooks[row][column], self.bishops[row][column]) {
+                case (.x, .plus):
+                    results[row][column] = .o
+                case (.x, _):
+                    results[row][column] = .x
+                case (_, .plus):
+                    results[row][column] = .plus
+                default:
+                    results[row][column] = .none
+                }
+            }
+        }
+        return results
     }
 }
 
@@ -94,10 +213,23 @@ func == (lhs: (Int, [String]), rhs: (Int, [String])) -> Bool {
     return lhs.0 == rhs.0
 }
 
+extension FashionShow {
+    
+    var point: Int {
+        var sum = 0
+        self.originalCells.forEach { cells in
+            cells.forEach { cell in
+                sum += cell.point
+            }
+        }
+        return sum
+    }
+}
+
 let tests: Array<Test> = [
     Test(input: (2, []), expected: 4),
-//    Test(input: (1, ["o 1 1"]), expected: 2),
-//    Test(input: (3, ["+ 2 3", "+ 2 1", "x 3 1", "+ 2 2"]), expected: 6),
+    Test(input: (1, ["o 1 1"]), expected: 2),
+    Test(input: (3, ["+ 2 3", "+ 2 1", "x 3 1", "+ 2 2"]), expected: 6),
 ]
 
 tests.forEach({
@@ -108,12 +240,10 @@ tests.forEach({
         input.applyModel(input: $0)
     }
     if $0.expected == output.point && $0.expected == input.point {
-        print("✅ input: \($0.input)")
-        print("expected: \($0.expected)")
-        print("actually: \(output.point)")
-        output.models.forEach { model in
-            print(model)
-        }
+        print("✅ input: \($0.input), expected: \($0.expected)")
+//        output.models.forEach { model in
+//            print(model)
+//        }
     } else {
         print("❗️ input: \($0.input)")
         print("expected: \($0.expected)")
