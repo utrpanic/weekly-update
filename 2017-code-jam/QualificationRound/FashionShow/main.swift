@@ -115,6 +115,7 @@ struct FashionShow {
     
     private mutating func solveBishopsProblem() {
         for row in 0 ..< self.bishops.count {
+            if 0 < row && row < self.bishops.count - 1 { continue }
             for column in 0 ..< self.bishops[row].count {
                 if self.bishops[row][column] == .plus {
                     continue
