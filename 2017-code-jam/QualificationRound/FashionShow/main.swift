@@ -49,9 +49,7 @@ struct FashionShow {
                     self.bishops[row][column] = .plus
                 case .x:
                     self.rooks[row][column] = .x
-                    self.bishops[row][column] = .none
                 case .plus:
-                    self.rooks[row][column] = .none
                     self.bishops[row][column] = .plus
                 case .none:
                     break
@@ -113,15 +111,63 @@ struct FashionShow {
         return false
     }
     
+    struct Position: Hashable {
+        let row: Int
+        let column: Int
+        init(_ row: Int, _ column: Int) {
+            self.row = row
+            self.column = column
+        }
+    }
+    
     private mutating func solveBishopsProblem() {
-        for row in 0 ..< self.bishops.count {
-            if 0 < row && row < self.bishops.count - 1 { continue }
-            for column in 0 ..< self.bishops[row].count {
-                if self.bishops[row][column] == .plus {
-                    continue
-                } else {
-                    if !self.diagonalContainsPlus(cells: self.bishops, row: row, column: column) {
-                        self.bishops[row][column] = .plus
+        let size = self.bishops.count
+        var leftTop = Set<Position>()
+        var rightTop = Set<Position>()
+        var leftBottom = Set<Position>()
+        var rightBottom = Set<Position>()
+        for index in 0 ..< size {
+            if index == 0 {
+                leftTop.insert(Position(0, 0))
+                rightTop.insert(Position(0, size - 1))
+                leftBottom.insert(Position(size - 1, 0))
+                rightBottom.insert(Position(size - 1, size - 1))
+            } else {
+                var newLeftTop = Set<Position>()
+                var newRightTop = Set<Position>()
+                var newLeftBottom = Set<Position>()
+                var newRightBottom = Set<Position>()
+                leftTop.forEach { position in
+                    newLeftTop.insert(Position(position.row + 1, position.column))
+                    newLeftTop.insert(Position(position.row, position.column + 1))
+                }
+                rightTop.forEach { position in
+                    newRightTop.insert(Position(position.row + 1, position.column))
+                    newRightTop.insert(Position(position.row, position.column - 1))
+                }
+                leftBottom.forEach { position in
+                    newLeftBottom.insert(Position(position.row - 1, position.column))
+                    newLeftBottom.insert(Position(position.row, position.column + 1))
+                }
+                rightBottom.forEach { position in
+                    newRightBottom.insert(Position(position.row - 1, position.column))
+                    newRightBottom.insert(Position(position.row, position.column - 1))
+                }
+                leftTop = newLeftTop
+                rightTop = newRightTop
+                leftBottom = newLeftBottom
+                rightBottom = newRightBottom
+            }
+            [leftTop, rightTop, leftBottom, rightBottom].forEach { positions in
+                positions.forEach { position in
+                    guard 0 <= position.row && position.row < size else { return }
+                    guard 0 <= position.column && position.column < size else { return }
+                    if self.bishops[position.row][position.column] == .plus {
+                        // do nothing
+                    } else {
+                        if !self.diagonalContainsPlus(cells: self.bishops, row: position.row, column: position.column) {
+                            self.bishops[position.row][position.column] = .plus
+                        }
                     }
                 }
             }
@@ -217,6 +263,7 @@ let tests: Array<Test> = [
     Test(input: (2, []), expected: 4),
     Test(input: (1, ["o 1 1"]), expected: 2),
     Test(input: (3, ["+ 2 3", "+ 2 1", "x 3 1", "+ 2 2"]), expected: 6),
+    Test(input: (5, ["+ 2 2", "+ 2 4", "+ 4 1"]), expected: 12),
 ]
 
 tests.forEach({
