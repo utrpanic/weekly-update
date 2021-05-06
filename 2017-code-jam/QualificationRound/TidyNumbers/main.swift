@@ -1,12 +1,3 @@
-//
-//  TidyNumbers.swift
-//  TidyNumbers
-//
-//  Created by boxjeon on 2018. 3. 10..
-//  Copyright © 2018년 boxjeon. All rights reserved.
-//
-
-import Foundation
 
 enum Digit: Character {
     case _0 = "0"
@@ -35,7 +26,7 @@ class TidyNumbers {
     var number: [Digit]
     
     init(input: String) {
-        self.number = input.flatMap({ Digit(rawValue: $0) })
+        self.number = input.compactMap({ Digit(rawValue: $0) })
     }
     
     func output() -> String {
@@ -57,3 +48,35 @@ class TidyNumbers {
         }
     }
 }
+
+func start() {
+    let count = Int(readLine()!)!
+    for index in 1 ... count {
+        let input = readLine()!
+        let solution = TidyNumbers(input: input)
+        print("Case #\(index): \(solution.output())")
+    }
+}
+
+//start()
+
+struct Test {
+    var input: String
+    var expected: String
+}
+
+let tests: Array<Test> = [
+    Test(input: "132", expected: "129"),
+    Test(input: "1000", expected: "999"),
+    Test(input: "7", expected: "7"),
+    Test(input: "111111111111111110", expected: "99999999999999999"),
+]
+
+tests.forEach({
+    let output = TidyNumbers(input: $0.input).output()
+    if $0.expected == output {
+        print("[SUCCESS] input: \($0.input), output: \(output)")
+    } else {
+        print("[FAILURE] input: \($0.input), expected: \($0.expected), actually: \(output)")
+    }
+})
