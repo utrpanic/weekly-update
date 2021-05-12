@@ -7,10 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6036708A264C13260096852E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60367089264C13260096852E /* main.swift */; };
 		8DCEE07826073ECE006C6981 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCEE07726073ECE006C6981 /* main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		60367085264C13260096852E /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 		8DCEE07326073ECE006C6981 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -23,11 +33,20 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		60367087264C13260096852E /* Steed2CruiseControl */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Steed2CruiseControl; sourceTree = BUILT_PRODUCTS_DIR; };
+		60367089264C13260096852E /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		8DCEE07526073ECE006C6981 /* SenateEvacuation */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SenateEvacuation; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DCEE07726073ECE006C6981 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		60367084264C13260096852E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8DCEE07226073ECE006C6981 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -38,10 +57,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		60367088264C13260096852E /* Steed2CruiseControl */ = {
+			isa = PBXGroup;
+			children = (
+				60367089264C13260096852E /* main.swift */,
+			);
+			path = Steed2CruiseControl;
+			sourceTree = "<group>";
+		};
 		8DCEE0452606E523006C6981 = {
 			isa = PBXGroup;
 			children = (
 				8DCEE07626073ECE006C6981 /* SenateEvacuation */,
+				60367088264C13260096852E /* Steed2CruiseControl */,
 				8DCEE04F2606E523006C6981 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -50,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				8DCEE07526073ECE006C6981 /* SenateEvacuation */,
+				60367087264C13260096852E /* Steed2CruiseControl */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -65,6 +94,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		60367086264C13260096852E /* Steed2CruiseControl */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6036708B264C13260096852E /* Build configuration list for PBXNativeTarget "Steed2CruiseControl" */;
+			buildPhases = (
+				60367083264C13260096852E /* Sources */,
+				60367084264C13260096852E /* Frameworks */,
+				60367085264C13260096852E /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Steed2CruiseControl;
+			productName = Steed2CruiseControl;
+			productReference = 60367087264C13260096852E /* Steed2CruiseControl */;
+			productType = "com.apple.product-type.tool";
+		};
 		8DCEE07426073ECE006C6981 /* SenateEvacuation */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8DCEE07B26073ECE006C6981 /* Build configuration list for PBXNativeTarget "SenateEvacuation" */;
@@ -88,9 +134,12 @@
 		8DCEE0462606E523006C6981 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1220;
+				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1220;
 				TargetAttributes = {
+					60367086264C13260096852E = {
+						CreatedOnToolsVersion = 12.4;
+					};
 					8DCEE07426073ECE006C6981 = {
 						CreatedOnToolsVersion = 12.2;
 					};
@@ -110,11 +159,20 @@
 			projectRoot = "";
 			targets = (
 				8DCEE07426073ECE006C6981 /* SenateEvacuation */,
+				60367086264C13260096852E /* Steed2CruiseControl */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		60367083264C13260096852E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6036708A264C13260096852E /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8DCEE07126073ECE006C6981 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -126,6 +184,26 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		6036708C264C13260096852E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		6036708D264C13260096852E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		8DCEE0532606E523006C6981 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -262,6 +340,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		6036708B264C13260096852E /* Build configuration list for PBXNativeTarget "Steed2CruiseControl" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6036708C264C13260096852E /* Debug */,
+				6036708D264C13260096852E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		8DCEE0492606E523006C6981 /* Build configuration list for PBXProject "PracticeSession" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

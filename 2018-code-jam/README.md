@@ -2,7 +2,7 @@
 
 ## [Practice Session](https://codingcompetitions.withgoogle.com/codejam/round/0000000000000130)
 - Number Guessing `Python`
-- Senate Evacuation
+- Senate Evacuation `Swift`
 - Steed 2: Cruise Control
 - Bathroom Stalls
 

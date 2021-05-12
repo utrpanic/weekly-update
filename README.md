@@ -4,17 +4,17 @@
 - [x] Qualification Round
 
 ## 2018 Code Jam
-- [ ] Practice Session -
-- [ ] Qualification Round - 
+- [ ] Practice Session
+- [ ] Qualification Round
 
 ## 2017 Code Jam
-- [ ] Qualification Round -
+- [ ] Qualification Round
 
 ## 2014 Code Jam
-- [ ] Qualification Round -
+- [ ] Qualification Round
 
 ## 2008 Code Jam Qualification Round
-- [ ] Qualification Round -
+- [ ] Qualification Round
 
 ## 2008 Practice Contest
 - Old Magician. v
