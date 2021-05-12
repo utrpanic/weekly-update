@@ -1,7 +1,9 @@
 
 struct Horse {
+    
     let start: Double
     let speed: Double
+    
     init(input: String) {
         let inputs = input.split(separator: " ").map { Double($0)! }
         self.start = inputs[0]
@@ -11,18 +13,18 @@ struct Horse {
 
 struct Steed {
     
-    let distance: Int
+    let distance: Double
     let horses: [Horse]
     
-    init(input: (Int, [String])) {
+    init(input: (Double, [String])) {
         self.distance = input.0
         self.horses = input.1.map { Horse(input: $0) }
     }
     
     init() {
-        let inputs = readLine()!.split(separator: " ").map { Int($0)! }
-        let distance = inputs[0]
-        let horseCount = inputs[1]
+        let inputs = readLine()!.split(separator: " ")
+        let distance = Double(inputs[0])!
+        let horseCount = Int(inputs[1])!
         var horses: [String] = []
         for _ in 0 ..< horseCount {
             horses.append(readLine()!)
@@ -31,7 +33,16 @@ struct Steed {
     }
     
     func output() -> String {
-        return "101.000000"
+        let timeToArrive = self.timeToArrive()
+        let maxSpeed = self.distance / timeToArrive
+        return "\(maxSpeed)"
+    }
+    
+    private func timeToArrive() -> Double {
+        return self.horses.reduce(0) { (result, horse) -> Double in
+            let time = (self.distance - horse.start) / horse.speed
+            return max(result, time)
+        }
     }
 }
 
@@ -47,7 +58,7 @@ func start() {
 //start()
 
 struct Test {
-    var input: (Int, [String])
+    var input: (Double, [String])
     var expected: Double
 }
 
