@@ -8,11 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		6036708A264C13260096852E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60367089264C13260096852E /* main.swift */; };
+		603670AB264C47850096852E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603670AA264C47850096852E /* main.swift */; };
 		8DCEE07826073ECE006C6981 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCEE07726073ECE006C6981 /* main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		60367085264C13260096852E /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		603670A6264C47850096852E /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -35,12 +45,21 @@
 /* Begin PBXFileReference section */
 		60367087264C13260096852E /* Steed2CruiseControl */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Steed2CruiseControl; sourceTree = BUILT_PRODUCTS_DIR; };
 		60367089264C13260096852E /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		603670A8264C47850096852E /* BathroomStalls */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = BathroomStalls; sourceTree = BUILT_PRODUCTS_DIR; };
+		603670AA264C47850096852E /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		8DCEE07526073ECE006C6981 /* SenateEvacuation */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SenateEvacuation; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DCEE07726073ECE006C6981 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		60367084264C13260096852E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		603670A5264C47850096852E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -65,11 +84,20 @@
 			path = Steed2CruiseControl;
 			sourceTree = "<group>";
 		};
+		603670A9264C47850096852E /* BathroomStalls */ = {
+			isa = PBXGroup;
+			children = (
+				603670AA264C47850096852E /* main.swift */,
+			);
+			path = BathroomStalls;
+			sourceTree = "<group>";
+		};
 		8DCEE0452606E523006C6981 = {
 			isa = PBXGroup;
 			children = (
 				8DCEE07626073ECE006C6981 /* SenateEvacuation */,
 				60367088264C13260096852E /* Steed2CruiseControl */,
+				603670A9264C47850096852E /* BathroomStalls */,
 				8DCEE04F2606E523006C6981 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -79,6 +107,7 @@
 			children = (
 				8DCEE07526073ECE006C6981 /* SenateEvacuation */,
 				60367087264C13260096852E /* Steed2CruiseControl */,
+				603670A8264C47850096852E /* BathroomStalls */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -111,6 +140,23 @@
 			productReference = 60367087264C13260096852E /* Steed2CruiseControl */;
 			productType = "com.apple.product-type.tool";
 		};
+		603670A7264C47850096852E /* BathroomStalls */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 603670AE264C47850096852E /* Build configuration list for PBXNativeTarget "BathroomStalls" */;
+			buildPhases = (
+				603670A4264C47850096852E /* Sources */,
+				603670A5264C47850096852E /* Frameworks */,
+				603670A6264C47850096852E /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BathroomStalls;
+			productName = BathroomStalls;
+			productReference = 603670A8264C47850096852E /* BathroomStalls */;
+			productType = "com.apple.product-type.tool";
+		};
 		8DCEE07426073ECE006C6981 /* SenateEvacuation */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8DCEE07B26073ECE006C6981 /* Build configuration list for PBXNativeTarget "SenateEvacuation" */;
@@ -140,6 +186,9 @@
 					60367086264C13260096852E = {
 						CreatedOnToolsVersion = 12.4;
 					};
+					603670A7264C47850096852E = {
+						CreatedOnToolsVersion = 12.4;
+					};
 					8DCEE07426073ECE006C6981 = {
 						CreatedOnToolsVersion = 12.2;
 					};
@@ -160,6 +209,7 @@
 			targets = (
 				8DCEE07426073ECE006C6981 /* SenateEvacuation */,
 				60367086264C13260096852E /* Steed2CruiseControl */,
+				603670A7264C47850096852E /* BathroomStalls */,
 			);
 		};
 /* End PBXProject section */
@@ -170,6 +220,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				6036708A264C13260096852E /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		603670A4264C47850096852E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				603670AB264C47850096852E /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,6 +253,26 @@
 			name = Debug;
 		};
 		6036708D264C13260096852E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		603670AC264C47850096852E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		603670AD264C47850096852E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -345,6 +423,15 @@
 			buildConfigurations = (
 				6036708C264C13260096852E /* Debug */,
 				6036708D264C13260096852E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		603670AE264C47850096852E /* Build configuration list for PBXNativeTarget "BathroomStalls" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				603670AC264C47850096852E /* Debug */,
+				603670AD264C47850096852E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
