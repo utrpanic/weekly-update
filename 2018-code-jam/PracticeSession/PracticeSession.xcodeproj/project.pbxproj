@@ -7,20 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8DCEE0602606E549006C6981 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCEE05F2606E549006C6981 /* main.swift */; };
 		8DCEE07826073ECE006C6981 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCEE07726073ECE006C6981 /* main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		8DCEE05B2606E549006C6981 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-		};
 		8DCEE07326073ECE006C6981 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -33,20 +23,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		8DCEE05D2606E549006C6981 /* NumberGuessing */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = NumberGuessing; sourceTree = BUILT_PRODUCTS_DIR; };
-		8DCEE05F2606E549006C6981 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		8DCEE07526073ECE006C6981 /* SenateEvacuation */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SenateEvacuation; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DCEE07726073ECE006C6981 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		8DCEE05A2606E549006C6981 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		8DCEE07226073ECE006C6981 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -60,7 +41,6 @@
 		8DCEE0452606E523006C6981 = {
 			isa = PBXGroup;
 			children = (
-				8DCEE05E2606E549006C6981 /* NumberGuessing */,
 				8DCEE07626073ECE006C6981 /* SenateEvacuation */,
 				8DCEE04F2606E523006C6981 /* Products */,
 			);
@@ -69,18 +49,9 @@
 		8DCEE04F2606E523006C6981 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8DCEE05D2606E549006C6981 /* NumberGuessing */,
 				8DCEE07526073ECE006C6981 /* SenateEvacuation */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		8DCEE05E2606E549006C6981 /* NumberGuessing */ = {
-			isa = PBXGroup;
-			children = (
-				8DCEE05F2606E549006C6981 /* main.swift */,
-			);
-			path = NumberGuessing;
 			sourceTree = "<group>";
 		};
 		8DCEE07626073ECE006C6981 /* SenateEvacuation */ = {
@@ -94,23 +65,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8DCEE05C2606E549006C6981 /* NumberGuessing */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 8DCEE0612606E549006C6981 /* Build configuration list for PBXNativeTarget "NumberGuessing" */;
-			buildPhases = (
-				8DCEE0592606E549006C6981 /* Sources */,
-				8DCEE05A2606E549006C6981 /* Frameworks */,
-				8DCEE05B2606E549006C6981 /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = NumberGuessing;
-			productName = NumberGuessing;
-			productReference = 8DCEE05D2606E549006C6981 /* NumberGuessing */;
-			productType = "com.apple.product-type.tool";
-		};
 		8DCEE07426073ECE006C6981 /* SenateEvacuation */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8DCEE07B26073ECE006C6981 /* Build configuration list for PBXNativeTarget "SenateEvacuation" */;
@@ -137,9 +91,6 @@
 				LastSwiftUpdateCheck = 1220;
 				LastUpgradeCheck = 1220;
 				TargetAttributes = {
-					8DCEE05C2606E549006C6981 = {
-						CreatedOnToolsVersion = 12.2;
-					};
 					8DCEE07426073ECE006C6981 = {
 						CreatedOnToolsVersion = 12.2;
 					};
@@ -158,21 +109,12 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8DCEE05C2606E549006C6981 /* NumberGuessing */,
 				8DCEE07426073ECE006C6981 /* SenateEvacuation */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		8DCEE0592606E549006C6981 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8DCEE0602606E549006C6981 /* main.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		8DCEE07126073ECE006C6981 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -299,24 +241,6 @@
 			};
 			name = Release;
 		};
-		8DCEE0622606E549006C6981 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		8DCEE0632606E549006C6981 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
 		8DCEE07926073ECE006C6981 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -343,15 +267,6 @@
 			buildConfigurations = (
 				8DCEE0532606E523006C6981 /* Debug */,
 				8DCEE0542606E523006C6981 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		8DCEE0612606E549006C6981 /* Build configuration list for PBXNativeTarget "NumberGuessing" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				8DCEE0622606E549006C6981 /* Debug */,
-				8DCEE0632606E549006C6981 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
