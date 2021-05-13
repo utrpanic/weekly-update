@@ -4,7 +4,7 @@
 - Number Guessing `Python`
 - Senate Evacuation `Swift`
 - Steed 2: Cruise Control `Swift`
-- Bathroom Stalls
+- Bathroom Stalls(Same as 2017 Bathroom Stalls)
 
 ## [Qualification Round](https://codingcompetitions.withgoogle.com/codejam/round/00000000000000cb)
 - Saving The Universe Again
