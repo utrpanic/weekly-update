@@ -7,8 +7,8 @@
 - Bathroom Stalls(Same as 2017 Bathroom Stalls)
 
 ## [Qualification Round](https://codingcompetitions.withgoogle.com/codejam/round/00000000000000cb)
-- Saving The Universe Again
+- Saving The Universe Again `Java`
 - Trouble Sort
-- Go, Gopher!
+- Go, Gopher! `Java`
 - Cubic UFO
 

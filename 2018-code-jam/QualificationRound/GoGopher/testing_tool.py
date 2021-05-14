@@ -45,7 +45,7 @@ LIST_OF_A = [10, 10, 10]
 NUM_TEST_CASES = len(LIST_OF_A)
 # You can set PRINT_INTERACTION_HISTORY to True to print out the interaction
 # history between your code and the judge.
-PRINT_INTERACTION_HISTORY = True
+PRINT_INTERACTION_HISTORY = False
 
 
 """Helper functions"""
@@ -209,4 +209,3 @@ else:
   print("Wrong Answer because of extra output:")
   sys.stdout.write(extra_output)
   sys.exit(-1)
-
