@@ -8,7 +8,7 @@
 
 ## [Qualification Round](https://codingcompetitions.withgoogle.com/codejam/round/00000000000000cb)
 - Saving The Universe Again `Java`
-- Trouble Sort
+- Trouble Sort `Swift`
 - Go, Gopher! `Java`
 - Cubic UFO
 
