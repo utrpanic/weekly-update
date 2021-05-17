@@ -1,12 +1,76 @@
-package com.weeklyupdate.flyswatter;
+import java.util.*;
+import java.io.*;
 
-public class Gap {
-    public static final int TYPE_OUT_OF_CIRCLE = -1;
-    public static final int TYPE_COMPLETE = 0;
-    public static final int TYPE_TOPRIGHT_CUT_ONLY = 3;
-    public static final int TYPE_TOP_CUT = 1;
-    public static final int TYPE_RIGHT_CUT = 2;
-    public static final int TYPE_TOP_AND_RIGHT_CUT = 4;
+public class Solution {
+
+    public static void main(String[] args) throws IOException {
+        // BufferedReader reader = new BufferedReader(
+        //     new StringReader(
+        //         "5\n" +
+        //         "0.250000 1.000000 0.100000 0.010000 0.500000\n" +
+        //         "0.250000 1.000000 0.100000 0.010000 0.900000\n" +
+        //         "0.000010 10000.000000 0.000010 0.000010 1000.000000\n" +
+        //         "0.400000 10000.000000 0.000010 0.000010 700.000000\n" +
+        //         "1.000000 100.000000 1.000000 1.000000 10.000000"
+        //     )
+        // );
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        int t = Integer.parseInt(reader.readLine());
+        for (int i = 0; i < t; ++i) {
+            FlySwatter flySwatter = new FlySwatter(reader);
+            System.out.println("Case #" + (i + 1) + ": " + flySwatter.output());
+        }
+    }
+}
+
+class FlySwatter {
+
+    double fly;
+    double radiusOfRacquet;
+    double thickness;
+    double radiusOfString;
+    double gap;
+
+    FlySwatter(BufferedReader reader) throws IOException {
+        String[] inputs = reader.readLine().split(" ");
+        fly = Double.parseDouble(inputs[0]);
+        radiusOfRacquet = Double.parseDouble(inputs[1]);
+        thickness = Double.parseDouble(inputs[2]);
+        radiusOfString = Double.parseDouble(inputs[3]);
+        gap = Double.parseDouble(inputs[4]);
+    }
+
+    String output() {
+        double areaOfRacquet = Math.PI * radiusOfRacquet * radiusOfRacquet;
+        radiusOfRacquet -= thickness + fly;
+        radiusOfString += fly;
+        gap -= fly * 2;
+
+        double bottomLeftOfGapX = radiusOfString;
+        double bottomLeftOfGapY = radiusOfString;
+        double totalAreaOfGap = 0;
+        while (bottomLeftOfGapY <= radiusOfRacquet) {
+            while (bottomLeftOfGapX <= radiusOfRacquet) {
+                totalAreaOfGap += new Gap(bottomLeftOfGapX, bottomLeftOfGapY, gap, radiusOfRacquet).getArea();
+                bottomLeftOfGapX += gap + radiusOfString * 2;
+            }
+            bottomLeftOfGapY += gap + radiusOfString * 2;
+            bottomLeftOfGapX = radiusOfString;
+        }
+
+        double output = (areaOfRacquet - totalAreaOfGap * 4) / areaOfRacquet;
+
+        return String.format("%.6f", output);
+    }
+}
+
+class Gap {
+    static final int TYPE_OUT_OF_CIRCLE = -1;
+    static final int TYPE_COMPLETE = 0;
+    static final int TYPE_TOPRIGHT_CUT_ONLY = 3;
+    static final int TYPE_TOP_CUT = 1;
+    static final int TYPE_RIGHT_CUT = 2;
+    static final int TYPE_TOP_AND_RIGHT_CUT = 4;
 
     int type;
 
@@ -22,7 +86,7 @@ public class Gap {
     Point onCircleB;
     double heightOfCircleSegment;
 
-    public Gap(double bottomLeftX, double bottomLeftY, double gap, double radius) {
+    Gap(double bottomLeftX, double bottomLeftY, double gap, double radius) {
         this.radius = radius;
         this.gap = gap;
         bottomLeft = new Point(bottomLeftX, bottomLeftY);
@@ -31,7 +95,7 @@ public class Gap {
         topRight = new Point(bottomLeftX + gap, bottomLeftY + gap);
     }
 
-    public double getArea() {
+    double getArea() {
         determineType();
         calculatePointsOnCircle();
         return calculateArea();
