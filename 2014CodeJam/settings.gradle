@@ -1,6 +1,0 @@
-rootProject.name = '2014CodeJam'
-
-include 'MagicTrick'
-
-include 'CookieClickerAlpha'
-
