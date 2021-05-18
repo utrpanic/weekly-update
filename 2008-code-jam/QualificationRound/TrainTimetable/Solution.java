@@ -1,5 +1,3 @@
-package com.weeklyupdate.traintimetable;
-
 import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -8,24 +6,44 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 
-public class TrainTimetable {
+public class Solution {
+
+    public static void main(String[] args) throws IOException, ParseException {
+        BufferedReader reader = new BufferedReader(
+            new StringReader(
+                "3\n" +
+                TestCase.testCase1.input +
+                TestCase.testCase2.input +
+                TestCase.testCase3.input
+            )
+        );
+        // BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        int numberOfCase = Integer.valueOf(reader.readLine());
+        for (int i = 0; i < numberOfCase; i++) {
+            TrainTimetable trainTimetable = new TrainTimetable(reader);
+            System.out.println("Case #" + (i + 1) + ": " + trainTimetable.getOutput());
+        }
+    }
+}
+
+class TrainTimetable {
 
     ArrayList<DepartureOrArrival> mTimetable;
 
-    void initTrainTimetable(BufferedReader in) throws IOException, ParseException {
-        int turnAroundTime = Integer.parseInt(in.readLine());
+    TrainTimetable(BufferedReader reader) throws IOException, ParseException {
+        int turnAroundTime = Integer.parseInt(reader.readLine());
         int numberOfDepartureFromA, numberOfDepartureFromB;
-        String[] numberOfDepartures = in.readLine().split(" ");
+        String[] numberOfDepartures = reader.readLine().split(" ");
         numberOfDepartureFromA = Integer.parseInt(numberOfDepartures[0]);
         numberOfDepartureFromB = Integer.parseInt(numberOfDepartures[1]);
         mTimetable = new ArrayList<DepartureOrArrival>();
         for (int i = 0; i < numberOfDepartureFromA; i++) {
-            String[] times = in.readLine().split(" ");
+            String[] times = reader.readLine().split(" ");
             mTimetable.add(new Departure(Station.STATION_A, times[0]));
             mTimetable.add(new Arrival(Station.STATION_B, times[1], turnAroundTime));
         }
         for (int i = 0; i < numberOfDepartureFromB; i++) {
-            String[] times = in.readLine().split(" ");
+            String[] times = reader.readLine().split(" ");
             mTimetable.add(new Departure(Station.STATION_B, times[0]));
             mTimetable.add(new Arrival(Station.STATION_A, times[1], turnAroundTime));
         }
@@ -73,28 +91,6 @@ public class TrainTimetable {
         }
         return newTrainNeededA + " " + newTrainNeededB;
     }
-
-    public static void main(String[] args) throws IOException, ParseException {
-        TrainTimetable.process("TrainTimetable/B-small-practice.in", "TrainTimetable/B-small-practice.out");
-        TrainTimetable.process("TrainTimetable/B-large-practice.in", "TrainTimetable/B-large-practice.out");
-    }
-
-    private static void process(String inputFileName, String outputFileName) throws IOException, ParseException {
-        BufferedReader in = new BufferedReader(new FileReader(inputFileName));
-        BufferedWriter out = new BufferedWriter(new FileWriter(outputFileName));
-
-        int numberOfCase = Integer.valueOf(in.readLine());
-        TrainTimetable trainTimetable = new TrainTimetable();
-        for (int i = 0; i < numberOfCase; i++) {
-            trainTimetable.initTrainTimetable(in);
-            String output = "Case #" + (i + 1) + ": " + trainTimetable.getOutput() + "\n";
-            out.write(output);
-            System.out.print(output + "\n");
-        }
-
-        in.close();
-        out.close();
-    }
 }
 
 enum State {
@@ -132,4 +128,38 @@ class Arrival extends DepartureOrArrival {
         mState = State.ARRIVAL;
         mTime = new Date(mTime.getTime() + (turnArroundTime * 60000));
     }
+}
+
+class TestCase {
+
+    String input;
+    
+    TestCase(String input) {
+        this.input = input;
+    }
+
+    static TestCase testCase1 = new TestCase(
+        "5\n" +
+        "3 2\n" +
+        "09:00 12:00\n" +
+        "10:00 13:00\n" +
+        "11:00 12:30\n" +
+        "12:02 15:00\n" +
+        "09:00 10:30\n"
+    ); // "2 2"
+
+    static TestCase testCase2 = new TestCase(
+        "2\n" +
+        "2 0\n" +
+        "09:00 09:01\n" +
+        "12:00 12:02\n"
+    ); // "2 0"
+
+    static TestCase testCase3 = new TestCase(
+        "0\n" +
+        "1 2\n" +
+        "01:40 01:41\n" +
+        "01:39 01:40\n" +
+        "01:40 01:41\n"
+    ); // "0 2"
 }
