@@ -1,7 +1,29 @@
 import java.io.*;
 import java.util.*;
 
-public class SavingTheUniverse {
+public class Solution {
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(
+            new StringReader(
+                "5\n" +
+                TestCase.testCase1.string() +
+                TestCase.testCase2.string() +
+                TestCase.testCase3.string() +
+                TestCase.testCase4.string() +
+                TestCase.testCase5.string()
+            )
+        );
+        // BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        int numberOfCase = Integer.valueOf(reader.readLine());
+        for (int i = 0; i < numberOfCase; i++) {
+            SavingTheUniverse savingTheUniverse = new SavingTheUniverse(reader);
+            System.out.println("Case #" + (i + 1) + ": " + savingTheUniverse.getOutput());
+        }
+    }
+}
+
+class SavingTheUniverse {
 
     String[] searchEngines;
     String[] queries;
@@ -56,25 +78,6 @@ public class SavingTheUniverse {
 
     boolean shouldSwitchSearchEngine(int i) {
         return queries[i].equals(currentSearchEngine);
-    }
-
-    public static void main(String[] args) throws IOException {
-        BufferedReader reader = new BufferedReader(
-            new StringReader(
-                "5\n" +
-                TestCase.testCase1.string() +
-                TestCase.testCase2.string() +
-                TestCase.testCase3.string() +
-                TestCase.testCase4.string() +
-                TestCase.testCase5.string()
-            )
-        );
-        // BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        int numberOfCase = Integer.valueOf(reader.readLine());
-        for (int i = 0; i < numberOfCase; i++) {
-            SavingTheUniverse savingTheUniverse = new SavingTheUniverse(reader);
-            System.out.println("Case #" + (i + 1) + ": " + savingTheUniverse.getOutput());
-        }
     }
 }
 
