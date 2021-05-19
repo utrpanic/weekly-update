@@ -1,17 +1,76 @@
 
 class DeceitfulWar {
     
+    let numberOfBlock: Int
+    let blocksOfKen: [Double]
+    let blocksOfNaomi: [Double]
+    
     convenience init() {
-        _ = readLine()
-        self.init(input: readLine()!)
+        let number = readLine()!
+        let naomi = readLine()!
+        let ken = readLine()!
+        self.init(number: number, naomi: naomi, ken: ken)
     }
     
-    init(input: String) {
-        
+    init(number: String, naomi: String, ken: String) {
+        self.numberOfBlock = Int(number)!
+        self.blocksOfNaomi = naomi.split(separator: " ").map { Double($0)! }.sorted()
+        self.blocksOfKen = ken.split(separator: " ").map { Double($0)! }.sorted()
     }
     
     func output() -> String {
-        return "0 0"
+        let deceitfulWarPoint = self.playDeceitfulWar()
+        let warPoint = self.playWar()
+        return "\(deceitfulWarPoint) \(warPoint)"
+    }
+    
+    private func playDeceitfulWar() -> Int {
+        var naomi = self.blocksOfNaomi
+        var ken = self.blocksOfKen
+        var naomiPoint = 0
+        for _ in 0 ..< self.numberOfBlock {
+            let toldNaomi = max(ken[ken.count - 1] + 0.000001, naomi[naomi.count - 1])
+            let chosenIndexByKen = self.chosenIndexByKen(ken, chosenNaomi: toldNaomi)
+            let chosenKen = ken.remove(at: chosenIndexByKen)
+            let chosenIndexByNaomi = self.chosenIndexByNaomi(naomi, chosenKen: chosenKen)
+            let chosenNaomi = naomi.remove(at: chosenIndexByNaomi)
+            if chosenNaomi > chosenKen {
+                naomiPoint += 1
+            }
+        }
+        return naomiPoint
+    }
+    
+    private func chosenIndexByNaomi(_ naomi: [Double], chosenKen: Double) -> Int {
+        for index in 0 ..< naomi.count {
+            if naomi[index] > chosenKen {
+                return index
+            }
+        }
+        return 0
+    }
+    
+    private func chosenIndexByKen(_ ken: [Double], chosenNaomi: Double) -> Int {
+        for index in 0 ..< ken.count {
+            if ken[index] > chosenNaomi {
+                return index
+            }
+        }
+        return 0
+    }
+    
+    private func playWar() -> Int {
+        var naomi = self.blocksOfNaomi
+        var ken = self.blocksOfKen
+        var naomiPoint = 0
+        for _ in 0 ..< self.numberOfBlock {
+            let chosenNaomi = naomi.remove(at: 0)
+            let chosenIndexByKen = self.chosenIndexByKen(ken, chosenNaomi: chosenNaomi)
+            if chosenNaomi > ken.remove(at: chosenIndexByKen) {
+                naomiPoint += 1
+            }
+        }
+        return naomiPoint
     }
 }
 
@@ -20,8 +79,7 @@ typealias Solution = DeceitfulWar
 func start() {
     let count = Int(readLine()!)!
     for index in 1 ... count {
-        let input = readLine()!
-        let solution = Solution(input: input)
+        let solution = Solution()
         print("Case #\(index): \(solution.output())")
     }
 }
@@ -57,7 +115,8 @@ let tests: Array<Test> = [
 ]
 
 tests.forEach({
-    let output = Solution(input: $0.input).output()
+    let inputs = $0.input.split(separator: "\n").map { String($0) }
+    let output = Solution(number: inputs[0], naomi: inputs[1], ken: inputs[2]).output()
     if $0.expected == output {
         print("✅ input: \($0.input), output: \(output)")
     } else {
