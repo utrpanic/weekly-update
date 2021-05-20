@@ -1,8 +1,0 @@
-rootProject.name = '2008CodeJamQualificationRound'
-
-include 'SavingTheUniverse'
-
-include 'TrainTimetable'
-
-include 'FlySwatter'
-
