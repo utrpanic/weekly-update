@@ -39,9 +39,6 @@ class MinesweeperMaster {
     
     func output() -> String {
         self.setMinesPhase1()
-        if self.numberOfMines % 2 == 1 {
-            return "Impossible"
-        }
         self.setMinesPhase2()
         self.clickBottomRightCell()
         if self.cellsContainUnknown() {
@@ -52,10 +49,9 @@ class MinesweeperMaster {
     }
     
     private func setMinesPhase1() {
-        let rowIteration = self.numberOfRows > 2 ? self.numberOfRows - 2 : self.numberOfRows
-        let columnIteration = self.numberOfColumns > 2 ? self.numberOfColumns - 2 : self.numberOfColumns
-        for row in 0 ..< rowIteration {
-            for column in 0 ..< columnIteration {
+        guard self.numberOfRows > 2 && self.numberOfColumns > 2 else { return }
+        for row in 0 ..< numberOfRows - 2 {
+            for column in 0 ..< numberOfColumns - 2 {
                 if self.numberOfMines > 0 {
                     self.cells[row][column] = .mine
                     self.numberOfMines -= 1
@@ -88,20 +84,23 @@ class MinesweeperMaster {
     private func clickBottomRightCell() {
         let clickRow = self.cells.count - 1
         let clickColumn = self.cells[clickRow].count - 1
-        defer {
-            self.cells[clickRow][clickColumn] = .click
-        }
-        for row in (0 ..< self.cells.count).reversed() {
-            for column in (0 ..< self.cells[row].count).reversed() {
-                switch self.cells[row][column] {
-                case .mine:
-                    break
-                default:
-                    let count = self.adjacentCount(row: row, column: column)
-                    if row == clickRow && column == clickColumn && count > 0 {
-                        return
+        self.click(row: clickRow, column: clickColumn)
+        self.cells[clickRow][clickColumn] = .click
+    }
+    
+    private func click(row: Int, column: Int) {
+        guard 0 <= row && row < self.numberOfRows else { return }
+        guard 0 <= column && column < self.numberOfColumns else { return }
+        guard case .unknown = self.cells[row][column] else { return }
+        let count = self.adjacentCount(row: row, column: column)
+        self.cells[row][column] = .adjacent(count)
+        if count == 0 {
+            for neighborRow in row - 1 ..< row + 1 {
+                for neighborColumn in column - 1 ..< column + 1 {
+                    if neighborRow == row && neighborColumn == column {
+                        continue
                     } else {
-                        self.cells[row][column] = .adjacent(count)
+                        self.click(row: neighborRow, column: neighborColumn)
                     }
                 }
             }
@@ -133,34 +132,6 @@ class MinesweeperMaster {
         return adjacent
     }
     
-    private func cellCanOpen(row: Int, column: Int) -> Bool {
-        if case let .adjacent(count) = self.cells[row][column], count == 0 {
-            return true
-        }
-        if row + 1 < self.cells.count && 0 <= column - 1 {
-            if case let .adjacent(count) = self.cells[row + 1][column - 1], count == 0 {
-                return true
-            }
-        }
-        if row + 1 < self.cells.count {
-            if case let .adjacent(count) = self.cells[row + 1][column], count == 0 {
-                return true
-            }
-        }
-        if row + 1 < self.cells.count && column + 1 < self.cells[row + 1].count {
-            if case let .adjacent(count) = self.cells[row + 1][column + 1], count == 0 {
-                return true
-            }
-        }
-        
-        if column + 1 < self.cells[row].count {
-            if case let .adjacent(count) = self.cells[row][column + 1], count == 0 {
-                return true
-            }
-        }
-        return false
-    }
-    
     private func cellsContainUnknown() -> Bool {
         for row in 0 ..< self.cells.count {
             let cellsInRow = self.cells[row]
@@ -173,7 +144,7 @@ class MinesweeperMaster {
         return false
     }
     
-    private func printCells() -> String {
+    func printCells() -> String {
         var result = ""
         for row in 0 ..< self.cells.count {
             let cellsInRow = self.cells[row].map { $0.print }
@@ -202,6 +173,9 @@ struct Test {
 }
 
 let tests: Array<Test> = [
+    Test(input: "1 1 0", expected: """
+        c
+        """),
     Test(input: "5 5 23", expected: """
         Impossible
         """),
@@ -210,8 +184,15 @@ let tests: Array<Test> = [
         .
         *
         """),
-    Test(input: "1 3 1", expected: """
-        *.c
+    Test(input: "2 4 2", expected: """
+        *...
+        *..c
+        """),
+    Test(input: "4 2 2", expected: """
+        **
+        ..
+        ..
+        .c
         """),
     Test(input: "4 4 5", expected: """
         Impossible
@@ -239,9 +220,14 @@ let tests: Array<Test> = [
         """),
 ]
 
-tests.forEach({
+tests.forEach {
     let expected = $0.expected == "Impossible" ? "Impossible" : "Possible"
-    print("✅ input: \($0.input), expected: \(expected)")
-    let output = Solution(input: $0.input).output()
-    print("\(output)")
-})
+    let solution = Solution(input: $0.input)
+    let output = solution.output()
+    if output == "Impossible" && expected == "Impossible" {
+        print("✅ input: \($0.input), result: Impossible")
+    } else {
+        print("❓ input: \($0.input), expected: \(expected)")
+    }
+    print(solution.printCells())
+}
