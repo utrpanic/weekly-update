@@ -19,7 +19,7 @@ class MinesweeperMaster {
     
     let numberOfRows: Int
     let numberOfColumns: Int
-    let numberOfMines: Int
+    var numberOfMines: Int
     var cells: [[Cell]]
     
     convenience init() {
@@ -38,8 +38,12 @@ class MinesweeperMaster {
     }
     
     func output() -> String {
-        self.setMines()
-        self.clickCell()
+        self.setMinesPhase1()
+        if self.numberOfMines % 2 == 1 {
+            return "Impossible"
+        }
+        self.setMinesPhase2()
+        self.clickBottomRightCell()
         if self.cellsContainUnknown() {
             return "Impossible"
         } else {
@@ -47,63 +51,61 @@ class MinesweeperMaster {
         }
     }
     
-    private func setMines() {
-        var mines = self.numberOfMines
-        let numberOfIteration = min(self.numberOfRows, self.numberOfColumns)
-        for index in 0 ..< numberOfIteration {
-            let minesInRow: Int
-            if mines >= self.numberOfColumns - index {
-                minesInRow = self.numberOfColumns - index
-            } else {
-                if mines == self.numberOfColumns - index - 1 && index < numberOfIteration - 2 {
-                    minesInRow = self.numberOfColumns - index - 2
-                } else {
-                    minesInRow = mines
+    private func setMinesPhase1() {
+        let rowIteration = self.numberOfRows > 2 ? self.numberOfRows - 2 : self.numberOfRows
+        let columnIteration = self.numberOfColumns > 2 ? self.numberOfColumns - 2 : self.numberOfColumns
+        for row in 0 ..< rowIteration {
+            for column in 0 ..< columnIteration {
+                if self.numberOfMines > 0 {
+                    self.cells[row][column] = .mine
+                    self.numberOfMines -= 1
                 }
             }
-            for column in index ..< index + minesInRow {
-                self.cells[index][column] = .mine
-            }
-            mines -= minesInRow
-            if mines == 0 { break }
-            
-            mines += 1
-            let minesInColumn: Int
-            if mines >= self.numberOfRows - index {
-                minesInColumn = self.numberOfRows - index
-            } else {
-                if mines == self.numberOfRows - index - 1 && index < numberOfIteration - 2 {
-                    minesInColumn = self.numberOfRows - index - 2
-                } else {
-                    minesInColumn = mines
-                }
-            }
-            for row in index ..< index + minesInColumn {
-                self.cells[row][index] = .mine
-            }
-            mines -= minesInColumn
-            if mines == 0 { break }
         }
     }
     
-    private func clickCell() {
-        for row in (0 ..< self.cells.count).reversed() {
-            for column in (0 ..< self.cells[row].count).reversed() {
-                if case .mine = self.cells[row][column] {
-                    break
-                } else {
-                    self.cells[row][column] = .adjacent(self.adjacentCount(row: row, column: column))
-                    if self.cellCanOpen(row: row, column: column) {
-                        continue
-                    } else {
-                        break
+    private func setMinesPhase2() {
+        if self.numberOfRows > 2 {
+            for row in 0 ..< self.numberOfRows - 2 {
+                for column in 0 ..< self.numberOfColumns {
+                    if case .unknown = self.cells[row][column], self.numberOfMines > 0 {
+                        self.cells[row][column] = .mine
+                        self.numberOfMines -= 1
                     }
                 }
             }
         }
-        let lastRow = self.cells.count - 1
-        let lastColumn = self.cells[lastRow].count - 1
-        self.cells[lastRow][lastColumn] = .click
+        for column in 0 ..< self.numberOfColumns {
+            for row in 0 ..< self.numberOfRows {
+                if case .unknown = self.cells[row][column], self.numberOfMines > 0 {
+                    self.cells[row][column] = .mine
+                    self.numberOfMines -= 1
+                }
+            }
+        }
+    }
+    
+    private func clickBottomRightCell() {
+        let clickRow = self.cells.count - 1
+        let clickColumn = self.cells[clickRow].count - 1
+        defer {
+            self.cells[clickRow][clickColumn] = .click
+        }
+        for row in (0 ..< self.cells.count).reversed() {
+            for column in (0 ..< self.cells[row].count).reversed() {
+                switch self.cells[row][column] {
+                case .mine:
+                    break
+                default:
+                    let count = self.adjacentCount(row: row, column: column)
+                    if row == clickRow && column == clickColumn && count > 0 {
+                        return
+                    } else {
+                        self.cells[row][column] = .adjacent(count)
+                    }
+                }
+            }
+        }
     }
     
     private func adjacentCount(row: Int, column: Int) -> Int {
@@ -207,6 +209,12 @@ let tests: Array<Test> = [
         c
         .
         *
+        """),
+    Test(input: "1 3 1", expected: """
+        *.c
+        """),
+    Test(input: "4 4 5", expected: """
+        Impossible
         """),
     Test(input: "2 2 1", expected: """
         Impossible
