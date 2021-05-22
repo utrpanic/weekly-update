@@ -4,5 +4,5 @@
 - Magic Trick `Java 11`
 - Cookie Clicker Alpha `Java 11`
 - Deceitful War `Swift 5`
-- Minesweeper Master
+- Minesweeper Master `Swift 5`
 
