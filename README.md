@@ -11,7 +11,7 @@
 - [ ] Qualification Round
 
 ## 2014 Code Jam
-- [ ] Qualification Round
+- [x] Qualification Round
 
 ## 2008 Code Jam Qualification Round
 - [ ] Qualification Round
