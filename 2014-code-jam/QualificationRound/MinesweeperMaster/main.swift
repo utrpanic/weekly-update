@@ -151,6 +151,7 @@ class MinesweeperMaster {
             result.append(cellsInRow.joined())
             result.append("\n")
         }
+        result.removeLast()
         return result
     }
 }
@@ -161,7 +162,8 @@ func start() {
     let count = Int(readLine()!)!
     for index in 1 ... count {
         let solution = Solution()
-        print("Case #\(index): \(solution.output())")
+        print("Case #\(index):")
+        print(solution.output())
     }
 }
 
@@ -173,31 +175,84 @@ struct Test {
 }
 
 let tests: Array<Test> = [
-    Test(input: "1 1 0", expected: """
-        c
-        """),
+    Test(input: "1 1 0", expected: ""),
+    Test(input: "1 2 0", expected: ""),
+    Test(input: "1 2 1", expected: ""),
+    Test(input: "2 1 0", expected: ""),
+    Test(input: "2 1 1", expected: ""),
+    Test(input: "2 2 0", expected: ""),
+    Test(input: "2 2 1", expected: "Impossible"),
+    Test(input: "2 2 2", expected: "Impossible"),
+    Test(input: "2 2 3", expected: ""),
+    
+    Test(input: "2 3 0", expected: ""),
+    Test(input: "2 3 1", expected: "Impossible"),
+    Test(input: "2 3 2", expected: ""),
+    Test(input: "2 3 3", expected: "Impossible"),
+    Test(input: "2 3 4", expected: "Impossible"),
+    Test(input: "2 3 5", expected: ""),
+    
+    Test(input: "3 2 0", expected: ""),
+    Test(input: "3 2 1", expected: "Impossible"),
+    Test(input: "3 2 2", expected: ""),
+    Test(input: "3 2 3", expected: "Impossible"),
+    Test(input: "3 2 4", expected: "Impossible"),
+    Test(input: "3 2 5", expected: ""),
+    
+    Test(input: "3 3 0", expected: ""),
+    Test(input: "3 3 1", expected: ""),
+    Test(input: "3 3 2", expected: "Impossible"),
+    Test(input: "3 3 3", expected: ""),
+    Test(input: "3 3 4", expected: "Impossible"),
+    Test(input: "3 3 5", expected: ""),
+    Test(input: "3 3 6", expected: "Impossible"),
+    Test(input: "3 3 7", expected: "Impossible"),
+    Test(input: "3 3 8", expected: ""),
+    
+    Test(input: "3 4 0", expected: ""),
+    Test(input: "3 4 1", expected: ""),
+    Test(input: "3 4 2", expected: ""),
+    Test(input: "3 4 3", expected: "Impossible"),
+    Test(input: "3 4 4", expected: ""),
+    Test(input: "3 4 5", expected: "Impossible"),
+    Test(input: "3 4 6", expected: ""),
+    Test(input: "3 4 7", expected: "Impossible"),
+    Test(input: "3 4 8", expected: ""),
+    Test(input: "3 4 9", expected: "Impossible"),
+    Test(input: "3 4 10", expected: "Impossible"),
+    Test(input: "3 4 11", expected: ""),
+    
+    Test(input: "4 3 0", expected: ""),
+    Test(input: "4 3 1", expected: ""),
+    Test(input: "4 3 2", expected: ""),
+    Test(input: "4 3 3", expected: "Impossible"),
+    Test(input: "4 3 4", expected: ""),
+    Test(input: "4 3 5", expected: "Impossible"),
+    Test(input: "4 3 6", expected: ""),
+    Test(input: "4 3 7", expected: "Impossible"),
+    Test(input: "4 3 8", expected: ""),
+    Test(input: "4 3 9", expected: "Impossible"),
+    Test(input: "4 3 10", expected: "Impossible"),
+    Test(input: "4 3 11", expected: ""),
+    
+    Test(input: "4 4 0", expected: ""),
+    Test(input: "4 4 1", expected: ""),
+    Test(input: "4 4 2", expected: ""),
+    Test(input: "4 4 3", expected: ""),
+    Test(input: "4 4 4", expected: ""),
+    Test(input: "4 4 5", expected: "Impossible"),
+    Test(input: "4 4 6", expected: ""),
+    Test(input: "4 4 7", expected: "Impossible"),
+    Test(input: "4 4 8", expected: ""),
+    Test(input: "4 4 9", expected: "Impossible"),
+    Test(input: "4 4 10", expected: ""),
+    Test(input: "4 4 11", expected: "Impossible"),
+    Test(input: "4 4 12", expected: ""),
+    Test(input: "4 4 13", expected: "Impossible"),
+    Test(input: "4 4 14", expected: "Impossible"),
+    Test(input: "4 4 15", expected: ""),
+    
     Test(input: "5 5 23", expected: """
-        Impossible
-        """),
-    Test(input: "3 1 1", expected: """
-        c
-        .
-        *
-        """),
-    Test(input: "2 4 2", expected: """
-        *...
-        *..c
-        """),
-    Test(input: "4 2 2", expected: """
-        **
-        ..
-        ..
-        .c
-        """),
-    Test(input: "4 4 5", expected: """
-        Impossible
-        """),
-    Test(input: "2 2 1", expected: """
         Impossible
         """),
     Test(input: "4 7 3", expected: """
