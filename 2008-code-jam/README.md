@@ -1,17 +1,17 @@
-# CodeJam 2008
+# Code Jam 2008
 
-## 2008 Practice Contest
+## Practice Contest
 - [x] Old Magician
 - [ ] Square Fields
 - [ ] Cycles
 
-## 2008 Code Jam Beta
+## Code Jam Beta
 - [x] Triangle Trilemma
 - [x] The Price is Wrong
 - [ ] Random Route
 - [ ] Hexagon Game
 
-## 2008 Practice Problems
+## Practice Problems
 - [x] Alien Numbers
 - [x] Always Turn Left
 - [x] Egg Drop
