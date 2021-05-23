@@ -8,10 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		6055BAA8265A61FE0030CD75 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6055BAA7265A61FD0030CD75 /* main.swift */; };
+		6055BAB3265A6CF80030CD75 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6055BAB2265A6CF80030CD75 /* main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		6055BAA3265A61FD0030CD75 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		6055BAAE265A6CF70030CD75 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -25,10 +35,19 @@
 /* Begin PBXFileReference section */
 		6055BAA5265A61FD0030CD75 /* CountingSheep */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CountingSheep; sourceTree = BUILT_PRODUCTS_DIR; };
 		6055BAA7265A61FD0030CD75 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		6055BAB0265A6CF70030CD75 /* RevengeOfThePancakes */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RevengeOfThePancakes; sourceTree = BUILT_PRODUCTS_DIR; };
+		6055BAB2265A6CF80030CD75 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		6055BAA2265A61FD0030CD75 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6055BAAD265A6CF70030CD75 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -42,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				6055BAA6265A61FD0030CD75 /* CountingSheep */,
+				6055BAB1265A6CF70030CD75 /* RevengeOfThePancakes */,
 				6055BA98265A61F10030CD75 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -50,6 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				6055BAA5265A61FD0030CD75 /* CountingSheep */,
+				6055BAB0265A6CF70030CD75 /* RevengeOfThePancakes */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -60,6 +81,14 @@
 				6055BAA7265A61FD0030CD75 /* main.swift */,
 			);
 			path = CountingSheep;
+			sourceTree = "<group>";
+		};
+		6055BAB1265A6CF70030CD75 /* RevengeOfThePancakes */ = {
+			isa = PBXGroup;
+			children = (
+				6055BAB2265A6CF80030CD75 /* main.swift */,
+			);
+			path = RevengeOfThePancakes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -82,6 +111,23 @@
 			productReference = 6055BAA5265A61FD0030CD75 /* CountingSheep */;
 			productType = "com.apple.product-type.tool";
 		};
+		6055BAAF265A6CF70030CD75 /* RevengeOfThePancakes */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6055BAB4265A6CF80030CD75 /* Build configuration list for PBXNativeTarget "RevengeOfThePancakes" */;
+			buildPhases = (
+				6055BAAC265A6CF70030CD75 /* Sources */,
+				6055BAAD265A6CF70030CD75 /* Frameworks */,
+				6055BAAE265A6CF70030CD75 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RevengeOfThePancakes;
+			productName = RevengeOfThePancakes;
+			productReference = 6055BAB0265A6CF70030CD75 /* RevengeOfThePancakes */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -92,6 +138,9 @@
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
 					6055BAA4265A61FD0030CD75 = {
+						CreatedOnToolsVersion = 12.5;
+					};
+					6055BAAF265A6CF70030CD75 = {
 						CreatedOnToolsVersion = 12.5;
 					};
 				};
@@ -110,6 +159,7 @@
 			projectRoot = "";
 			targets = (
 				6055BAA4265A61FD0030CD75 /* CountingSheep */,
+				6055BAAF265A6CF70030CD75 /* RevengeOfThePancakes */,
 			);
 		};
 /* End PBXProject section */
@@ -120,6 +170,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				6055BAA8265A61FE0030CD75 /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6055BAAC265A6CF70030CD75 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6055BAB3265A6CF80030CD75 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,6 +317,24 @@
 			};
 			name = Release;
 		};
+		6055BAB5265A6CF80030CD75 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		6055BAB6265A6CF80030CD75 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -276,6 +352,15 @@
 			buildConfigurations = (
 				6055BAAA265A61FE0030CD75 /* Debug */,
 				6055BAAB265A61FE0030CD75 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6055BAB4265A6CF80030CD75 /* Build configuration list for PBXNativeTarget "RevengeOfThePancakes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6055BAB5265A6CF80030CD75 /* Debug */,
+				6055BAB6265A6CF80030CD75 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
