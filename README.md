@@ -15,3 +15,7 @@
 
 ## 2019 Code Jam
 - Qualification Round
+
+## 2021 Code Jam
+- Qualification Round
+

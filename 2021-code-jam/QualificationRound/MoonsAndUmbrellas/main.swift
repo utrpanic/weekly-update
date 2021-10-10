@@ -1,4 +1,3 @@
-
 final class CodyJamal {
     
     var cjCost: Int
@@ -10,7 +9,7 @@ final class CodyJamal {
     }
     
     init(input: String) {
-        let inputs = input.split(separator: " ").map { String($0) }
+        let inputs = input.split(separator: " ").map(String.init)
         self.cjCost = Int(inputs[0])!
         self.jcCost = Int(inputs[1])!
         self.mural = inputs[2].map { $0 }
@@ -52,21 +51,36 @@ final class CodyJamal {
     }
 }
 
-let testCaseCount = Int(readLine()!)!
-for index in 1 ... testCaseCount {
-    let output = CodyJamal().output()
-    print("Case #\(index): \(output)")
+typealias Solution = CodyJamal
+
+func start() {
+    let count = Int(readLine()!)!
+    for index in 1 ... count {
+        let solution = Solution()
+        print("Case #\(index): \(solution.output())")
+    }
 }
 
-let testCases: [(String, String)] = [
-    ("2 3 CJ?CC?", "5"),
-    ("4 2 CJCJ", "10"),
-    ("1 3 C?J", "1"),
-    ("2 5 ??J???", "0"),
-    ("2 -5 ??JJ??", "-8")
+//start()
+
+struct Test {
+    var input: String
+    var expected: String
+}
+
+let tests: Array<Test> = [
+    Test(input: "2 3 CJ?CC?", expected: "5"),
+    Test(input: "4 2 CJCJ", expected: "10"),
+    Test(input: "1 3 C?J", expected: "1"),
+    Test(input: "2 5 ??J???", expected: "0"),
+    Test(input: "2 -5 ??JJ??", expected: "-8"),
 ]
 
-testCases.forEach { (input, expected) in
-    let result = CodyJamal(input: input).output()
-    print(result == expected ? "OK" : result)
+tests.forEach {
+    let output = Solution(input: $0.input).output()
+    if $0.expected == output {
+        print("✅ input: \($0.input), output: \(output)")
+    } else {
+        print("❗️ input: \($0.input), expected: \($0.expected), actually: \(output)")
+    }
 }
