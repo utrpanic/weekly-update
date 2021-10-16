@@ -1,30 +1,28 @@
-//
-//  Revenge.swift
-//  1-qualification-round
-//
-//  Created by boxjeon on 2017. 4. 16..
-//  Copyright © 2017년 boxjeon. All rights reserved.
-//
 
 enum Pancake: String {
+    
     case happy = "+"
     case blank = "-"
+    
     func flip() -> Pancake {
         switch self {
-        case .happy:
-            return .blank
-        case .blank:
-            return .happy
+        case .happy: return .blank
+        case .blank: return .happy
         }
     }
 }
 
-class Revenge {
+class RevengeOfThePancakes {
     
     private var pancakes: Array<Pancake>
     
     init(input: String) {
-        self.pancakes = input.characters.flatMap({ Pancake(rawValue: String($0)) })
+        self.pancakes = input.map { Pancake(rawValue: String($0))! }
+    }
+    
+    convenience init() {
+        let input = readLine()!
+        self.init(input: input)
     }
     
     func output() -> String {
@@ -68,5 +66,38 @@ class Revenge {
         }
         return flippedPancakes
     }
-    
+}
+
+typealias Solution = RevengeOfThePancakes
+
+func start() {
+    let count = Int(readLine()!)!
+    for index in 1 ... count {
+        let solution = Solution()
+        print("Case #\(index): \(solution.output())")
+    }
+}
+
+//start()
+
+struct Test {
+    var input: String
+    var expected: String
+}
+
+let tests: Array<Test> = [
+    Test(input: "-", expected: "1"),
+    Test(input: "-+", expected: "1"),
+    Test(input: "+-", expected: "2"),
+    Test(input: "+++", expected: "0"),
+    Test(input: "--+-", expected: "3"),
+]
+
+tests.forEach {
+    let output = Solution(input: $0.input).output()
+    if $0.expected == output {
+        print("✅ input: \($0.input), output: \(output)")
+    } else {
+        print("❗️ input: \($0.input), expected: \($0.expected), actually: \(output)")
+    }
 }

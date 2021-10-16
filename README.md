@@ -6,6 +6,9 @@
 ## 2014 Code Jam
 - Qualification Round
 
+## 2016 Code Jam
+- Qualification Round
+
 ## 2017 Code Jam
 - Qualification Round
 
