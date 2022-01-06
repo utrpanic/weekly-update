@@ -1,104 +1,141 @@
 import Foundation
 
-struct Timber {
-    
-    struct Tree {
-        let location: Int
-        let height: Int
+final class Timber {
+  
+  private struct Tree {
+    let location: Int
+    let height: Int
+  }
+  
+  private struct Combined {
+    var start: Int
+    var end: Int
+    var length: Int { self.end - self.start }
+  }
+  
+  private var trees: [Tree] = []
+  private var rightMax: [Int: Combined] = [:]
+  private var leftMax: [Int: Combined] = [:]
+  
+  init(input: String) {
+    var inputs = input.split(separator: "\n").map { String($0) }
+    let treeCount = Int(inputs.removeFirst())!
+    for _ in 0 ..< treeCount {
+      let rawTree = inputs.removeFirst().split(separator: " ").map { Int($0)! }
+      let tree = Tree(location: rawTree[0], height: rawTree[1])
+      self.trees.append(tree)
     }
-    
-    var trees: [Tree] = []
-    
-    init(input: String) {
-        var inputs = input.split(separator: "\n").map { String($0) }
-        let treeCount = Int(inputs.removeFirst())!
-        for _ in 0 ..< treeCount {
-            let rawTree = inputs.removeFirst().split(separator: " ").map { Int($0)! }
-            let tree = Tree(location: rawTree[0], height: rawTree[1])
-            self.trees.append(tree)
-        }
-        self.trees.sort { $0.location < $1.location }
+    self.trees.sort { $0.location < $1.location }
+  }
+  
+  func output() -> String {
+    self.cutDownTreesToRight()
+    self.cutDownTreesToLeft()
+    return String(self.findMax())
+  }
+  
+  private func cutDownTreesToRight() {
+    self.trees.forEach { tree in
+      let position = tree.location + tree.height
+      if let previous = self.rightMax[tree.location] {
+        self.rightMax[position] = Combined(start: previous.start, end: position)
+      } else {
+        self.rightMax[position] = Combined(start: tree.location, end: position)
+      }
     }
-    
-    func output() -> String {
-        var result: (from: Int, to: Int)
-        for index in 0 ..< self.trees.count {
-            let smallResult = self.calculate(Array(self.trees[0..<index]))
-        }
+  }
+  
+  private func cutDownTreesToLeft() {
+    self.trees.reversed().forEach { tree in
+      let position = tree.location - tree.height
+      if let previous = self.leftMax[tree.location] {
+        self.leftMax[position] = Combined(start: position, end: previous.end)
+      } else {
+        self.leftMax[position] = Combined(start: position, end: tree.location)
+      }
     }
-    
-    func calculate(_ trees: [Tree]) -> (Int, Int) {
-        
+  }
+  
+  private func findMax() -> Int {
+    let rightKeys = Array(self.rightMax.keys)
+    let leftKeys = Array(self.leftMax.keys)
+    var maxLength = 0
+    Set(rightKeys + leftKeys).forEach { position in
+      let right = self.rightMax[position]?.length ?? 0
+      let left = self.leftMax[position]?.length ?? 0
+      maxLength = max(maxLength, right + left)
     }
+    return maxLength
+  }
 }
 
 typealias TestCase = Timber
 
 class Solution {
-    
-    func start() {
-        let name = "small"
-        let path = Bundle.main.path(forResource: "\(name)-input", ofType: "txt")!
-        var inputs = (try! String(contentsOfFile: path)).components(separatedBy: "\n").filter({ !$0.isEmpty })
-        var outputs = Array<String>()
-        let testCount = Int(inputs.removeFirst())!
-        for index in 0 ..< testCount {
-            let inputLines = Int(inputs.removeFirst())!
-            var caseInput = [String]()
-            for _ in 0 ..< inputLines {
-                caseInput.append(inputs.removeFirst())
-            }
-            let result = TestCase(input: caseInput.joined(separator: "\n")).output()
-            outputs.append("Case #\(index + 1): \(result)")
-        }
-        var outputUrl = FileManager.default.urls(for: .desktopDirectory, in: .userDomainMask).first!
-        outputUrl.appendPathComponent("\(name)-output")
-        outputUrl.appendPathExtension("txt")
-        try! outputs.joined(separator: "\n").write(to: outputUrl, atomically: true, encoding: .utf8)
+  
+  func start() {
+    let name = "small"
+    let path = Bundle.main.path(forResource: "\(name)-input", ofType: "txt")!
+    var inputs = (try! String(contentsOfFile: path)).components(separatedBy: "\n").filter({ !$0.isEmpty })
+    var outputs = Array<String>()
+    let testCount = Int(inputs.removeFirst())!
+    for index in 0 ..< testCount {
+      let inputLines = Int(inputs.removeFirst())!
+      var caseInput = [String]()
+      for _ in 0 ..< inputLines {
+        caseInput.append(inputs.removeFirst())
+      }
+      let result = TestCase(input: caseInput.joined(separator: "\n")).output()
+      outputs.append("Case #\(index + 1): \(result)")
     }
+    var outputUrl = FileManager.default.urls(for: .desktopDirectory, in: .userDomainMask).first!
+    outputUrl.appendPathComponent("\(name)-output")
+    outputUrl.appendPathExtension("txt")
+    try! outputs.joined(separator: "\n").write(to: outputUrl, atomically: true, encoding: .utf8)
+  }
 }
 
 struct Test {
-    var input: String
-    var expected: String
+  var input: String
+  var expected: String
 }
 
 let tests: Array<Test> = [
-    Test(input:
+  Test(input:
         """
         2
         0 5
         5 4
         """,
-         expected:
+       expected:
         """
         9
         """
-    ),
-    Test(input:
+      ),
+  Test(input:
         """
         2
         0 5
         9 4
         """,
-         expected:
+       expected:
         """
         9
         """
-    ),
-    Test(input:
+      ),
+  Test(input:
         """
         3
         0 5
         9 3
         2 6
         """,
-         expected:
+       expected:
         """
         6
         """
-    ),
-    Test(input:
+      ),
+  Test(input:
         """
         5
         3 2
@@ -107,12 +144,12 @@ let tests: Array<Test> = [
         8 5
         1 4
         """,
-         expected:
+       expected:
         """
         12
         """
-    ),
-    Test(input:
+      ),
+  Test(input:
         """
         6
         -15 15
@@ -122,12 +159,12 @@ let tests: Array<Test> = [
         9 9
         18 18
         """,
-         expected:
+       expected:
         """
         33
         """
-    ),
-    Test(input:
+      ),
+  Test(input:
         """
         8
         10 20
@@ -139,12 +176,12 @@ let tests: Array<Test> = [
         70 20
         80 20
         """,
-         expected:
+       expected:
         """
         80
         """
-    ),
-    Test(input:
+      ),
+  Test(input:
         """
         12
         13 8
@@ -160,31 +197,31 @@ let tests: Array<Test> = [
         -40 24
         21 18
         """,
-         expected:
+       expected:
         """
         56
         """
-    ),
-    Test(input:
+      ),
+  Test(input:
         """
         2
         -500000000 500000000
         500000000 500000000
         """,
-         expected:
+       expected:
         """
         1000000000
         """
-    )
+      )
 ]
 
 tests.forEach({
-    let output = TestCase(input: $0.input).output()
-    if $0.expected == output {
-        print("[✅] input:\n\($0.input), \noutput: \n\(output)")
-    } else {
-        print("[❌] input:\n\($0.input), \nexpected: \n\($0.expected), \nactually: \n\(output)")
-    }
+  let output = TestCase(input: $0.input).output()
+  if $0.expected == output {
+    print("[✅] input:\n\($0.input), \noutput: \n\(output)")
+  } else {
+    print("[❌] input:\n\($0.input), \nexpected: \n\($0.expected), \nactually: \n\(output)")
+  }
 })
 
 //Solution().start()
