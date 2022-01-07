@@ -17,11 +17,14 @@ final class Timber {
   private var rightMax: [Int: Combined] = [:]
   private var leftMax: [Int: Combined] = [:]
   
-  init(input: String) {
-    var inputs = input.split(separator: "\n").map { String($0) }
-    let treeCount = Int(inputs.removeFirst())!
-    for _ in 0 ..< treeCount {
-      let rawTree = inputs.removeFirst().split(separator: " ").map { Int($0)! }
+  convenience init(input: String) {
+    let inputs = input.split(separator: "\n").map { String($0) }
+    self.init(inputs: Array(inputs[1...]))
+  }
+  
+  init(inputs: [String]) {
+    for input in inputs {
+      let rawTree = input.split(separator: " ").map { Int($0)! }
       let tree = Tree(location: rawTree[0], height: rawTree[1])
       self.trees.append(tree)
     }
@@ -37,10 +40,16 @@ final class Timber {
   private func cutDownTreesToRight() {
     self.trees.forEach { tree in
       let position = tree.location + tree.height
+      let candidate: Combined
       if let previous = self.rightMax[tree.location] {
-        self.rightMax[position] = Combined(start: previous.start, end: position)
+        candidate = Combined(start: previous.start, end: position)
       } else {
-        self.rightMax[position] = Combined(start: tree.location, end: position)
+        candidate = Combined(start: tree.location, end: position)
+      }
+      if let max = self.rightMax[position], candidate.length < max.length {
+        // do nothing.
+      } else {
+        self.rightMax[position] = candidate
       }
     }
   }
@@ -48,10 +57,16 @@ final class Timber {
   private func cutDownTreesToLeft() {
     self.trees.reversed().forEach { tree in
       let position = tree.location - tree.height
+      let candidate: Combined
       if let previous = self.leftMax[tree.location] {
-        self.leftMax[position] = Combined(start: position, end: previous.end)
+        candidate = Combined(start: position, end: previous.end)
       } else {
-        self.leftMax[position] = Combined(start: position, end: tree.location)
+        candidate = Combined(start: position, end: tree.location)
+      }
+      if let max = self.leftMax[position], candidate.length < max.length {
+        // do nothing.
+      } else {
+        self.leftMax[position] = candidate
       }
     }
   }
@@ -74,24 +89,29 @@ typealias TestCase = Timber
 class Solution {
   
   func start() {
-    let name = "small"
+    let name = "large"
     let path = Bundle.main.path(forResource: "\(name)-input", ofType: "txt")!
-    var inputs = (try! String(contentsOfFile: path)).components(separatedBy: "\n").filter({ !$0.isEmpty })
-    var outputs = Array<String>()
-    let testCount = Int(inputs.removeFirst())!
+    let inputs = (try! String(contentsOfFile: path))
+      .components(separatedBy: "\n")
+      .filter({ !$0.isEmpty })
+    var outputURL = FileManager.default.urls(for: .desktopDirectory, in: .userDomainMask).first!
+    outputURL.appendPathComponent("\(name)-output")
+    outputURL.appendPathExtension("txt")
+    let outputHandle = try! FileHandle(forWritingTo: outputURL)
+    let testCount = Int(inputs[0])!
+    var testInputCountIndex = 1
     for index in 0 ..< testCount {
-      let inputLines = Int(inputs.removeFirst())!
-      var caseInput = [String]()
-      for _ in 0 ..< inputLines {
-        caseInput.append(inputs.removeFirst())
-      }
-      let result = TestCase(input: caseInput.joined(separator: "\n")).output()
-      outputs.append("Case #\(index + 1): \(result)")
+      let inputCountString = inputs[testInputCountIndex]
+      let inputCount = Int(inputCountString)!
+      let inputStartIndex = testInputCountIndex + 1
+      let inputEndIndex = testInputCountIndex + inputCount
+      let caseInput = inputs[inputStartIndex...inputEndIndex]
+      let result = TestCase(inputs: Array(caseInput)).output()
+      let output = "Case #\(index + 1): \(result)\n"
+      try! outputHandle.write(contentsOf: output.data(using: .utf8)!)
+      testInputCountIndex += inputCount + 1
     }
-    var outputUrl = FileManager.default.urls(for: .desktopDirectory, in: .userDomainMask).first!
-    outputUrl.appendPathComponent("\(name)-output")
-    outputUrl.appendPathExtension("txt")
-    try! outputs.joined(separator: "\n").write(to: outputUrl, atomically: true, encoding: .utf8)
+    try! outputHandle.close()
   }
 }
 
@@ -224,4 +244,4 @@ tests.forEach({
   }
 })
 
-//Solution().start()
+Solution().start()
