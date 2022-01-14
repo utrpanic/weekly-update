@@ -4,6 +4,8 @@ final class RunningOnFumes1 {
   
   let cities: [Int]
   let gas: Int
+  var fCosts: [Int?]
+  var gCosts: [Int?]
   
   convenience init(input: String) {
     let inputs = input.split(separator: "\n")
@@ -15,10 +17,38 @@ final class RunningOnFumes1 {
   init(cities: [Int], gas: Int) {
     self.cities = cities
     self.gas = gas
+    self.gCosts = Array(repeating: nil, count: cities.count)
+    self.fCosts = Array(repeating: nil, count: cities.count)
   }
   
   func output() -> String {
-    return "20"
+    for index in 0 ..< self.cities.count {
+      if index == 0 {
+        self.fCosts[0] = 0
+        self.gCosts[0] = 0
+      } else if index <= self.gas {
+        self.gCosts[index] = 0
+        if self.cities[index] > 0 {
+          self.fCosts[index] = self.gCosts[index].map { $0 + self.cities[index] }
+        } else {
+          self.fCosts[index] = nil
+        }
+      } else {
+        let start = index - self.gas
+        let end = index
+        self.gCosts[index] = self.fCosts[start...end].compactMap { $0 }.min()
+        if self.cities[index] > 0 {
+          self.fCosts[index] = self.gCosts[index].map { $0 + self.cities[index] }
+        } else {
+          self.fCosts[index] = nil
+        }
+      }
+    }
+    if let result = self.gCosts.last! {
+      return "\(result)"
+    } else {
+      return "-1"
+    }
   }
 }
 
