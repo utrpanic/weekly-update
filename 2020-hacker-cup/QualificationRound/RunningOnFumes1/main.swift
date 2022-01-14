@@ -4,8 +4,8 @@ final class RunningOnFumes1 {
   
   let cities: [Int]
   let gas: Int
-  var fCosts: [Int?]
-  var gCosts: [Int?]
+  var fullTankCosts: [(index: Int, value: Int)]
+  var minimumCosts: [Int?]
   
   convenience init(input: String) {
     let inputs = input.split(separator: "\n")
@@ -17,71 +17,71 @@ final class RunningOnFumes1 {
   init(cities: [Int], gas: Int) {
     self.cities = cities
     self.gas = gas
-    self.gCosts = Array(repeating: nil, count: cities.count)
-    self.fCosts = Array(repeating: nil, count: cities.count)
+    self.fullTankCosts = []
+    self.minimumCosts = Array(repeating: nil, count: cities.count)
   }
   
   func output() -> String {
     for index in 0 ..< self.cities.count {
+      self.fullTankCosts = self.fullTankCosts.filter { index - self.gas <= $0.index }
       if index == 0 {
-        self.fCosts[0] = 0
-        self.gCosts[0] = 0
+        self.minimumCosts[0] = 0
+        self.fullTankCosts = [(index: 0, value: 0)]
       } else if index <= self.gas {
-        self.gCosts[index] = 0
-        if self.cities[index] > 0 {
-          self.fCosts[index] = self.gCosts[index].map { $0 + self.cities[index] }
-        } else {
-          self.fCosts[index] = nil
-        }
+        self.minimumCosts[index] = 0
+        self.calculateFullTankCost(at: index)
       } else {
-        let start = index - self.gas
-        let end = index
-        self.gCosts[index] = self.fCosts[start...end].compactMap { $0 }.min()
-        if self.cities[index] > 0 {
-          self.fCosts[index] = self.gCosts[index].map { $0 + self.cities[index] }
-        } else {
-          self.fCosts[index] = nil
-        }
+        self.minimumCosts[index] = self.fullTankCosts.first?.value
+        self.calculateFullTankCost(at: index)
       }
     }
-    if let result = self.gCosts.last! {
+    if let result = self.minimumCosts.last! {
       return "\(result)"
     } else {
       return "-1"
     }
   }
+  
+  private func calculateFullTankCost(at index: Int) {
+    let refuel = self.cities[index]
+    guard refuel > 0 else { return }
+    guard let newFCost = self.minimumCosts[index].map({ $0 + refuel }) else { return }
+    self.fullTankCosts = self.fullTankCosts.filter { $0.value < newFCost }
+    self.fullTankCosts.append((index: index, value: newFCost))
+  }
 }
 
 typealias Solution = RunningOnFumes1
 
-//func start() {
-//  let inputFile = "large-input.txt"
-//  let path = Bundle.main.path(forResource: inputFile, ofType: nil)!
-//  let inputURL = URL(fileURLWithPath: path)
-//  let outputFile = "large-output.txt"
-//  let outputURL = FileManager.default
-//    .urls(for: .desktopDirectory, in: .userDomainMask).first!
-//    .appendingPathComponent(outputFile)
-//  let outputHandle = try! FileHandle(forWritingTo: outputURL)
-//  let inputs = (try! String(contentsOf: inputURL)).split(separator: "\n")
-//  let count = Int(inputs[0])!
-//  var testInputIndex = 1
-//  for index in 1 ... count {
-//    let testInputs = inputs[testInputIndex].split(separator: " ")
-//    let cityCount = Int(testInputs[0])!
-//    let start = testInputIndex + 1
-//    let through = testInputIndex + cityCount
-//    let cities = inputs[start...through].map { Int($0)! }
-//    let gas = Int(testInputs[1])!
-//    let solution = Solution(cities: cities, gas: gas)
-//    let output = "Case #\(index): \(solution.output())"
-//    try! outputHandle.write(contentsOf: output.data(using: .utf8)!)
-//    testInputIndex += cityCount + 1
-//  }
-//  try! outputHandle.close()
-//}
-//
-//start()
+func start() {
+  let inputFile = "large-input.txt"
+  let path = Bundle.main.path(forResource: inputFile, ofType: nil)!
+  let inputURL = URL(fileURLWithPath: path)
+  let outputFile = "large-output.txt"
+  let outputURL = FileManager.default
+    .urls(for: .desktopDirectory, in: .userDomainMask).first!
+    .appendingPathComponent(outputFile)
+  FileManager.default.createFile(atPath: outputURL.path, contents: nil, attributes: nil)
+  let outputHandle = try! FileHandle(forWritingTo: outputURL)
+  let inputs = (try! String(contentsOf: inputURL)).split(separator: "\n")
+  let count = Int(inputs[0])!
+  var testInputIndex = 1
+  for index in 1 ... count {
+    let testInputs = inputs[testInputIndex].split(separator: " ")
+    let cityCount = Int(testInputs[0])!
+    let start = testInputIndex + 1
+    let through = testInputIndex + cityCount
+    let cities = inputs[start...through].map { Int($0)! }
+    let gas = Int(testInputs[1])!
+    let solution = Solution(cities: cities, gas: gas)
+    let output = "Case #\(index): \(solution.output())\n"
+    try! outputHandle.write(contentsOf: output.data(using: .utf8)!)
+    testInputIndex += cityCount + 1
+  }
+  try! outputHandle.close()
+}
+
+start()
 
 struct Test {
   var input: String
