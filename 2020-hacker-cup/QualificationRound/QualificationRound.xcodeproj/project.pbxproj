@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6013B0ED2792622500CABEE3 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6013B0EC2792622500CABEE3 /* main.swift */; };
+		6013B0F2279262A200CABEE3 /* large-input.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6013B0F12792626100CABEE3 /* large-input.txt */; };
 		60AA89B127884C9200F49CF0 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AA89B027884C9200F49CF0 /* main.swift */; };
 		60AA89B627887BDF00F49CF0 /* large-input.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = 60AA89B527887BBA00F49CF0 /* large-input.txt */; };
 		60B9BDD02787319400835A66 /* small-input.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8D567A9124E952D700CB1048 /* small-input.txt */; };
@@ -21,6 +23,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		6013B0E82792622500CABEE3 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				6013B0F2279262A200CABEE3 /* large-input.txt in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		60AA89AC27884C9200F49CF0 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 12;
@@ -67,6 +79,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6013B0EA2792622500CABEE3 /* RunningonFumes2 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RunningonFumes2; sourceTree = BUILT_PRODUCTS_DIR; };
+		6013B0EC2792622500CABEE3 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		6013B0F12792626100CABEE3 /* large-input.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "large-input.txt"; sourceTree = "<group>"; };
 		60AA89AE27884C9200F49CF0 /* RunningOnFumes1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RunningOnFumes1; sourceTree = BUILT_PRODUCTS_DIR; };
 		60AA89B027884C9200F49CF0 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		60AA89B527887BBA00F49CF0 /* large-input.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "large-input.txt"; sourceTree = "<group>"; };
@@ -85,6 +100,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		6013B0E72792622500CABEE3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		60AA89AB27884C9200F49CF0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -116,6 +138,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6013B0EB2792622500CABEE3 /* RunningonFumes2 */ = {
+			isa = PBXGroup;
+			children = (
+				6013B0EC2792622500CABEE3 /* main.swift */,
+				6013B0F12792626100CABEE3 /* large-input.txt */,
+			);
+			path = RunningonFumes2;
+			sourceTree = "<group>";
+		};
 		60AA89AF27884C9200F49CF0 /* RunningOnFumes1 */ = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +163,7 @@
 				8D567A7224E9511900CB1048 /* Alchemy */,
 				8D567A7D24E9512000CB1048 /* Timber */,
 				60AA89AF27884C9200F49CF0 /* RunningOnFumes1 */,
+				6013B0EB2792622500CABEE3 /* RunningonFumes2 */,
 				8D567A2D24E9502300CB1048 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -143,6 +175,7 @@
 				8D567A7124E9511900CB1048 /* Alchemy */,
 				8D567A7C24E9512000CB1048 /* Timber */,
 				60AA89AE27884C9200F49CF0 /* RunningOnFumes1 */,
+				6013B0EA2792622500CABEE3 /* RunningonFumes2 */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -180,6 +213,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		6013B0E92792622500CABEE3 /* RunningonFumes2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6013B0F02792622500CABEE3 /* Build configuration list for PBXNativeTarget "RunningonFumes2" */;
+			buildPhases = (
+				6013B0E62792622500CABEE3 /* Sources */,
+				6013B0E72792622500CABEE3 /* Frameworks */,
+				6013B0E82792622500CABEE3 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RunningonFumes2;
+			productName = RunningonFumes2;
+			productReference = 6013B0EA2792622500CABEE3 /* RunningonFumes2 */;
+			productType = "com.apple.product-type.tool";
+		};
 		60AA89AD27884C9200F49CF0 /* RunningOnFumes1 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 60AA89B427884C9200F49CF0 /* Build configuration list for PBXNativeTarget "RunningOnFumes1" */;
@@ -258,6 +308,9 @@
 				LastUpgradeCheck = 1310;
 				ORGANIZATIONNAME = utrpanic;
 				TargetAttributes = {
+					6013B0E92792622500CABEE3 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
 					60AA89AD27884C9200F49CF0 = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
@@ -289,11 +342,20 @@
 				8D567A7024E9511900CB1048 /* Alchemy */,
 				8D567A7B24E9512000CB1048 /* Timber */,
 				60AA89AD27884C9200F49CF0 /* RunningOnFumes1 */,
+				6013B0E92792622500CABEE3 /* RunningonFumes2 */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		6013B0E62792622500CABEE3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6013B0ED2792622500CABEE3 /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		60AA89AA27884C9200F49CF0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -329,6 +391,28 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		6013B0EE2792622500CABEE3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				MACOSX_DEPLOYMENT_TARGET = 12.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		6013B0EF2792622500CABEE3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				MACOSX_DEPLOYMENT_TARGET = 12.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		60AA89B227884C9200F49CF0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -529,6 +613,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		6013B0F02792622500CABEE3 /* Build configuration list for PBXNativeTarget "RunningonFumes2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6013B0EE2792622500CABEE3 /* Debug */,
+				6013B0EF2792622500CABEE3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		60AA89B427884C9200F49CF0 /* Build configuration list for PBXNativeTarget "RunningOnFumes1" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
