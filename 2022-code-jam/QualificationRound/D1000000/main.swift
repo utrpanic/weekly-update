@@ -3,16 +3,30 @@ final class D1000000 {
   typealias Input = (String, String)
   typealias Output = String
   
+  let dice: [Int]
+  
   convenience init() {
     self.init(input: (readLine()!, readLine()!))
   }
   
   init(input: Input) {
-    
+    self.dice = input.1.split(separator: " ")
+      .map(String.init)
+      .compactMap(Int.init)
   }
   
   func output() -> String {
-    return "4"
+    let sorted = self.dice.sorted(by: >)
+    var top = sorted[0]
+    var length = 1
+    for index in 1 ..< sorted.count {
+      if top - index == 0 { break }
+      if top - index > sorted[index] {
+        top = sorted[index] + length
+      }
+      length += 1
+    }
+    return String(length)
   }
 }
 
