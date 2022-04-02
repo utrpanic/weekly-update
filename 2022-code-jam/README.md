@@ -2,3 +2,4 @@
 
 ## [Qualification Round]
 - Punched Cards. `Swift 5`
+- 3D Printing.
