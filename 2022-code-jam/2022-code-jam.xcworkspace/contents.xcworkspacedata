@@ -7,4 +7,7 @@
    <FileRef
       location = "group:QualificationRound/QualificationRound.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:Round1A/Round1A.xcodeproj">
+   </FileRef>
 </Workspace>
