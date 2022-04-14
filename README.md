@@ -22,3 +22,5 @@
 ## 2021 Code Jam
 - Qualification Round
 
+## 2022 Code Jam
+- Qualification Round
